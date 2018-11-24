@@ -1,7 +1,11 @@
-import React from 'react'
 import { Link } from 'gatsby'
+import * as React from 'react'
 
-const Header = ({ siteTitle }) => (
+interface Props {
+  siteTitle: string,
+}
+
+const Header = ({ siteTitle }: Props) => (
   <nav
     className="navbar is-fixed-top is-transparent"
     role="navigation"
