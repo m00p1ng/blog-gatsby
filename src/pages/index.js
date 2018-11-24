@@ -1,12 +1,16 @@
 import React from 'react'
-import { Link } from 'gatsby'
-
 import Layout from '../components/layout'
 
 const IndexPage = () => (
   <Layout>
-    <h1>Hi people</h1>
-    <Link to="/about">Go to about</Link>
+    <section className="hero is-large is-primary">
+      <div className="hero-body">
+        <div className="container has-text-centered">
+          <h1 className="title">Vertically Centered Text anywhere</h1>
+          <h2 className="subtitle">Subtitle</h2>
+        </div>
+      </div>
+    </section>
   </Layout>
 )
 
