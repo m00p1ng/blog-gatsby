@@ -5577,11 +5577,6 @@ gatsby-plugin-styled-components@^3.0.3:
   dependencies:
     "@babel/runtime" "^7.0.0"
 
-gatsby-plugin-tslint@^0.0.2:
-  version "0.0.2"
-  resolved "https://registry.yarnpkg.com/gatsby-plugin-tslint/-/gatsby-plugin-tslint-0.0.2.tgz#2f665d2ca7c4ca5c3c29305145a89b48217906b9"
-  integrity sha512-NnlT0YVsPYS/yQLNebo5Sr+Vp/eYvvxm3IPPQzBcnWZQo0ODaxv7Gi66PoHXEaRxQ1L7SSJQPasCX67kTQR+oQ==
-
 gatsby-plugin-typescript@^2.0.1:
   version "2.0.1"
   resolved "https://registry.yarnpkg.com/gatsby-plugin-typescript/-/gatsby-plugin-typescript-2.0.1.tgz#dddc7d299da4d2517b82dbac2bc000f098478f59"

@@ -13,7 +13,6 @@
     "gatsby-plugin-sass": "^2.0.4",
     "gatsby-plugin-sharp": "^2.0.13",
     "gatsby-plugin-styled-components": "^3.0.3",
-    "gatsby-plugin-tslint": "^0.0.2",
     "gatsby-plugin-typescript": "^2.0.1",
     "gatsby-source-filesystem": "^2.0.8",
     "gatsby-transformer-remark": "^2.1.12",
@@ -35,7 +34,6 @@
     "build": "gatsby build",
     "develop": "gatsby develop",
     "start": "npm run develop",
-    "format": "prettier --write \"src/**/*.js\"",
     "test": "echo \"Error: no test specified\" && exit 1",
     "deploy:github": "yarn build && gh-pages -d public -b master"
   },

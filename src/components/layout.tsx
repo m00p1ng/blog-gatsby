@@ -3,11 +3,19 @@ import * as React from 'react'
 import Helmet from 'react-helmet'
 
 import './all.scss'
-import Footer from './footer'
-import Header from './header'
+import Footer from './Footer'
+import Header from './Header'
 
 interface Props {
   children: React.ReactNode
+}
+
+interface StaticQueryProps {
+  site: {
+    siteMetadata: {
+      title: string
+    }
+  }
 }
 
 const Layout = ({ children }: Props) => (
@@ -21,8 +29,8 @@ const Layout = ({ children }: Props) => (
         }
       }
     `}
-    render={(data) => (
-      <>
+    render={(data: StaticQueryProps) => (
+      <div className="site">
         <Helmet
           title={data.site.siteMetadata.title}
           meta={[
@@ -37,7 +45,7 @@ const Layout = ({ children }: Props) => (
         <Header siteTitle={data.site.siteMetadata.title} />
         <div className="site-content">{children}</div>
         <Footer />
-      </>
+      </div>
     )}
   />
 )
