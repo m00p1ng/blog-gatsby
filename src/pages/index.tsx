@@ -15,11 +15,11 @@ const IndexPage = ({ data }) => {
             return (
               <div key={post.id}>
                 <Link to={node.fields.slug}><h4 className="title is-4 is-link">{post.frontmatter.title}</h4></Link>
-                <h4 className="subtitle is-5">{post.frontmatter.date}</h4>
+                <h6 className="subtitle is-6">{post.frontmatter.date}</h6>
                 <p>{post.frontmatter.description}</p>
-                <div key={post.id}>
+                <div className="tags">
                   {post.frontmatter.tags.map((tag, index) => (
-                    <Link className="button is-info is-small" to={`/tags/${tag}`} key={index}>
+                    <Link className="tag is-info is-small" to={`/tags/${tag}`} key={index}>
                       {tag}
                     </Link>
                   ))}
