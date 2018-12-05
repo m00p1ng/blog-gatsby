@@ -80,4 +80,5 @@
         ],
         "semicolon": [true, "never"]
     },
+    "rulesDirectory": []
 }

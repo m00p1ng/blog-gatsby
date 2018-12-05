@@ -19,14 +19,7 @@ module.exports = {
       },
     },
     'gatsby-transformer-sharp',
-    {
-      resolve: `gatsby-transformer-remark`,
-      options: {
-        plugins: [
-          `gatsby-remark-mathjax`,
-        ],
-      },
-    },
+    'gatsby-transformer-remark',
     'gatsby-plugin-typescript',
     'gatsby-plugin-sass',
     'gatsby-plugin-sharp',

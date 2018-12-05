@@ -14,7 +14,6 @@
     "gatsby-plugin-sharp": "^2.0.14",
     "gatsby-plugin-styled-components": "^3.0.4",
     "gatsby-plugin-typescript": "^2.0.2",
-    "gatsby-remark-mathjax": "^1.0.0",
     "gatsby-source-filesystem": "^2.0.10",
     "gatsby-transformer-remark": "^2.1.15",
     "gatsby-transformer-sharp": "^2.1.9",
@@ -23,7 +22,8 @@
     "react-dom": "^16.6.3",
     "react-helmet": "^5.2.0",
     "styled-components": "^4.1.2",
-    "typescript": "^3.2.1"
+    "typescript": "^3.2.1",
+    "underscore": "^1.9.1"
   },
   "keywords": [
     "gatsby",
@@ -43,7 +43,6 @@
     "@types/react-dom": "^16.0.11",
     "@types/react-helmet": "^5.0.7",
     "gh-pages": "^2.0.1",
-    "prettier": "^1.15.3",
     "tslint": "^5.11.0",
     "tslint-config-prettier": "^1.17.0",
     "tslint-react": "^3.6.0"

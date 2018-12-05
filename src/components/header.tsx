@@ -1,5 +1,5 @@
+import React from 'react'
 import { Link } from 'gatsby'
-import * as React from 'react'
 
 interface Props {
   siteTitle: string,
@@ -23,10 +23,10 @@ const Header = ({ siteTitle }: Props) => (
           <div className="navbar-end">
             <Link to="/" className="navbar-item is-secondary">
               Home
-          </Link>
+            </Link>
             <Link to="/about" className="navbar-item is-secondary">
               About
-          </Link>
+            </Link>
           </div>
         </div>
       </div>

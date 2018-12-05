@@ -1,5 +1,6 @@
 const path = require('path')
 const { createFilePath } = require('gatsby-source-filesystem')
+const _ = require('underscore')
 
 exports.onCreateNode = ({ node, getNode, actions }) => {
   const { createNodeField } = actions
@@ -26,6 +27,8 @@ exports.onCreateNode = ({ node, getNode, actions }) => {
 
 exports.createPages = ({ graphql, actions }) => {
   const { createPage } = actions
+  const tags = []
+
   return new Promise((resolve, reject) => {
     graphql(`
       {
@@ -43,6 +46,9 @@ exports.createPages = ({ graphql, actions }) => {
               fields {
                 slug
               }
+              frontmatter {
+                tags
+              }
             }
           }
         }
@@ -50,6 +56,10 @@ exports.createPages = ({ graphql, actions }) => {
     `)
       .then(result => {
         result.data.allMarkdownRemark.edges.forEach(({ node }) => {
+          node.frontmatter.tags.forEach((tag) => {
+            tags.push(tag);
+          });
+
           createPage({
             path: node.fields.slug,
             component: path.resolve('./src/templates/Post.tsx'),
@@ -58,6 +68,19 @@ exports.createPages = ({ graphql, actions }) => {
             }
           })
         })
+
+        _.uniq(tags)
+
+        tags.forEach(tag => {
+          createPage({
+            path: `/tags/${tag}`,
+            component: path.resolve('./src/templates/Tag.tsx'),
+            context: {
+              tag
+            }
+          })
+        })
+
         resolve()
       })
   })

@@ -4,12 +4,15 @@ import { graphql } from 'gatsby'
 import Layout from '../components/Layout'
 import PostPreview from '../components/shared/PostPreview'
 
-const IndexPage = ({ data }) => {
+const Tags = ({ pageContext, data }) => {
   const { edges } = data.allMarkdownRemark
 
   return (
-    <Layout>
+    <Layout >
       <div className="container">
+        <h1 className="title">
+          Tag: {pageContext.tag}
+        </h1>
         {
           edges.map(({ node }) => {
             return (
@@ -21,38 +24,25 @@ const IndexPage = ({ data }) => {
           })
         }
       </div>
-    </Layout>
+    </Layout >
   )
 }
 
-export default IndexPage
+export default Tags
 
 export const query = graphql`
-  query IndexQuery {
-    allMarkdownRemark(
-      sort: {
-        order: DESC,
-        fields: [frontmatter___date]
-      },
-      filter:{
-        frontmatter: {
-          published: {
-            eq: true
-          }
-        }
-      }
-    ) {
+  query TagsQuery($tag: String!) {
+    allMarkdownRemark(filter: {frontmatter: {tags: {eq: $tag}}}) {
       edges {
         node {
-          id
-          frontmatter {
-            title
-            date(formatString: "MMMM DD, YYYY")
-            tags
-            description
-          }
           fields {
             slug
+          }
+          frontmatter {
+            tags
+            title
+            date(formatString: "MMMM DD, YYYY")
+            description
           }
         }
       }

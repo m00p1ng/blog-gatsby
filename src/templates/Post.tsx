@@ -1,22 +1,23 @@
-import * as React from "react"
-import { graphql, Link } from "gatsby"
-import Layout from "../components/Layout"
+import React from 'react'
+import { graphql } from 'gatsby'
+
+import Layout from '../components/Layout'
+import TagList from '../components/shared/TagList'
 
 export default ({ data }) => {
   const post = data.markdownRemark
+
   return (
     <Layout>
       <div className="container">
-        <h1 className="title is-1">{post.frontmatter.title}</h1>
-        <h4 className="subtitle is-3">{post.frontmatter.date}</h4>
-        <div dangerouslySetInnerHTML={{ __html: post.html }} />
-        {post.html}
-        <div className="tags">
-          {post.frontmatter.tags.map((tag, index) => (
-            <Link className="tag is-info is-small" to={`/tags/${tag}`} key={index}>
-              {tag}
-            </Link>
-          ))}
+        <div className="box">
+          <div className="content">
+            <h1 className="title">{post.frontmatter.title}</h1>
+            <h4 className="subtitle">{post.frontmatter.date}</h4>
+            <div dangerouslySetInnerHTML={{ __html: post.html }} />
+            <hr />
+            <TagList tags={post.frontmatter.tags} />
+          </div>
         </div>
       </div>
     </Layout>
