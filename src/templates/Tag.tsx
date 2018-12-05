@@ -32,7 +32,9 @@ export default Tags
 
 export const query = graphql`
   query TagsQuery($tag: String!) {
-    allMarkdownRemark(filter: {frontmatter: {tags: {eq: $tag}}}) {
+    allMarkdownRemark(
+      sort: {order: DESC, fields: [frontmatter___date]},
+      filter: {frontmatter: {tags: {eq: $tag}}}) {
       edges {
         node {
           fields {
