@@ -15,6 +15,7 @@ exports.onCreateNode = ({ node, getNode, actions }) => {
       const [date, postName] = name.split('___');
       const dateFormat = date.replace(/-/g, "/")
       return `${dateFormat}/${postName}`
+      // return postName.toLowerCase()
     }
 
     createNodeField({
@@ -33,13 +34,7 @@ exports.createPages = ({ graphql, actions }) => {
     graphql(`
       {
         allMarkdownRemark(
-          filter: {
-            frontmatter: {
-              published: {
-                eq: true
-              }
-            }
-          }
+          filter: {frontmatter: {published: {eq:true}}}
         ) {
           edges {
             node {
