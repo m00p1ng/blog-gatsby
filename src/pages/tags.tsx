@@ -1,26 +1,26 @@
 import React from 'react'
 import { Link, graphql } from 'gatsby'
+import * as _ from 'lodash'
 
 import Layout from '../components/Layout'
 
-const _ = require('underscore')
-
-const AllTags = ({ data }) => {
-  let tags = []
+const AllTagsPage = ({ data }) => {
+  let tags: string[] = []
 
   data.allMarkdownRemark.edges.forEach(({ node }) => {
     tags.push(...node.frontmatter.tags)
   })
 
   tags = _.uniq(tags)
+  tags.sort()
 
   return (
     <Layout>
       <div className="container">
         <div className="box">
+          <h1 className="title">Tags</h1>
+          <hr />
           <div className="content">
-            <h1>Tags</h1>
-            <hr />
             <ul>
               {tags.map((tag, index) => (
                 <li key={index} className="is-size-5">
@@ -37,7 +37,7 @@ const AllTags = ({ data }) => {
   )
 }
 
-export default AllTags
+export default AllTagsPage
 
 export const query = graphql`
   query AllTagsQuery {
