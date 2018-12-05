@@ -4,6 +4,8 @@ import { graphql } from 'gatsby'
 import Layout from '../components/Layout'
 import TagList from '../components/shared/TagList'
 
+import 'katex/dist/katex.min.css'
+
 export default ({ data }) => {
   const post = data.markdownRemark
 

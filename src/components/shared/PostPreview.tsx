@@ -7,9 +7,9 @@ const PostPreview = ({ post, slug }) => {
   return (
     <div className="box">
       <div className="content">
-        <Link to={slug}>
-          <h2 className="title is-link">{post.frontmatter.title}</h2>
-        </Link>
+        <h2 className="title is-link">
+          <Link to={slug}>{post.frontmatter.title}</Link>
+        </h2>
         <h4 className="subtitle">{post.frontmatter.date}</h4>
         <p>{post.frontmatter.description}</p>
         <TagList tags={post.frontmatter.tags} />
