@@ -12,13 +12,14 @@
 
 // Update Bulma's global variables
 $family-sans-serif: "Nunito",
+Helvetica,
 sans-serif;
 // $grey-dark: $brown;
 // $grey-light: $beige-light;
 // $primary: $purple;
 // $link: $pink;
-// $widescreen-enabled: false;
-// $fullhd-enabled: false;
+$widescreen-enabled: false;
+$fullhd-enabled: false;
 
 // Update some of Bulma's component variables
 // $body-background-color: $beige-lighter;
@@ -26,5 +27,9 @@ sans-serif;
 // $input-border-color: transparent;
 // $input-shadow: none;
 
-// Import only what you need from Bulma
-@import '~bulma';
+$box-radius: 14px;
+$box-padding: 3rem;
+$box-shadow: 8px 14px 38px rgba(39, 44, 49, .06),
+1px 3px 8px rgba(39, 44, 49, .03);
+
+@import "~bulma";
