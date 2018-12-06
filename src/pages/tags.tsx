@@ -1,13 +1,21 @@
-import React from 'react'
+// @ts-ignore
 import { Link, graphql } from 'gatsby'
+import React from 'react'
 import KebabCase from 'lodash/kebabCase'
 import Helmet from 'react-helmet'
 
 import Layout from '../components/Layout'
 
-const TagsPage = ({ data }) => {
+import PageProps from '../models/PageProps'
+
+interface TagGroup {
+  fieldValue: string
+  totalCount: number
+}
+
+const TagsPage = ({ data }: PageProps) => {
   const { title } = data.site.siteMetadata
-  const tags = data.allMarkdownRemark.group
+  const tags: TagGroup[] = data.allMarkdownRemark.group
 
   return (
     <Layout>

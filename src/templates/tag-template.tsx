@@ -1,11 +1,14 @@
-import React from 'react'
+// @ts-ignore
 import { graphql } from 'gatsby'
+import React from 'react'
 import Helmet from 'react-helmet'
 
 import Layout from '../components/Layout'
 import PostPreview from '../components/shared/PostPreview'
 
-const Tag = ({ pageContext, data }) => {
+import PageProps from '../models/PageProps'
+
+const Tags = ({ pageContext, data }: PageProps) => {
   const { edges } = data.allMarkdownRemark
   const { title } = data.site.siteMetadata
 
@@ -18,12 +21,7 @@ const Tag = ({ pageContext, data }) => {
         </h1>
         {
           edges.map(({ node }) => {
-            return (
-              <PostPreview
-                key={node.id}
-                post={node}
-                slug={node.fields.slug} />
-            )
+            return <PostPreview key={node.id} post={node} />
           })
         }
       </div>
@@ -31,7 +29,7 @@ const Tag = ({ pageContext, data }) => {
   )
 }
 
-export default Tag
+export default Tags
 
 export const query = graphql`
   query TagQuery($tag: String!) {

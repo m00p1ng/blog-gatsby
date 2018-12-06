@@ -1,22 +1,18 @@
-import React from 'react'
+// @ts-ignore
 import { graphql, StaticQuery } from 'gatsby'
+import React from 'react'
 import Helmet from 'react-helmet'
 
-import '../assets/scss/all.scss'
 import Footer from './Footer'
 import Header from './Header'
 
+import Data from '../models/Data'
+
+import '../assets/scss/index.scss'
+import '../assets/scss/all.scss'
+
 interface Props {
   children: React.ReactNode
-}
-
-interface StaticQueryProps {
-  site: {
-    siteMetadata: {
-      title: string
-      subtitle: string
-    }
-  }
 }
 
 const Layout = ({ children }: Props) => (
@@ -31,7 +27,7 @@ const Layout = ({ children }: Props) => (
         }
       }
     `}
-    render={(data: StaticQueryProps) => (
+    render={(data: Data) => (
       <div className="site">
         <Helmet
           title={`${data.site.siteMetadata.title} | ${data.site.siteMetadata.subtitle}`}
@@ -45,7 +41,7 @@ const Layout = ({ children }: Props) => (
         </Helmet>
 
         <Header siteTitle={data.site.siteMetadata.title} />
-        <div className="site-content">{children}</div>
+        <div className="site-content has-background-light">{children}</div>
         <Footer />
       </div>
     )}

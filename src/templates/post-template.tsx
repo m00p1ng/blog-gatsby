@@ -1,15 +1,17 @@
-import React from 'react'
+// @ts-ignore
 import { graphql } from 'gatsby'
+import React from 'react'
 import Helmet from 'react-helmet'
 
 import Layout from '../components/Layout'
 import TagList from '../components/shared/TagList'
 
+import PageProps from '../models/PageProps'
+
 import 'katex/dist/katex.min.css'
 import 'prismjs/themes/prism.css'
-import 'prismjs/plugins/line-numbers/prism-line-numbers.css'
 
-const Post = ({ data }) => {
+const PostTemplate = ({ data }: PageProps) => {
   const post = data.markdownRemark
   const { title: postTitle, date, tags } = post.frontmatter
   const { title } = data.site.siteMetadata
@@ -19,9 +21,9 @@ const Post = ({ data }) => {
       <Helmet title={`${postTitle} | ${title}`} />
       <div className="container">
         <div className="box">
+          <h1 className="title">{postTitle}</h1>
+          <h4 className="subtitle">{date}</h4>
           <div className="content">
-            <h1 className="title">{postTitle}</h1>
-            <h4 className="subtitle">{date}</h4>
             <hr />
             <div dangerouslySetInnerHTML={{ __html: post.html }} />
           </div>
@@ -32,7 +34,7 @@ const Post = ({ data }) => {
   )
 }
 
-export default Post
+export default PostTemplate
 
 export const query = graphql`
   query($slug: String!) {

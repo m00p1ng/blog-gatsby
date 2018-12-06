@@ -1,15 +1,21 @@
-import React from 'react'
+// @ts-ignore
 import { Link } from 'gatsby'
+import React from 'react'
 import KebabCase from 'lodash/kebabCase'
 
-const TagList = ({ tags }) => {
+interface Props {
+  tags: string[]
+}
+
+const TagList = ({ tags }: Props) => {
   return (
     <div className="tags">
-      {tags.map((tag, index) => (
+      {tags.map((tag: string) => (
         <Link
+          key={tag}
           className="tag is-info"
           to={`/tags/${KebabCase(tag)}`}
-          key={index} >
+        >
           {tag}
         </Link>
       ))}

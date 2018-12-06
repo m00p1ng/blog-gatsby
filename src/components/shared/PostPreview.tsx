@@ -1,17 +1,27 @@
-import React from 'react'
+// @ts-ignore
 import { Link } from 'gatsby'
+import React from 'react'
 
 import TagList from './TagList'
 
-const PostPreview = ({ post, slug }) => {
+import Post from '../../models/Post'
+
+interface Props {
+  post: Post
+}
+
+const PostPreview = ({ post }: Props) => {
   return (
     <div className="box">
+      <Link to={post.fields.slug}>
+        <h3 className="title">
+          {post.frontmatter.title}
+        </h3>
+      </Link>
+      <h6 className="subtitle">{post.frontmatter.date}</h6>
       <div className="content">
-        <h2 className="title is-link">
-          <Link to={slug}>{post.frontmatter.title}</Link>
-        </h2>
-        <h4 className="subtitle">{post.frontmatter.date}</h4>
         <p>{post.frontmatter.description}</p>
+        <Link className="is-link is-bold" to={post.fields.slug}><strong>Read More...</strong></Link>
       </div>
       <TagList tags={post.frontmatter.tags} />
     </div>

@@ -1,10 +1,13 @@
-import React from 'react'
+// @ts-ignore
 import { graphql } from 'gatsby'
+import React from 'react'
 
 import Layout from '../components/Layout'
 import PostPreview from '../components/shared/PostPreview'
 
-const IndexPage = ({ data }) => {
+import PageProps from '../models/PageProps'
+
+const IndexPage = ({ data }: PageProps) => {
   const { edges } = data.allMarkdownRemark
 
   return (
@@ -12,12 +15,7 @@ const IndexPage = ({ data }) => {
       <div className="container">
         {
           edges.map(({ node }) => {
-            return (
-              <PostPreview
-                key={node.id}
-                post={node}
-                slug={node.fields.slug} />
-            )
+            return <PostPreview key={node.id} post={node} />
           })
         }
       </div>

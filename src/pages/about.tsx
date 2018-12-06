@@ -5,7 +5,7 @@ import Layout from '../components/Layout'
 const About = () => (
   <Layout>
     <div className="container">
-      <h3 className="title is-3">About</h3>
+      <h3 className="title">About</h3>
     </div>
   </Layout>
 )

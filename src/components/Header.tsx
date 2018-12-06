@@ -1,5 +1,6 @@
-import React from 'react'
+// @ts-ignore
 import { Link } from 'gatsby'
+import React from 'react'
 
 interface Props {
   siteTitle: string,
