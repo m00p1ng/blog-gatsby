@@ -27,9 +27,9 @@ const PostPreview = ({ post }: Props) => {
         <Link to={`/categories/${KebabCase(category)}`}>{category}</Link> | {date}
       </p>
       <Link to={post.fields.slug}>
-        <h3 className="title post-header">
+        <h1 className="title post-header">
           {title}
-        </h3>
+        </h1>
       </Link>
       <PostContentWrapper>
         <p>{description}</p>

@@ -3,6 +3,7 @@ import { graphql, Link } from 'gatsby'
 import React from 'react'
 import Helmet from 'react-helmet'
 import KebabCase from 'lodash/kebabCase'
+import styled from 'styled-components'
 
 import Layout from '../components/Layout'
 import TagList from '../components/shared/TagList'
@@ -11,6 +12,10 @@ import PageProps from '../models/PageProps'
 
 import 'katex/dist/katex.min.css'
 import 'prismjs/themes/prism.css'
+
+const SubheaderWrapper = styled.div`
+  margin-top: -1.2rem;
+`
 
 const PostTemplate = ({ data }: PageProps) => {
   const post = data.markdownRemark
@@ -24,9 +29,9 @@ const PostTemplate = ({ data }: PageProps) => {
         <div className="content-padding">
           <div className="box">
             <h1 className="title">{postTitle}</h1>
-            <p className="subtitle">
+            <SubheaderWrapper>
               <Link to={`/categories/${KebabCase(category)}`}>{category}</Link> | {date}
-            </p>
+            </SubheaderWrapper>
             <div className="content">
               <hr />
               <div dangerouslySetInnerHTML={{ __html: post.html }} />
