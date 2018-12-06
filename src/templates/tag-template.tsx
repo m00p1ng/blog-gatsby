@@ -8,7 +8,7 @@ const Tags = ({ pageContext, data }) => {
   const { edges } = data.allMarkdownRemark
 
   return (
-    <Layout >
+    <Layout>
       <div className="container">
         <h1 className="title">
           Tag: {pageContext.tag}
@@ -24,14 +24,14 @@ const Tags = ({ pageContext, data }) => {
           })
         }
       </div>
-    </Layout >
+    </Layout>
   )
 }
 
 export default Tags
 
 export const query = graphql`
-  query TagsQuery($tag: String!) {
+  query TagQuery($tag: String!) {
     allMarkdownRemark(
       sort: {order: DESC, fields: [frontmatter___date]},
       filter: {frontmatter: {tags: {eq: $tag}}}) {

@@ -14,8 +14,7 @@ exports.onCreateNode = ({ node, getNode, actions }) => {
     const parseFolderName = (name) => {
       const [date, postName] = name.split('___');
       const dateFormat = date.replace(/-/g, "/")
-      return `${dateFormat}/${postName}`
-      // return postName.toLowerCase()
+      return `${dateFormat}/${_.kebabCase(postName)}`
     }
 
     createNodeField({
@@ -57,7 +56,7 @@ exports.createPages = ({ graphql, actions }) => {
 
           createPage({
             path: node.fields.slug,
-            component: path.resolve('./src/templates/Post.tsx'),
+            component: path.resolve('./src/templates/post-template.tsx'),
             context: {
               slug: node.fields.slug
             }
@@ -68,8 +67,8 @@ exports.createPages = ({ graphql, actions }) => {
 
         tags.forEach(tag => {
           createPage({
-            path: `/tags/${tag}`,
-            component: path.resolve('./src/templates/Tag.tsx'),
+            path: `/tags/${_.kebabCase(tag)}`,
+            component: path.resolve('./src/templates/tag-template.tsx'),
             context: {
               tag
             }

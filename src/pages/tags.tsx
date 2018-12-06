@@ -1,18 +1,12 @@
 import React from 'react'
 import { Link, graphql } from 'gatsby'
-import * as _ from 'lodash'
+import KebabCase from 'lodash/kebabCase'
 
 import Layout from '../components/Layout'
 
 const AllTagsPage = ({ data }) => {
-  let tags: string[] = []
-
-  data.allMarkdownRemark.edges.forEach(({ node }) => {
-    tags.push(...node.frontmatter.tags)
-  })
-
-  tags = _.uniq(tags)
-  tags.sort()
+  const { title } = data.site.siteMetadata
+  const tags = data.allMarkdownRemark.group
 
   return (
     <Layout>
@@ -22,10 +16,10 @@ const AllTagsPage = ({ data }) => {
           <hr />
           <div className="content">
             <ul>
-              {tags.map((tag, index) => (
-                <li key={index} className="is-size-5">
-                  <Link to={`/tags/${tag}`}>
-                    {tag}
+              {tags.map(tag => (
+                <li key={tag.fieldValue} className="is-size-5">
+                  <Link to={`/tags/${KebabCase(tag.fieldValue)}`}>
+                    {tag.fieldValue} ({tag.totalCount})
                   </Link>
                 </li>
               ))}
@@ -40,17 +34,18 @@ const AllTagsPage = ({ data }) => {
 export default AllTagsPage
 
 export const query = graphql`
-  query AllTagsQuery {
-    allMarkdownRemark {
-      edges {
-        node {
-          frontmatter {
-            tags
-          }
-          fields {
-            slug
-          }
-        }
+  query TagsQuery {
+    site {
+      siteMetadata {
+        title
+      }
+    }
+    allMarkdownRemark(
+      filter:{frontmatter: {published: {eq: true}}}
+    ) {
+      group(field: frontmatter___tags) {
+        fieldValue
+        totalCount
       }
     }
   }
