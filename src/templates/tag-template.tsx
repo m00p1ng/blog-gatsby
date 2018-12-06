@@ -17,7 +17,7 @@ const Tags = ({ pageContext, data }: PageProps) => {
       <Helmet title={`${pageContext.tag} | ${title}`} />
       <div className="container">
         <h1 className="title">
-          Tag: {pageContext.tag}
+          #{pageContext.tag}
         </h1>
         {
           edges.map(({ node }) => {
@@ -40,13 +40,14 @@ export const query = graphql`
     }
     allMarkdownRemark(
       sort: {order: DESC, fields: [frontmatter___date]},
-      filter: {frontmatter: {tags: {eq: $tag}}}) {
+      filter: {frontmatter: {published: {eq: true}, tags: {eq: $tag}}}) {
       edges {
         node {
           fields {
             slug
           }
           frontmatter {
+            category
             tags
             title
             date(formatString: "MMMM DD, YYYY")

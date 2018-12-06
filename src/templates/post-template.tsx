@@ -1,7 +1,8 @@
 // @ts-ignore
-import { graphql } from 'gatsby'
+import { graphql, Link } from 'gatsby'
 import React from 'react'
 import Helmet from 'react-helmet'
+import KebabCase from 'lodash/kebabCase'
 
 import Layout from '../components/Layout'
 import TagList from '../components/shared/TagList'
@@ -13,7 +14,7 @@ import 'prismjs/themes/prism.css'
 
 const PostTemplate = ({ data }: PageProps) => {
   const post = data.markdownRemark
-  const { title: postTitle, date, tags } = post.frontmatter
+  const { title: postTitle, date, tags, category } = post.frontmatter
   const { title } = data.site.siteMetadata
 
   return (
@@ -22,7 +23,9 @@ const PostTemplate = ({ data }: PageProps) => {
       <div className="container">
         <div className="box">
           <h1 className="title">{postTitle}</h1>
-          <h4 className="subtitle">{date}</h4>
+          <h6 className="subtitle">
+            <Link to={`/categories/${KebabCase(category)}`}>{category}</Link> | {date}
+          </h6>
           <div className="content">
             <hr />
             <div dangerouslySetInnerHTML={{ __html: post.html }} />
@@ -49,6 +52,7 @@ export const query = graphql`
         title
         date(formatString: "MMMM DD, YYYY")
         tags
+        category
       }
     }
   }

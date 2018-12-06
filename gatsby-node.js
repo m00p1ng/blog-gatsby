@@ -28,6 +28,7 @@ exports.onCreateNode = ({ node, getNode, actions }) => {
 exports.createPages = ({ graphql, actions }) => {
   const { createPage } = actions
   const tags = []
+  const categories = []
 
   return new Promise((resolve, reject) => {
     graphql(`
@@ -42,6 +43,7 @@ exports.createPages = ({ graphql, actions }) => {
               }
               frontmatter {
                 tags
+                category
               }
             }
           }
@@ -52,7 +54,9 @@ exports.createPages = ({ graphql, actions }) => {
         result.data.allMarkdownRemark.edges.forEach(({ node }) => {
           node.frontmatter.tags.forEach((tag) => {
             tags.push(tag);
-          });
+          })
+
+          categories.push(node.frontmatter.category)
 
           createPage({
             path: node.fields.slug,
@@ -71,6 +75,18 @@ exports.createPages = ({ graphql, actions }) => {
             component: path.resolve('./src/templates/tag-template.tsx'),
             context: {
               tag
+            }
+          })
+        })
+
+        _.uniq(categories)
+
+        categories.forEach(category => {
+          createPage({
+            path: `/categories/${_.kebabCase(category)}`,
+            component: path.resolve('./src/templates/category-template.tsx'),
+            context: {
+              category
             }
           })
         })
