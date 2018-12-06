@@ -41,7 +41,13 @@ const Layout = ({ children }: Props) => (
         </Helmet>
 
         <Header siteTitle={data.site.siteMetadata.title} />
-        <div className="site-content has-background-light">{children}</div>
+        <div className="site-content has-background-light">
+          <div className="container">
+            <div className="content-padding">
+              {children}
+            </div>
+          </div>
+        </div>
         <Footer />
       </div>
     )}

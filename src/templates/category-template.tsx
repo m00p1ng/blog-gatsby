@@ -15,18 +15,14 @@ const Categories = ({ pageContext, data }: PageProps) => {
   return (
     <Layout>
       <Helmet title={`${pageContext.category} | ${title}`} />
-      <div className="container">
-        <div className="content-padding">
-          <h1 className="title">
-            Category: {pageContext.category}
-          </h1>
-          {
-            edges.map(({ node }) => {
-              return <PostPreview key={node.id} post={node} />
-            })
-          }
-        </div>
-      </div>
+      <h1 className="title">
+        Category: {pageContext.category}
+      </h1>
+      {
+        edges.map(({ node }) => {
+          return <PostPreview key={node.id} post={node} />
+        })
+      }
     </Layout>
   )
 }

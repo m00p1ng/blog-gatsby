@@ -12,15 +12,11 @@ const IndexPage = ({ data }: PageProps) => {
 
   return (
     <Layout>
-      <div className="container">
-        <div className="content-padding">
-          {
-            edges.map(({ node }) => {
-              return <PostPreview key={node.id} post={node} />
-            })
-          }
-        </div>
-      </div>
+      {
+        edges.map(({ node }) => {
+          return <PostPreview key={node.id} post={node} />
+        })
+      }
     </Layout>
   )
 }

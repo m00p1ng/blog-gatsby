@@ -15,18 +15,14 @@ const Tags = ({ pageContext, data }: PageProps) => {
   return (
     <Layout>
       <Helmet title={`#${pageContext.tag} | ${title}`} />
-      <div className="container">
-        <div className="content-padding">
-          <h1 className="title">
-            #{pageContext.tag}
-          </h1>
-          {
-            edges.map(({ node }) => {
-              return <PostPreview key={node.id} post={node} />
-            })
-          }
-        </div>
-      </div>
+      <h1 className="title">
+        Tag: #{pageContext.tag}
+      </h1>
+      {
+        edges.map(({ node }) => {
+          return <PostPreview key={node.id} post={node} />
+        })
+      }
     </Layout>
   )
 }
