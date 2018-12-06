@@ -1,15 +1,17 @@
 import React from 'react'
 import { Link, graphql } from 'gatsby'
 import KebabCase from 'lodash/kebabCase'
+import Helmet from 'react-helmet'
 
 import Layout from '../components/Layout'
 
-const AllTagsPage = ({ data }) => {
+const TagsPage = ({ data }) => {
   const { title } = data.site.siteMetadata
   const tags = data.allMarkdownRemark.group
 
   return (
     <Layout>
+      <Helmet title={`All Tags | ${title}`} />
       <div className="container">
         <div className="box">
           <h1 className="title">Tags</h1>
@@ -31,7 +33,7 @@ const AllTagsPage = ({ data }) => {
   )
 }
 
-export default AllTagsPage
+export default TagsPage
 
 export const query = graphql`
   query TagsQuery {

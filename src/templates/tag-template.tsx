@@ -1,14 +1,17 @@
 import React from 'react'
 import { graphql } from 'gatsby'
+import Helmet from 'react-helmet'
 
 import Layout from '../components/Layout'
 import PostPreview from '../components/shared/PostPreview'
 
-const Tags = ({ pageContext, data }) => {
+const Tag = ({ pageContext, data }) => {
   const { edges } = data.allMarkdownRemark
+  const { title } = data.site.siteMetadata
 
   return (
     <Layout>
+      <Helmet title={`${pageContext.tag} | ${title}`} />
       <div className="container">
         <h1 className="title">
           Tag: {pageContext.tag}
@@ -28,10 +31,15 @@ const Tags = ({ pageContext, data }) => {
   )
 }
 
-export default Tags
+export default Tag
 
 export const query = graphql`
   query TagQuery($tag: String!) {
+    site {
+      siteMetadata {
+        title
+      }
+    }
     allMarkdownRemark(
       sort: {order: DESC, fields: [frontmatter___date]},
       filter: {frontmatter: {tags: {eq: $tag}}}) {

@@ -14,6 +14,7 @@ interface StaticQueryProps {
   site: {
     siteMetadata: {
       title: string
+      subtitle: string
     }
   }
 }
@@ -25,6 +26,7 @@ const Layout = ({ children }: Props) => (
         site {
           siteMetadata {
             title
+            subtitle
           }
         }
       }
@@ -32,7 +34,7 @@ const Layout = ({ children }: Props) => (
     render={(data: StaticQueryProps) => (
       <div className="site">
         <Helmet
-          title={data.site.siteMetadata.title}
+          title={`${data.site.siteMetadata.title} | ${data.site.siteMetadata.subtitle}`}
           meta={[
             { name: 'description', content: 'Sample' },
             { name: 'keywords', content: 'sample, something' },
