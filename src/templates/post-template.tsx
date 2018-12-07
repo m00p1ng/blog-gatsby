@@ -4,6 +4,8 @@ import React from 'react'
 import Helmet from 'react-helmet'
 import KebabCase from 'lodash/kebabCase'
 import styled from 'styled-components'
+// @ts-ignore
+import { DiscussionEmbed } from 'disqus-react'
 
 import Layout from '../components/Layout'
 import TagList from '../components/shared/TagList'
@@ -21,6 +23,11 @@ const PostTemplate = ({ data }: PageProps) => {
   const post = data.markdownRemark
   const { title: postTitle, date, tags, category } = post.frontmatter
   const { title } = data.site.siteMetadata
+  const disqusShortname = 'm00p1ng-github-io'
+  const disqusConfig = {
+    identifier: post.id,
+    title: post.frontmatter.title,
+  }
 
   return (
     <Layout>
@@ -35,6 +42,7 @@ const PostTemplate = ({ data }: PageProps) => {
           <div dangerouslySetInnerHTML={{ __html: post.html }} />
         </div>
         <TagList tags={tags} />
+        <DiscussionEmbed shortname={disqusShortname} config={disqusConfig} />
       </div>
     </Layout>
   )
