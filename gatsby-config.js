@@ -4,7 +4,6 @@ module.exports = {
     subtitle: 'test subtitle',
   },
   plugins: [
-    'gatsby-plugin-react-helmet',
     {
       resolve: 'gatsby-source-filesystem',
       options: {
@@ -46,10 +45,6 @@ module.exports = {
         ],
       },
     },
-    'gatsby-plugin-typescript',
-    'gatsby-plugin-sass',
-    'gatsby-plugin-sharp',
-    'gatsby-plugin-styled-components',
     {
       resolve: 'gatsby-plugin-manifest',
       options: {
@@ -62,6 +57,13 @@ module.exports = {
         icon: 'src/assets/gatsby-icon.png',
       },
     },
+    'gatsby-plugin-react-helmet',
+    'gatsby-plugin-typescript',
+    'gatsby-plugin-sass',
+    'gatsby-plugin-sharp',
+    'gatsby-plugin-styled-components',
     'gatsby-plugin-offline',
+    'gatsby-plugin-lodash',
+    'gatsby-plugin-remove-trailing-slashes',
   ],
 }
