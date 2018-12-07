@@ -10,8 +10,59 @@ $widescreen-enabled: false;
 $fullhd-enabled: false;
 
 $box-radius: 14px;
-$box-padding: 2.5rem;
 $box-shadow: 8px 14px 38px rgba(39, 44, 49, .06),
 1px 3px 8px rgba(39, 44, 49, .03);
 
 @import "bulma";
+
+.box-padding {
+  @include from($desktop) {
+    padding: 3rem;
+  }
+
+  @include mobile {
+    padding: 1.5rem;
+  }
+
+  @include tablet-only {
+    padding: 2.5rem;
+  }
+}
+
+.postpreview-padding {
+  @include from($desktop) {
+    margin: 0 3rem;
+  }
+
+  @include mobile {
+    margin: 0 0.8rem;
+  }
+
+  @include tablet-only {
+    margin: 0 2.5rem;
+  }
+}
+
+.post-padding {
+  @include from($desktop) {
+    margin: 0 3rem;
+  }
+
+  @include mobile {
+    margin: -1rem 0 -2rem 0;
+  }
+
+  @include tablet-only {
+    margin: 0 2.5rem;
+  }
+}
+
+.box-radius {
+  @include mobile {
+    border-radius: 0;
+  }
+
+  @include from($tablet) {
+    border-radius: 14px;
+  }
+}

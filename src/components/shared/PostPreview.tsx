@@ -22,12 +22,12 @@ const PostPreview = ({ post }: Props) => {
   const { slug } = post.fields
 
   return (
-    <div className="box" style={{ padding: '2rem' }}>
-      <p className="">
+    <div className="box box-padding">
+      <p>
         <Link to={`/categories/${KebabCase(category)}`}>{category}</Link> | {date}
       </p>
       <Link to={post.fields.slug}>
-        <h1 className="title post-header">
+        <h1 className="title postpreview-header">
           {title}
         </h1>
       </Link>

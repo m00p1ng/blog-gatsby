@@ -32,17 +32,19 @@ const PostTemplate = ({ data }: PageProps) => {
   return (
     <Layout>
       <Helmet title={`${postTitle} | ${title}`} />
-      <div className="box">
-        <h1 className="title">{postTitle}</h1>
-        <SubheaderWrapper>
-          <Link to={`/categories/${KebabCase(category)}`}>{category}</Link> | {date}
-        </SubheaderWrapper>
-        <div className="content">
-          <hr />
-          <div dangerouslySetInnerHTML={{ __html: post.html }} />
+      <div className="post-padding">
+        <div className="box box-padding box-radius">
+          <h1 className="title">{postTitle}</h1>
+          <SubheaderWrapper>
+            <Link to={`/categories/${KebabCase(category)}`}>{category}</Link> | {date}
+          </SubheaderWrapper>
+          <div className="content">
+            <hr />
+            <div dangerouslySetInnerHTML={{ __html: post.html }} />
+          </div>
+          <TagList tags={tags} />
+          <DiscussionEmbed shortname={disqusShortname} config={disqusConfig} />
         </div>
-        <TagList tags={tags} />
-        <DiscussionEmbed shortname={disqusShortname} config={disqusConfig} />
       </div>
     </Layout>
   )

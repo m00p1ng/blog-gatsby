@@ -18,9 +18,14 @@ const Header = ({ siteTitle }: Props) => (
           <Link to="/" className="navbar-item ">
             {siteTitle}
           </Link>
+          <div className="navbar-burger burger" data-target="navbar-burger">
+            <span />
+            <span />
+            <span />
+          </div>
         </div>
 
-        <div id="navbar-menu" className="navbar-menu is-static">
+        <div id="navbar-burger" className="navbar-menu">
           <div className="navbar-end">
             <Link to="/" className="navbar-item is-secondary">
               Home
