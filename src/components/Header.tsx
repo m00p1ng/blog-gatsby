@@ -9,7 +9,7 @@ interface Props {
 const Header = ({ siteTitle }: Props) => (
   <header>
     <nav
-      className="navbar is-fixed-top is-primary"
+      className="navbar is-fixed-top"
       role="navigation"
       aria-label="main navigation"
     >

@@ -18,60 +18,11 @@ $primary: #A239CA;
 $link: $primary;
 $title-line-height: 1.4;
 
+$navbar-background-color: #663399;
+$navbar-item-color: #fafafa;
+$navbar-item-active-color: $navbar-item-color;
+$navbar-item-hover-color: white;
+$navbar-item-hover-background-color: $link;
+
 @import "bulma";
-
-.box-padding {
-  @include from($desktop) {
-    padding: 3rem;
-  }
-
-  @include mobile {
-    padding: 1.5rem;
-  }
-
-  @include tablet-only {
-    padding: 2.5rem;
-  }
-}
-
-.postpreview-padding {
-  @include from($desktop) {
-    margin: 0 3rem;
-  }
-
-  @include mobile {
-    margin: 0 0.8rem;
-  }
-
-  @include tablet-only {
-    margin: 0 2.5rem;
-  }
-}
-
-.post-padding {
-  @include from($desktop) {
-    margin: 0 2rem;
-  }
-
-  @include mobile {
-    margin: -1rem 0 -2rem 0;
-  }
-
-  @include tablet-only {
-    margin: 0 2.5rem;
-  }
-}
-
-.box-radius {
-  @include mobile {
-    border-radius: 4px;
-  }
-
-  @include tablet-only {
-    border-radius: 10px;
-  }
-
-  @include from($tablet) {
-    border-radius: 14px;
-  }
-}
+@import "./utils.scss";
