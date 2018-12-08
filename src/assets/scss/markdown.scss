@@ -1,26 +1,6 @@
 @charset "utf-8";
 
 #___gatsby {
-  $footer-size: 1.5rem;
-
-  //- Full Page Height
-  .site {
-    min-height: calc(100vh - 2*#{$footer-size});
-    display: flex;
-    flex-direction: column;
-  }
-
-  .site-content {
-    flex: 1 0 auto;
-    padding-top: 1rem;
-    padding-bottom: 2rem;
-  }
-
-  .footer {
-    padding: $footer-size 0;
-  }
-
-  // fix prism conflict
   .content {
 
     .tag,
@@ -55,7 +35,6 @@
 
     strong,
     em {
-      // color: rgb(105, 11, 120);
       color: rgb(102, 51, 153)
     }
 
@@ -67,21 +46,6 @@
     hr {
       border-top: 1px dashed #e4e2e2;
       border-bottom: 1px dashed #fff;
-    }
-  }
-
-  .postpreview-header {
-    margin-top: 0.5rem;
-    margin-bottom: -0.01rem;
-  }
-
-  h1.postpreview-header {
-    a {
-      color: #363636;
-
-      &:hover {
-        color: purple;
-      }
     }
   }
 }

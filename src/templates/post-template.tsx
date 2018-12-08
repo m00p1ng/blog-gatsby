@@ -14,6 +14,7 @@ import PageProps from '../models/PageProps'
 
 import 'katex/dist/katex.min.css'
 import 'prismjs/themes/prism.css'
+import '../assets/scss/markdown.scss'
 
 const SubheaderWrapper = styled.div`
   margin-top: -1.2rem;
