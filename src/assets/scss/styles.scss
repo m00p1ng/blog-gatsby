@@ -43,4 +43,32 @@
   .navbar {
     background: linear-gradient(to left, #663399 40%, #77459b 100%);
   }
+
+  .navbar-center {
+    flex-grow: 1;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .navbar-item:hover {
+    animation: shake 0.4s infinite;
+  }
+
+  @keyframes shake {
+    0% {
+      transform: translate(1px, 1px) rotate(0deg);
+    }
+
+    33% {
+      transform: translate(-1px, -2px) rotate(-1deg);
+    }
+
+    66% {
+      transform: translate(-3px, 0px) rotate(1deg);
+    }
+
+    100% {
+      transform: translate(3px, 2px) rotate(0deg);
+    }
+  }
 }

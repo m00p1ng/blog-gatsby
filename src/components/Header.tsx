@@ -22,7 +22,7 @@ const Header = ({ siteTitle }: Props) => (
     >
       <div className="container">
         <div className="navbar-brand">
-          <Link to="/" className="navbar-item">
+          <Link to="/" className="navbar-item navbar-center">
             {siteTitle}
           </Link>
           <div onClick={ToggleBurger} className="navbar-burger burger" data-target="navbar-burger">
