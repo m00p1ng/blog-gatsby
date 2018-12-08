@@ -3,7 +3,7 @@ import { graphql } from 'gatsby'
 import React from 'react'
 
 import Layout from '../components/Layout'
-import PostPreview from '../components/shared/PostPreview'
+import PostPreview from '../components/PostPreview'
 
 import PageProps from '../models/PageProps'
 

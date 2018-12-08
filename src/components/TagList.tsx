@@ -5,15 +5,16 @@ import KebabCase from 'lodash/kebabCase'
 
 interface Props {
   tags: string[]
+  size: string
 }
 
-const TagList = ({ tags }: Props) => {
+const TagList = ({ tags, size }: Props) => {
   return (
     <div className="tags">
       {tags.map((tag: string) => (
         <Link
           key={tag}
-          className="tag is-primary is-medium"
+          className={`tag is-primary ${size}`}
           to={`/tags/${KebabCase(tag)}`}
         >
           {tag}

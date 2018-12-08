@@ -2,6 +2,7 @@
 
 #___gatsby {
   $content-color: #373a3c;
+  color: $content-color;
 
   .content {
 
@@ -19,12 +20,6 @@
       background: inherit;
       margin: inherit;
     }
-
-  }
-
-  .content {
-    color: $content-color;
-    overflow: hidden;
 
     h1,
     h2,

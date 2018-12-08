@@ -6,7 +6,7 @@ import styled from 'styled-components'
 
 import TagList from './TagList'
 
-import Post from '../../models/Post'
+import Post from '../models/Post'
 
 interface Props {
   post: Post
@@ -39,7 +39,7 @@ const PostPreview = ({ post }: Props) => {
         </div>
       </PostContentWrapper>
       <div className="is-hidden-mobile">
-        <TagList tags={tags} />
+        <TagList tags={tags} size="is-medium" />
       </div>
     </div>
   )

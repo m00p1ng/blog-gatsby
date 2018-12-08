@@ -8,7 +8,7 @@ import styled from 'styled-components'
 import { DiscussionEmbed } from 'disqus-react'
 
 import Layout from '../components/Layout'
-import TagList from '../components/shared/TagList'
+import TagList from '../components/TagList'
 
 import PageProps from '../models/PageProps'
 
@@ -47,7 +47,7 @@ const PostTemplate = ({ data }: PageProps) => {
           <div className="content">
             <div dangerouslySetInnerHTML={{ __html: post.html }} />
           </div>
-          <TagList tags={tags} />
+          <TagList tags={tags} size="is-medium" />
           <DisqusWrapper>
             <DiscussionEmbed shortname={disqusShortname} config={disqusConfig} />
           </DisqusWrapper>
@@ -60,7 +60,7 @@ const PostTemplate = ({ data }: PageProps) => {
 export default PostTemplate
 
 export const query = graphql`
-  query($slug: String!) {
+  query PostsQuery($slug: String!) {
     site {
       siteMetadata {
         title
