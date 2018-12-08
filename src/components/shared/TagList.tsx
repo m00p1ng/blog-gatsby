@@ -13,7 +13,7 @@ const TagList = ({ tags }: Props) => {
       {tags.map((tag: string) => (
         <Link
           key={tag}
-          className="tag is-medium"
+          className="tag is-primary is-medium"
           to={`/tags/${KebabCase(tag)}`}
         >
           {tag}

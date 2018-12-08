@@ -10,8 +10,13 @@ $widescreen-enabled: false;
 $fullhd-enabled: false;
 
 $box-radius: 14px;
-$box-shadow: 8px 14px 38px rgba(39, 44, 49, .06),
-1px 3px 8px rgba(39, 44, 49, .03);
+$box-shadow: 8px 14px 38px rgba(136, 0, 255, 0.25),
+1px 3px 8px rgba(237, 170, 247, 0.3);
+
+$body-background-color: #272727;
+$primary: #A239CA;
+$link: $primary;
+$title-line-height: 1.4;
 
 @import "bulma";
 
@@ -45,7 +50,7 @@ $box-shadow: 8px 14px 38px rgba(39, 44, 49, .06),
 
 .post-padding {
   @include from($desktop) {
-    margin: 0 3rem;
+    margin: 0 2rem;
   }
 
   @include mobile {
@@ -59,7 +64,11 @@ $box-shadow: 8px 14px 38px rgba(39, 44, 49, .06),
 
 .box-radius {
   @include mobile {
-    border-radius: 0;
+    border-radius: 4px;
+  }
+
+  @include tablet-only {
+    border-radius: 10px;
   }
 
   @include from($tablet) {

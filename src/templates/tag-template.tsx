@@ -16,7 +16,7 @@ const Tags = ({ pageContext, data }: PageProps) => {
     <Layout>
       <Helmet title={`#${pageContext.tag} | ${title}`} />
       <div className="postpreview-padding">
-        <h1 className="title">
+        <h1 className="title has-text-white">
           #{pageContext.tag}
         </h1>
         {

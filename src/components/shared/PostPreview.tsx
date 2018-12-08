@@ -13,8 +13,7 @@ interface Props {
 }
 
 const PostContentWrapper = styled.div`
-  padding-top: 1rem;
-  padding-bottom: 1.5rem;
+  padding-top: 0.5rem;
 `
 
 const PostPreview = ({ post }: Props) => {
@@ -22,22 +21,26 @@ const PostPreview = ({ post }: Props) => {
   const { slug } = post.fields
 
   return (
-    <div className="box box-padding">
+    <div className="box box-padding box-radius">
       <p>
         <Link to={`/categories/${KebabCase(category)}`}>{category}</Link> | {date}
       </p>
-      <Link to={post.fields.slug}>
-        <h1 className="title postpreview-header">
+      <h1 className="title postpreview-header is-size-4-mobile">
+        <Link to={post.fields.slug}>
           {title}
-        </h1>
-      </Link>
+        </Link>
+      </h1>
       <PostContentWrapper>
         <p>{description}</p>
-        <Link className="is-link is-bold" to={slug}>
-          <strong>Read More...</strong>
-        </Link>
+        <div className="has-text-right">
+          <Link to={slug}>
+            <strong>Read More...</strong>
+          </Link>
+        </div>
       </PostContentWrapper>
-      <TagList tags={tags} />
+      <div className="is-hidden-mobile">
+        <TagList tags={tags} />
+      </div>
     </div>
   )
 }

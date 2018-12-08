@@ -21,22 +21,67 @@
   }
 
   // fix prism conflict
-  .content .tag,
-  .content .number {
-    display: inline;
-    padding: inherit;
-    font-size: inherit;
-    line-height: inherit;
-    text-align: inherit;
-    vertical-align: inherit;
-    border-radius: inherit;
-    font-weight: inherit;
-    white-space: inherit;
-    background: inherit;
-    margin: inherit;
+  .content {
+
+    .tag,
+    .number {
+      display: inline;
+      padding: inherit;
+      font-size: inherit;
+      line-height: inherit;
+      text-align: inherit;
+      vertical-align: inherit;
+      border-radius: inherit;
+      font-weight: inherit;
+      white-space: inherit;
+      background: inherit;
+      margin: inherit;
+    }
+
+  }
+
+  .content {
+    color: #373a3c;
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6,
+      {
+      color: rgb(60, 4, 101);
+    }
+
+    strong,
+    em {
+      // color: rgb(105, 11, 120);
+      color: rgb(102, 51, 153)
+    }
+
+    blockquote {
+      background-color: lighten(orange, 45%);
+      border-color: lighten(orange, 15%);
+    }
+
+    hr {
+      border-top: 1px dashed #e4e2e2;
+      border-bottom: 1px dashed #fff;
+    }
   }
 
   .postpreview-header {
     margin-top: 0.5rem;
+    margin-bottom: -0.01rem;
+  }
+
+  h1.postpreview-header {
+    a {
+      color: #363636;
+
+      &:hover {
+        color: purple;
+      }
+    }
   }
 }

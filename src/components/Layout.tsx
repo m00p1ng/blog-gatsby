@@ -41,7 +41,7 @@ const Layout = ({ children }: Props) => (
         </Helmet>
 
         <Header siteTitle={data.site.siteMetadata.title} />
-        <div className="site-content has-background-light">
+        <div className="site-content">
           <div className="container">
             {children}
           </div>

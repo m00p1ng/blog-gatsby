@@ -20,9 +20,8 @@ const CategoriesPage = ({ data }: PageProps) => {
   return (
     <Layout>
       <Helmet title={`All Categories | ${title}`} />
+      <h1 className="title has-text-white">All Categories</h1>
       <div className="box">
-        <h1 className="title">Categories</h1>
-        <hr />
         <div className="content">
           <ul>
             {categories.map(category => (

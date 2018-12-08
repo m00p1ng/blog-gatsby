@@ -16,7 +16,7 @@ const Categories = ({ pageContext, data }: PageProps) => {
     <Layout>
       <Helmet title={`${pageContext.category} | ${title}`} />
       <div className="postpreview-padding">
-        <h1 className="title">
+        <h1 className="title has-text-white">
           Category: {pageContext.category}
         </h1>
         {

@@ -20,9 +20,8 @@ const TagsPage = ({ data }: PageProps) => {
   return (
     <Layout>
       <Helmet title={`All Tags | ${title}`} />
+      <h1 className="title has-text-white">All Tags</h1>
       <div className="box">
-        <h1 className="title">Tags</h1>
-        <hr />
         <div className="content">
           <ul>
             {tags.map(tag => (

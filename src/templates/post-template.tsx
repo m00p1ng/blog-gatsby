@@ -19,6 +19,10 @@ const SubheaderWrapper = styled.div`
   margin-top: -1.2rem;
 `
 
+const DisqusWrapper = styled.div`
+  margin-top: 1.5rem;
+`
+
 const PostTemplate = ({ data }: PageProps) => {
   const post = data.markdownRemark
   const { title: postTitle, date, tags, category } = post.frontmatter
@@ -38,12 +42,14 @@ const PostTemplate = ({ data }: PageProps) => {
           <SubheaderWrapper>
             <Link to={`/categories/${KebabCase(category)}`}>{category}</Link> | {date}
           </SubheaderWrapper>
+          <hr style={{ backgroundColor: 'lightgrey', height: '1px' }} />
           <div className="content">
-            <hr />
             <div dangerouslySetInnerHTML={{ __html: post.html }} />
           </div>
           <TagList tags={tags} />
-          <DiscussionEmbed shortname={disqusShortname} config={disqusConfig} />
+          <DisqusWrapper>
+            <DiscussionEmbed shortname={disqusShortname} config={disqusConfig} />
+          </DisqusWrapper>
         </div>
       </div>
     </Layout>

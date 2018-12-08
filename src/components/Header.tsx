@@ -9,13 +9,13 @@ interface Props {
 const Header = ({ siteTitle }: Props) => (
   <header>
     <nav
-      className="navbar is-fixed-top is-danger"
+      className="navbar is-fixed-top is-primary"
       role="navigation"
       aria-label="main navigation"
     >
       <div className="container">
         <div className="navbar-brand">
-          <Link to="/" className="navbar-item ">
+          <Link to="/" className="navbar-item">
             {siteTitle}
           </Link>
           <div className="navbar-burger burger" data-target="navbar-burger">
