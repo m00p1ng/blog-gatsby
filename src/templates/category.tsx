@@ -1,18 +1,24 @@
 // @ts-ignore
 import { graphql } from 'gatsby'
 import React from 'react'
+import Helmet from 'react-helmet'
 
 import Layout from '../components/Layout'
 import PostPreview from '../components/PostPreview'
 
 import PageProps from '../models/PageProps'
 
-const IndexPage = ({ data }: PageProps) => {
+const Categories = ({ pageContext, data }: PageProps) => {
   const { edges } = data.allMarkdownRemark
+  const { title } = data.site.siteMetadata
 
   return (
     <Layout>
+      <Helmet title={`${pageContext.category} | ${title}`} />
       <div className="postpreview-padding">
+        <h1 className="title has-text-white">
+          Category: {pageContext.category}
+        </h1>
         {
           edges.map(({ node }) => {
             return <PostPreview key={node.id} post={node} />
@@ -23,26 +29,30 @@ const IndexPage = ({ data }: PageProps) => {
   )
 }
 
-export default IndexPage
+export default Categories
 
 export const query = graphql`
-  query IndexQuery {
+  query CategoryQuery($category: String!) {
+    site {
+      siteMetadata {
+        title
+      }
+    }
     allMarkdownRemark(
-      sort: {order: DESC, fields: [frontmatter___date]},
-      filter:{frontmatter: {published: {eq: true}}}
-    ) {
+        sort: {order: DESC, fields: [frontmatter___date]},
+        filter: {frontmatter: {published: {eq: true}, category: {eq: $category}}}
+      ) {
       edges {
         node {
-          id
-          frontmatter {
-            title
-            date(formatString: "MMMM DD, YYYY")
-            tags
-            category
-            description
-          }
           fields {
             slug
+          }
+          frontmatter {
+            category
+            tags
+            title
+            date(formatString: "MMMM DD, YYYY")
+            description
           }
         }
       }

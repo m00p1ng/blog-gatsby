@@ -16,6 +16,7 @@ const ToggleBurger = () => {
 const Header = ({ siteTitle }: Props) => (
   <header>
     <nav
+      id="main-navigation"
       className="navbar is-fixed-top"
       role="navigation"
       aria-label="main navigation"

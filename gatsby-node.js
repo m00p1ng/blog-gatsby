@@ -1,6 +1,7 @@
 const path = require('path')
 const { createFilePath } = require('gatsby-source-filesystem')
 const _ = require('lodash')
+const { paginate } = require('gatsby-awesome-pagination')
 
 exports.onCreateNode = ({ node, getNode, actions }) => {
   const { createNodeField } = actions
@@ -30,6 +31,12 @@ exports.createPages = ({ graphql, actions }) => {
   const tags = []
   const categories = []
 
+  const postTemplate = path.resolve('./src/templates/post.tsx')
+  const blogTemplate = path.resolve('./src/templates/blog.tsx')
+  const tagTemplate = path.resolve('./src/templates/tag.tsx')
+  const categoryTemplate = path.resolve('./src/templates/category.tsx')
+  const itemsPerPage = 10;
+
   return new Promise((resolve, reject) => {
     graphql(`
       {
@@ -51,7 +58,8 @@ exports.createPages = ({ graphql, actions }) => {
       }
     `)
       .then(result => {
-        result.data.allMarkdownRemark.edges.forEach(({ node }) => {
+        const posts = result.data.allMarkdownRemark.edges
+        posts.forEach(({ node }) => {
           node.frontmatter.tags.forEach((tag) => {
             tags.push(tag);
           })
@@ -60,31 +68,41 @@ exports.createPages = ({ graphql, actions }) => {
 
           createPage({
             path: node.fields.slug,
-            component: path.resolve('./src/templates/post-template.tsx'),
+            component: postTemplate,
             context: {
               slug: node.fields.slug
             }
           })
         })
 
+        paginate({
+          createPage,
+          items: posts,
+          itemsPerPage,
+          pathPrefix: ({ pageNumber }) => (pageNumber === 0 ? `/` : `/page`),
+          component: blogTemplate,
+        })
+
+        // Create each tag page
         _.uniq(tags)
 
         tags.forEach(tag => {
           createPage({
             path: `/tags/${_.kebabCase(tag)}`,
-            component: path.resolve('./src/templates/tag-template.tsx'),
+            component: tagTemplate,
             context: {
               tag
             }
           })
         })
 
+        // Create each category page
         _.uniq(categories)
 
         categories.forEach(category => {
           createPage({
             path: `/categories/${_.kebabCase(category)}`,
-            component: path.resolve('./src/templates/category-template.tsx'),
+            component: categoryTemplate,
             context: {
               category
             }
