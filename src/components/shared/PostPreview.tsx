@@ -21,7 +21,7 @@ const PostPreview = ({ post }: Props) => {
   const { slug } = post.fields
 
   return (
-    <div className="box box-padding box-radius">
+    <div className="box box-padding box-radius grow">
       <p>
         <Link to={`/categories/${KebabCase(category)}`}>{category}</Link> | {date}
       </p>

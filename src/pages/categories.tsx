@@ -20,18 +20,20 @@ const CategoriesPage = ({ data }: PageProps) => {
   return (
     <Layout>
       <Helmet title={`All Categories | ${title}`} />
-      <h1 className="title has-text-white">All Categories</h1>
-      <div className="box">
-        <div className="content">
-          <ul>
-            {categories.map(category => (
-              <li key={category.fieldValue}>
-                <Link to={`/categories/${KebabCase(category.fieldValue)}`}>
-                  {category.fieldValue} ({category.totalCount})
+      <div className="postpreview-padding">
+        <h1 className="title has-text-white">All Categories</h1>
+        <div className="box box-radius">
+          <div className="content is-medium">
+            <ul>
+              {categories.map(category => (
+                <li key={category.fieldValue}>
+                  <Link to={`/categories/${KebabCase(category.fieldValue)}`}>
+                    {category.fieldValue} ({category.totalCount})
                   </Link>
-              </li>
-            ))}
-          </ul>
+                </li>
+              ))}
+            </ul>
+          </div>
         </div>
       </div>
     </Layout>

@@ -27,6 +27,8 @@
 }
 
 .post-padding {
+  overflow: auto;
+
   @include from($desktop) {
     margin: 0 2rem;
   }

@@ -31,4 +31,16 @@
       }
     }
   }
+
+  .grow {
+    transition: all .3s ease;
+
+    &:hover {
+      transform: scale(1.05);
+    }
+  }
+
+  .navbar {
+    background: linear-gradient(to left, #663399 40%, #77459b 100%);
+  }
 }

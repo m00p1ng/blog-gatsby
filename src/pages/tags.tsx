@@ -20,18 +20,20 @@ const TagsPage = ({ data }: PageProps) => {
   return (
     <Layout>
       <Helmet title={`All Tags | ${title}`} />
-      <h1 className="title has-text-white">All Tags</h1>
-      <div className="box">
-        <div className="content">
-          <ul>
-            {tags.map(tag => (
-              <li key={tag.fieldValue}>
-                <Link to={`/tags/${KebabCase(tag.fieldValue)}`}>
-                  {tag.fieldValue} ({tag.totalCount})
+      <div className="postpreview-padding">
+        <h1 className="title has-text-white">All Tags</h1>
+        <div className="box box-radius">
+          <div className="content is-medium">
+            <ul>
+              {tags.map(tag => (
+                <li key={tag.fieldValue}>
+                  <Link to={`/tags/${KebabCase(tag.fieldValue)}`}>
+                    {tag.fieldValue} ({tag.totalCount})
                   </Link>
-              </li>
-            ))}
-          </ul>
+                </li>
+              ))}
+            </ul>
+          </div>
         </div>
       </div>
     </Layout>
