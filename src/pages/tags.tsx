@@ -22,18 +22,16 @@ const TagsPage = ({ data }: PageProps) => {
       <Helmet title={`All Tags | ${title}`} />
       <div className="postpreview-padding">
         <h1 className="title has-text-white">All Tags</h1>
-        <div className="box box-radius">
-          <div className="content is-medium">
-            <ul>
-              {tags.map(tag => (
-                <li key={tag.fieldValue}>
-                  <Link to={`/tags/${KebabCase(tag.fieldValue)}`}>
-                    {tag.fieldValue} ({tag.totalCount})
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
+        <div className="tags">
+          {tags.map((tag) => (
+            <Link
+              key={tag}
+              className="tag is-link is-medium"
+              to={`/tags/${KebabCase(tag.fieldValue)}`}
+            >
+              {tag.fieldValue} ({tag.totalCount})
+            </Link>
+          ))}
         </div>
       </div>
     </Layout>

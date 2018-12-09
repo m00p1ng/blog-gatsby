@@ -2,6 +2,8 @@
 import { Link } from 'gatsby'
 import React from 'react'
 import styled from 'styled-components'
+// @ts-ignore
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 import TagList from './TagList'
 
@@ -12,7 +14,15 @@ interface Props {
 }
 
 const PostContentWrapper = styled.div`
-  padding-top: 0.5rem;
+  padding-top: 1.5rem;
+`
+
+const CalendarIcon = styled(FontAwesomeIcon)`
+  margin-right: 0.5rem;
+`
+
+const DateWrapper = styled.p`
+  margin-top: 0.2rem;
 `
 
 const PostPreview = ({ post }: Props) => {
@@ -20,13 +30,16 @@ const PostPreview = ({ post }: Props) => {
   const { slug } = post.fields
 
   return (
-    <div className="box box-padding box-radius grow">
-      <p>{date}</p>
+    <div className="box grow">
       <h1 className="title postpreview-header is-size-4-mobile">
         <Link to={post.fields.slug}>
           {title}
         </Link>
       </h1>
+      <DateWrapper>
+        <CalendarIcon icon="calendar-alt" />
+        {date}
+      </DateWrapper>
       <PostContentWrapper>
         <p>{description}</p>
         <div className="has-text-right readmore-padding">

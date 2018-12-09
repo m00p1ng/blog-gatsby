@@ -7,6 +7,7 @@ import Footer from './Footer'
 import Header from './Header'
 
 import Data from '../models/Data'
+import './fontawesome'
 
 import '../assets/scss/index.scss'
 

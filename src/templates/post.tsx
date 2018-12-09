@@ -5,6 +5,8 @@ import Helmet from 'react-helmet'
 import styled from 'styled-components'
 // @ts-ignore
 import { DiscussionEmbed } from 'disqus-react'
+// @ts-ignore
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 import Layout from '../components/Layout'
 import TagList from '../components/TagList'
@@ -23,6 +25,10 @@ const DisqusWrapper = styled.div`
   margin-top: 1.5rem;
 `
 
+const CalendarIcon = styled(FontAwesomeIcon)`
+  margin-right: 0.5rem;
+`
+
 const PostTemplate = ({ data }: PageProps) => {
   const post = data.markdownRemark
   const { title: postTitle, date, tags } = post.frontmatter
@@ -37,10 +43,10 @@ const PostTemplate = ({ data }: PageProps) => {
     <Layout>
       <Helmet title={`${postTitle} | ${title}`} />
       <div className="post-padding">
-        <div className="box box-padding box-radius">
+        <div className="box">
           <h1 className="title post-header-mobile">{postTitle}</h1>
           <SubheaderWrapper>
-            {date}
+            <CalendarIcon icon="calendar-alt" /> {date}
           </SubheaderWrapper>
           <hr style={{ backgroundColor: 'lightgrey', height: '1px' }} />
           <div className="content markdown">
@@ -69,7 +75,7 @@ export const query = graphql`
       html
       frontmatter {
         title
-        date(formatString: "MMMM DD, YYYY")
+        date(formatString: "MMMM DD, YYYY | HH:mm")
         tags
       }
     }
