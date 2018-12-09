@@ -2,7 +2,6 @@
 import { graphql, Link } from 'gatsby'
 import React from 'react'
 import Helmet from 'react-helmet'
-import KebabCase from 'lodash/kebabCase'
 import styled from 'styled-components'
 // @ts-ignore
 import { DiscussionEmbed } from 'disqus-react'
@@ -26,7 +25,7 @@ const DisqusWrapper = styled.div`
 
 const PostTemplate = ({ data }: PageProps) => {
   const post = data.markdownRemark
-  const { title: postTitle, date, tags, category } = post.frontmatter
+  const { title: postTitle, date, tags } = post.frontmatter
   const { title } = data.site.siteMetadata
   const disqusShortname = 'm00p1ng-github-io'
   const disqusConfig = {
@@ -41,7 +40,7 @@ const PostTemplate = ({ data }: PageProps) => {
         <div className="box box-padding box-radius">
           <h1 className="title post-header-mobile">{postTitle}</h1>
           <SubheaderWrapper>
-            <Link to={`/categories/${KebabCase(category)}`}>{category}</Link> | {date}
+            {date}
           </SubheaderWrapper>
           <hr style={{ backgroundColor: 'lightgrey', height: '1px' }} />
           <div className="content markdown">
@@ -72,7 +71,6 @@ export const query = graphql`
         title
         date(formatString: "MMMM DD, YYYY")
         tags
-        category
       }
     }
   }

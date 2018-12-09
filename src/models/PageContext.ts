@@ -1,6 +1,5 @@
 interface PageContext {
   tag?: string
-  category?: string
 
   previousPagePath?: string
   nextPagePath?: string

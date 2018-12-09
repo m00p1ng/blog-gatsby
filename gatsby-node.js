@@ -29,12 +29,10 @@ exports.onCreateNode = ({ node, getNode, actions }) => {
 exports.createPages = ({ graphql, actions }) => {
   const { createPage } = actions
   const tags = []
-  const categories = []
 
   const postTemplate = path.resolve('./src/templates/post.tsx')
   const blogTemplate = path.resolve('./src/templates/blog.tsx')
   const tagTemplate = path.resolve('./src/templates/tag.tsx')
-  const categoryTemplate = path.resolve('./src/templates/category.tsx')
   const itemsPerPage = 10;
 
   return new Promise((resolve, reject) => {
@@ -50,7 +48,6 @@ exports.createPages = ({ graphql, actions }) => {
               }
               frontmatter {
                 tags
-                category
               }
             }
           }
@@ -68,8 +65,6 @@ exports.createPages = ({ graphql, actions }) => {
           node.frontmatter.tags.forEach((tag) => {
             tags.push(tag);
           })
-
-          categories.push(node.frontmatter.category)
 
           createPage({
             path: node.fields.slug,
@@ -113,27 +108,6 @@ exports.createPages = ({ graphql, actions }) => {
             }
           })
         })
-
-        // Create each category page
-        _.uniq(categories)
-
-        categories.forEach(category => {
-          const postsByCategory = posts.filter(({ node }) =>
-            (node.frontmatter.category == category)
-          )
-
-          paginate({
-            createPage,
-            items: postsByCategory,
-            itemsPerPage,
-            pathPrefix: pathPrefixHandle(`/categories/${_.kebabCase(category)}`),
-            component: categoryTemplate,
-            context: {
-              category
-            }
-          })
-        })
-
         resolve()
       })
   })

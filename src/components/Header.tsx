@@ -44,9 +44,6 @@ const Header = ({ siteTitle }: Props) => (
             <Link to="/tags" className="navbar-item">
               Tags
             </Link>
-            <Link to="/categories" className="navbar-item">
-              Categories
-            </Link>
             <Link to="/about" className="navbar-item">
               About
             </Link>

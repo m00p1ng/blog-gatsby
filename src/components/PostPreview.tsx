@@ -1,7 +1,6 @@
 // @ts-ignore
 import { Link } from 'gatsby'
 import React from 'react'
-import KebabCase from 'lodash/kebabCase'
 import styled from 'styled-components'
 
 import TagList from './TagList'
@@ -17,14 +16,12 @@ const PostContentWrapper = styled.div`
 `
 
 const PostPreview = ({ post }: Props) => {
-  const { title, date, description, tags, category } = post.frontmatter
+  const { title, date, description, tags } = post.frontmatter
   const { slug } = post.fields
 
   return (
     <div className="box box-padding box-radius grow">
-      <p>
-        <Link to={`/categories/${KebabCase(category)}`}>{category}</Link> | {date}
-      </p>
+      <p>{date}</p>
       <h1 className="title postpreview-header is-size-4-mobile">
         <Link to={post.fields.slug}>
           {title}
