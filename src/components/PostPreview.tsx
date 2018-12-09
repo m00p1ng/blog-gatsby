@@ -32,7 +32,7 @@ const PostPreview = ({ post }: Props) => {
       </h1>
       <PostContentWrapper>
         <p>{description}</p>
-        <div className="has-text-right">
+        <div className="has-text-right readmore-padding">
           <Link to={slug}>
             <strong>Read More...</strong>
           </Link>

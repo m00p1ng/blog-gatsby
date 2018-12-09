@@ -67,4 +67,12 @@
   .pagination-page {
     padding: 0.75rem 0;
   }
+
+  .readmore-padding {
+    padding-top: 0.75rem;
+
+    @include mobile {
+      padding-bottom: 0.75rem;
+    }
+  }
 }
