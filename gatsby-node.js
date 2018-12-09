@@ -58,6 +58,11 @@ exports.createPages = ({ graphql, actions }) => {
       }
     `)
       .then(result => {
+        if (result.errors) {
+          result.errors.forEach(e => console.error(e.toString()));
+          reject(result.errors);
+        }
+
         const posts = result.data.allMarkdownRemark.edges
         posts.forEach(({ node }) => {
           node.frontmatter.tags.forEach((tag) => {
