@@ -1,5 +1,7 @@
 // @ts-ignore
 import { Link } from 'gatsby'
+// @ts-ignore
+import Img from 'gatsby-image'
 import React from 'react'
 import styled from 'styled-components'
 // @ts-ignore
@@ -25,12 +27,23 @@ const DateWrapper = styled.p`
   margin-top: 0.2rem;
 `
 
+const ImageHeader = styled(Img)`
+  margin-bottom: 1rem;
+`
+
 const PostPreview = ({ post }: Props) => {
-  const { title, date, description, tags } = post.frontmatter
+  const { title, date, description, tags, image } = post.frontmatter
   const { slug } = post.fields
 
   return (
     <div className="box grow">
+      {image && (
+        <Link to={post.fields.slug}>
+          <ImageHeader
+            fluid={image.childImageSharp.fluid}
+            alt={image.name} />
+        </Link>
+      )}
       <h1 className="title postpreview-header is-size-4-mobile">
         <Link to={post.fields.slug}>
           {title}

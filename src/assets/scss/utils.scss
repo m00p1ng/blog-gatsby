@@ -13,8 +13,12 @@
 
   @include tablet-only {
     padding: 2.5rem;
-    border-radius: 10px;
   }
+}
+
+.box-image-radius {
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
 }
 
 .postpreview-padding {
