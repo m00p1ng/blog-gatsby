@@ -38,9 +38,7 @@ const PostPreview = ({ post }: Props) => {
           </Link>
         </div>
       </PostContentWrapper>
-      <div className="is-hidden-mobile">
-        <TagList tags={tags} size="is-medium" />
-      </div>
+      <TagList tags={tags} size="tag-size" />
     </div>
   )
 }

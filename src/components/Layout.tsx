@@ -9,7 +9,6 @@ import Header from './Header'
 import Data from '../models/Data'
 
 import '../assets/scss/index.scss'
-import '../assets/scss/styles.scss'
 
 interface Props {
   children: React.ReactNode

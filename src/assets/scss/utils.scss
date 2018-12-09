@@ -44,3 +44,24 @@
     margin: 0 2.5rem;
   }
 }
+
+.pagination-font {
+  color: white;
+
+  @include from($tablet) {
+    font-size: 1.25rem;
+  }
+
+  @include mobile {
+    font-size: 1rem;
+  }
+
+}
+
+a>.pagination-font {
+  color: lighten(orange, 10%);
+
+  &:hover {
+    color: white;
+  }
+}

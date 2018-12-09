@@ -43,6 +43,7 @@ export const query = graphql`
       filter: {frontmatter: {published: {eq: true}, tags: {eq: $tag}}}) {
       edges {
         node {
+          id
           fields {
             slug
           }

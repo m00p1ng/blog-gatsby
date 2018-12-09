@@ -39,7 +39,7 @@ const PostTemplate = ({ data }: PageProps) => {
       <Helmet title={`${postTitle} | ${title}`} />
       <div className="post-padding">
         <div className="box box-padding box-radius">
-          <h1 className="title is-size-4-mobile">{postTitle}</h1>
+          <h1 className="title post-header-mobile">{postTitle}</h1>
           <SubheaderWrapper>
             <Link to={`/categories/${KebabCase(category)}`}>{category}</Link> | {date}
           </SubheaderWrapper>

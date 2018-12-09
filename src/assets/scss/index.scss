@@ -1,6 +1,6 @@
 @charset "utf-8";
 
-@import url('https://fonts.googleapis.com/css?family=Nunito:400,700');
+@import url('https://fonts.googleapis.com/css?family=Nunito:300,400,600,700');
 
 $family-sans-serif: "Nunito",
 Helvetica,
@@ -13,15 +13,16 @@ $box-shadow: 8px 14px 38px rgba(136, 0, 255, 0.25),
 1px 3px 8px rgba(237, 170, 247, 0.3);
 
 $body-background-color: #272727;
-$primary: #A239CA;
-$link: $primary;
+$link: #A239CA;
 $title-line-height: 1.4;
 
 $navbar-background-color: #663399;
-$navbar-item-color: #fafafa;
+$navbar-item-color: #FAFAFA;
 $navbar-item-active-color: $navbar-item-color;
 $navbar-item-hover-color: white;
 $navbar-item-hover-background-color: $link;
 
 @import "bulma";
 @import "./utils.scss";
+@import "./styles.scss";
+@import "./animation.scss";

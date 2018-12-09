@@ -27,56 +27,44 @@
       color: #363636;
 
       &:hover {
-        color: purple;
+        color: orange;
       }
     }
   }
 
-  .grow {
-    transition: all .3s ease;
-
-    &:hover {
-      transform: scale(1.05);
+  .post-header-mobile {
+    @include mobile {
+      font-size: 1.75rem;
     }
   }
 
-  #main-navigation {
+  .navbar {
+    background: linear-gradient(to left, #663399 40%, #77459b 100%);
+  }
 
-    .navbar {
-      background: linear-gradient(to left, #663399 40%, #77459b 100%);
-    }
-
-    .navbar-center {
-      flex-grow: 1;
-      flex-direction: column;
-      justify-content: center;
-    }
-
-    .navbar-item:hover {
-      animation: shake 0.4s infinite;
-    }
-
-    @keyframes shake {
-      0% {
-        transform: translate(1px, 1px) rotate(0deg);
-      }
-
-      33% {
-        transform: translate(-1px, -2px) rotate(-1deg);
-      }
-
-      66% {
-        transform: translate(-3px, 0px) rotate(1deg);
-      }
-
-      100% {
-        transform: translate(3px, 2px) rotate(0deg);
-      }
-    }
+  .navbar-center {
+    flex-grow: 1;
+    flex-direction: column;
+    justify-content: center;
   }
 
   .tag {
+    background-color: lighten($link, 5%);
     box-shadow: 8px 14px 38px rgba(39, 44, 49, .1),
       1px 3px 8px rgba(39, 44, 49, .1);
+  }
+
+  .tag-size {
+    @include mobile {
+      font-size: 0.75rem;
+    }
+
+    @include from($tablet) {
+      font-size: 1rem;
+    }
+  }
+
+  .pagination-page {
+    padding: 0.75rem 0;
   }
 }
