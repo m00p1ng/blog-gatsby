@@ -75,11 +75,17 @@ exports.createPages = ({ graphql, actions }) => {
           })
         })
 
+        const pathPrefixHandle = (prefix) => {
+          return ({ pageNumber }) => (
+            pageNumber === 0 ? prefix : `${prefix == '/' ? '' : '/'}/page`
+          )
+        }
+
         paginate({
           createPage,
           items: posts,
           itemsPerPage,
-          pathPrefix: ({ pageNumber }) => (pageNumber === 0 ? `/` : `/page`),
+          pathPrefix: pathPrefixHandle('/'),
           component: blogTemplate,
         })
 
@@ -87,8 +93,15 @@ exports.createPages = ({ graphql, actions }) => {
         _.uniq(tags)
 
         tags.forEach(tag => {
-          createPage({
-            path: `/tags/${_.kebabCase(tag)}`,
+          const postByTag = posts.filter(({ node }) =>
+            (node.frontmatter.tags.includes(tag))
+          )
+
+          paginate({
+            createPage,
+            items: postByTag,
+            itemsPerPage,
+            pathPrefix: pathPrefixHandle(`/tags/${_.kebabCase(tag)}`),
             component: tagTemplate,
             context: {
               tag
@@ -100,8 +113,15 @@ exports.createPages = ({ graphql, actions }) => {
         _.uniq(categories)
 
         categories.forEach(category => {
-          createPage({
-            path: `/categories/${_.kebabCase(category)}`,
+          const postsByCategory = posts.filter(({ node }) =>
+            (node.frontmatter.category == category)
+          )
+
+          paginate({
+            createPage,
+            items: postsByCategory,
+            itemsPerPage,
+            pathPrefix: pathPrefixHandle(`/categories/${_.kebabCase(category)}`),
             component: categoryTemplate,
             context: {
               category

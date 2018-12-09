@@ -44,7 +44,7 @@ const PostTemplate = ({ data }: PageProps) => {
             <Link to={`/categories/${KebabCase(category)}`}>{category}</Link> | {date}
           </SubheaderWrapper>
           <hr style={{ backgroundColor: 'lightgrey', height: '1px' }} />
-          <div className="content">
+          <div className="content markdown">
             <div dangerouslySetInnerHTML={{ __html: post.html }} />
           </div>
           <TagList tags={tags} size="is-medium" />
