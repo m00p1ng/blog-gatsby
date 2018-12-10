@@ -93,15 +93,8 @@ exports.createPages = ({ graphql, actions }) => {
         _.uniq(tags)
 
         tags.forEach(tag => {
-          const postByTag = posts.filter(({ node }) =>
-            (node.frontmatter.tags.includes(tag))
-          )
-
-          paginate({
-            createPage,
-            items: postByTag,
-            itemsPerPage,
-            pathPrefix: pathPrefixHandle(`/tags/${_.kebabCase(tag)}`),
+          createPage({
+            path: `/tags/${_.kebabCase(tag)}`,
             component: tagTemplate,
             context: {
               tag
