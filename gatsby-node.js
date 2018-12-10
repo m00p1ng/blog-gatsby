@@ -1,7 +1,9 @@
 const path = require('path')
 const { createFilePath } = require('gatsby-source-filesystem')
 const _ = require('lodash')
-const { paginate } = require('gatsby-awesome-pagination')
+const {
+  createPaginationPages,
+} = require("gatsby-pagination");
 
 exports.onCreateNode = ({ node, getNode, actions }) => {
   const { createNodeField } = actions
@@ -39,15 +41,33 @@ exports.createPages = ({ graphql, actions }) => {
     graphql(`
       {
         allMarkdownRemark(
+          sort: {order: DESC, fields: [frontmatter___date]},
           filter: {frontmatter: {published: {eq:true}}}
         ) {
           edges {
             node {
+              id
+              frontmatter {
+                title
+                date(formatString: "MMMM DD, YYYY")
+                tags
+                description
+                image {
+                  childImageSharp {
+                    fluid(maxWidth: 960, maxHeight: 500, quality: 50, cropFocus: CENTER) {
+                      aspectRatio
+                      base64
+                      sizes
+                      src
+                      srcSet
+                      srcWebp
+                      srcSetWebp
+                    }
+                  }
+                }
+              }
               fields {
                 slug
-              }
-              frontmatter {
-                tags
               }
             }
           }
@@ -75,17 +95,11 @@ exports.createPages = ({ graphql, actions }) => {
           })
         })
 
-        const pathPrefixHandle = (prefix) => {
-          return ({ pageNumber }) => (
-            pageNumber === 0 ? prefix : `${prefix == '/' ? '' : '/'}/page`
-          )
-        }
-
-        paginate({
+        createPaginationPages({
           createPage,
-          items: posts,
-          itemsPerPage,
-          pathPrefix: pathPrefixHandle('/'),
+          edges: posts,
+          limit: itemsPerPage,
+          pathFormatter: (pageNumber) => pageNumber === 1 ? '/' : `/page/${pageNumber}`,
           component: blogTemplate,
         })
 

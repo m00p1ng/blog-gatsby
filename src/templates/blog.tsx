@@ -13,21 +13,25 @@ const PostPreviewWrapper = styled.div`
  margin-top: 1rem;
 `
 
-const IndexPage = ({ pageContext, data }: PageProps) => {
-  const { edges } = data.allMarkdownRemark
-  const { previousPagePath, nextPagePath } = pageContext
+const IndexPage = ({ pageContext }: PageProps) => {
+  const { next, prev, nodes, page, pages } = pageContext
 
   return (
     <Layout>
       <div className="postpreview-padding">
         <PostPreviewWrapper>
           {
-            edges.map(({ node }) => {
+            nodes.map(({ node }) => {
               return <PostPreview key={node.id} post={node} />
             })
           }
-          {(previousPagePath || nextPagePath) && (
-            <Pagination pageContext={pageContext} pathPrefix="/" />
+          {(next || prev) && (
+            <Pagination
+              next={next}
+              prev={prev}
+              page={page}
+              pages={pages}
+            />
           )}
         </PostPreviewWrapper>
       </div>
@@ -36,36 +40,3 @@ const IndexPage = ({ pageContext, data }: PageProps) => {
 }
 
 export default IndexPage
-
-export const query = graphql`
-  query IndexQuery($limit: Int!, $skip: Int!) {
-    allMarkdownRemark(
-      sort: {order: DESC, fields: [frontmatter___date]},
-      filter:{frontmatter: {published: {eq: true}}},
-      skip: $skip,
-      limit: $limit
-    ) {
-      edges {
-        node {
-          id
-          frontmatter {
-            title
-            date(formatString: "MMMM DD, YYYY")
-            tags
-            description
-            image {
-              childImageSharp {
-                fluid(maxWidth: 960, maxHeight: 500, quality: 50, cropFocus: CENTER) {
-                  ...GatsbyImageSharpFluid_withWebp
-                }
-              }
-            }
-          }
-          fields {
-            slug
-          }
-        }
-      }
-    }
-  }
-`

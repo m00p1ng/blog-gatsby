@@ -3,11 +3,11 @@ import { Link } from 'gatsby'
 import React from 'react'
 import styled from 'styled-components'
 
-import PageContext from '../models/PageContext'
-
 interface Props {
-  pageContext: PageContext
-  pathPrefix: string
+  next: string
+  prev: string
+  page: number
+  pages: number
 }
 
 const PaginationWrapper = styled.div`
@@ -18,15 +18,14 @@ const PageOfWrapper = styled.div`
   margin-top: 0.3rem;
 `
 
-const PaginationTemplate = ({ pageContext, pathPrefix }: Props) => {
-  const { previousPagePath, nextPagePath, humanPageNumber, numberOfPages } = pageContext
+const PaginationTemplate = ({ next, prev, page, pages }: Props) => {
 
   return (
     <PaginationWrapper>
       <div className="columns is-mobile">
         <div className="column has-text-left">
-          {previousPagePath && (
-            <Link to={previousPagePath} rel="prev">
+          {prev && (
+            <Link to={prev} rel="prev">
               <h1 className="title pagination-font">
                 ← Newer
               </h1>
@@ -36,13 +35,13 @@ const PaginationTemplate = ({ pageContext, pathPrefix }: Props) => {
         <div className="column has-text-centered pagination-page">
           <PageOfWrapper>
             <h1 className="subtitle pagination-font is-size-6">
-              Page {humanPageNumber} of {numberOfPages}
+              Page {page} of {pages}
             </h1>
           </PageOfWrapper>
         </div>
         <div className="column has-text-right">
-          {nextPagePath && (
-            <Link to={nextPagePath} rel="next">
+          {next && (
+            <Link to={next} rel="next">
               <h1 className="title pagination-font">
                 Older →
               </h1>
