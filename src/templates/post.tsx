@@ -12,6 +12,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 import Layout from '../components/Layout'
 import TagList from '../components/TagList'
+import LinksPost from '../components/LinksPost'
 
 import PageProps from '../models/PageProps'
 import Image from '../models/Image'
@@ -45,9 +46,10 @@ const hasImage = (image: Image) => {
 }
 
 const PostTemplate = ({ data }: PageProps) => {
-  const post = data.markdownRemark
+  const { post, nextPost, prevPost } = data
   const { title: postTitle, date, tags, image } = post.frontmatter
   const { title } = data.site.siteMetadata
+
   const disqusShortname = 'm00p1ng-github-io'
   const disqusConfig = {
     identifier: post.id,
@@ -78,6 +80,7 @@ const PostTemplate = ({ data }: PageProps) => {
               <div dangerouslySetInnerHTML={{ __html: post.html }} />
             </div>
             <TagList tags={tags} size="is-medium" />
+            <LinksPost nextPost={nextPost} prevPost={prevPost} />
             <DisqusWrapper>
               <DiscussionEmbed
                 shortname={disqusShortname}
@@ -93,13 +96,13 @@ const PostTemplate = ({ data }: PageProps) => {
 export default PostTemplate
 
 export const query = graphql`
-  query PostsQuery($slug: String!) {
+  query PostsQuery($slug: String!, $prev: String!, $next: String!) {
     site {
       siteMetadata {
         title
       }
     }
-    markdownRemark(fields: {slug: {eq: $slug}}) {
+    post: markdownRemark(fields: {slug: {eq: $slug}}) {
       html
       frontmatter {
         title
@@ -113,6 +116,22 @@ export const query = graphql`
             }
           }
         }
+      }
+    }
+    prevPost: markdownRemark(fields: { slug: { eq: $prev } }) {
+      frontmatter {
+        title
+      }
+      fields {
+        slug
+      }
+    }
+    nextPost: markdownRemark(fields: { slug: { eq: $next } }) {
+      frontmatter {
+        title
+      }
+      fields {
+        slug
       }
     }
   }

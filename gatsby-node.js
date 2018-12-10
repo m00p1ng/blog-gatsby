@@ -3,6 +3,7 @@ const { createFilePath } = require('gatsby-source-filesystem')
 const _ = require('lodash')
 const {
   createPaginationPages,
+  createLinkedPages,
 } = require("gatsby-pagination");
 
 exports.onCreateNode = ({ node, getNode, actions }) => {
@@ -86,12 +87,22 @@ exports.createPages = ({ graphql, actions }) => {
             tags.push(tag);
           })
 
-          createPage({
-            path: node.fields.slug,
+          createLinkedPages({
+            createPage,
+            edges: posts,
             component: postTemplate,
-            context: {
-              slug: node.fields.slug
-            }
+            edgeParser: edge => {
+              const {
+                fields: { slug },
+              } = edge.node;
+              return {
+                path: slug,
+                context: {
+                  slug,
+                },
+              };
+            },
+            circular: true,
           })
         })
 
