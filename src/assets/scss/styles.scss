@@ -12,6 +12,13 @@
   .site-content {
     flex: 1 0 auto;
     padding-top: 1rem;
+
+    .container {
+      @include from($desktop) {
+        max-width: 960px;
+        width: 960px;
+      }
+    }
   }
 
   .footer {
@@ -54,12 +61,10 @@
   }
 
   .tag-size {
+    font-size: 1rem;
+
     @include mobile {
       font-size: 0.75rem;
-    }
-
-    @include from($tablet) {
-      font-size: 1rem;
     }
   }
 

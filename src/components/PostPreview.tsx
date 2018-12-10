@@ -27,8 +27,8 @@ const DateWrapper = styled.p`
   margin-top: 0.2rem;
 `
 
-const ImageHeader = styled(Img)`
-  margin-bottom: 1rem;
+const ImageWrapper = styled.div`
+  margin-bottom: -2rem;
 `
 
 const PostPreview = ({ post }: Props) => {
@@ -36,32 +36,41 @@ const PostPreview = ({ post }: Props) => {
   const { slug } = post.fields
 
   return (
-    <div className="box grow">
+    <div className="card grow">
       {image && (
-        <Link to={post.fields.slug}>
-          <ImageHeader
-            fluid={image.childImageSharp.fluid}
-            alt={image.name} />
-        </Link>
+        <ImageWrapper>
+          <div className="card-image postpreview-image">
+            <figure className="image">
+              <Link to={post.fields.slug}>
+                <Img
+                  fadeIn
+                  fluid={image.childImageSharp.fluid}
+                  alt={image.name} />
+              </Link>
+            </figure>
+          </div>
+        </ImageWrapper>
       )}
-      <h1 className="title postpreview-header is-size-4-mobile">
-        <Link to={post.fields.slug}>
-          {title}
-        </Link>
-      </h1>
-      <DateWrapper>
-        <CalendarIcon icon="calendar-alt" />
-        {date}
-      </DateWrapper>
-      <PostContentWrapper>
-        <p>{description}</p>
-        <div className="has-text-right readmore-padding">
-          <Link to={slug}>
-            <strong>Read More...</strong>
+      <div className="card-content">
+        <h1 className="title postpreview-header is-size-4-mobile">
+          <Link to={post.fields.slug}>
+            {title}
           </Link>
-        </div>
-      </PostContentWrapper>
-      <TagList tags={tags} size="tag-size" />
+        </h1>
+        <DateWrapper>
+          <CalendarIcon icon="calendar-alt" />
+          {date}
+        </DateWrapper>
+        <PostContentWrapper>
+          <p>{description}</p>
+          <div className="has-text-right readmore-padding">
+            <Link to={slug}>
+              <strong>Read More...</strong>
+            </Link>
+          </div>
+        </PostContentWrapper>
+        <TagList tags={tags} size="tag-size" />
+      </div>
     </div>
   )
 }

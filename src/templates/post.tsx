@@ -32,14 +32,17 @@ const CalendarIcon = styled(FontAwesomeIcon)`
   margin-right: 0.5rem;
 `
 
-const ImageWrapper = styled(Img)`
-  margin-bottom: -0.5rem;
-`
-
 const HRLine = styled.hr`
   background-color: lightgray;
   height: 1px;
 `
+const hasImage = (image: Image) => {
+  if (image) {
+    return 'card-image-radius'
+  }
+
+  return ''
+}
 
 const PostTemplate = ({ data }: PageProps) => {
   const post = data.markdownRemark
@@ -51,41 +54,39 @@ const PostTemplate = ({ data }: PageProps) => {
     title: post.frontmatter.title,
   }
 
-  const hasImage = (image: Image) => {
-    if (image) {
-      return 'box-image-radius'
-    }
-
-    return ''
-  }
-
   return (
     <Layout>
       <Helmet title={`${postTitle} | ${title}`} />
       <div className="post-padding">
-        {image && (
-          <ImageWrapper
-            fluid={image.childImageSharp.fluid}
-            alt={image.name} />
-        )}
-        <div className={`box ${hasImage(image)}`}>
-          <h1 className="title post-header-mobile">{postTitle}</h1>
-          <SubheaderWrapper>
-            <CalendarIcon icon="calendar-alt" /> {date}
-          </SubheaderWrapper>
-          <HRLine />
-          <div className="content markdown">
-            <div dangerouslySetInnerHTML={{ __html: post.html }} />
+        <div className={`card ${hasImage(image)}`}>
+          {image && (
+            <div className="card-image">
+              <figure className="image">
+                <Img
+                  fluid={image.childImageSharp.fluid}
+                  alt={image.name} />
+              </figure>
+            </div>
+          )}
+          <div className="card-content">
+            <h1 className="title post-header-mobile">{postTitle}</h1>
+            <SubheaderWrapper>
+              <CalendarIcon icon="calendar-alt" /> {date}
+            </SubheaderWrapper>
+            <HRLine />
+            <div className="content markdown">
+              <div dangerouslySetInnerHTML={{ __html: post.html }} />
+            </div>
+            <TagList tags={tags} size="is-medium" />
+            <DisqusWrapper>
+              <DiscussionEmbed
+                shortname={disqusShortname}
+                config={disqusConfig} />
+            </DisqusWrapper>
           </div>
-          <TagList tags={tags} size="is-medium" />
-          <DisqusWrapper>
-            <DiscussionEmbed
-              shortname={disqusShortname}
-              config={disqusConfig} />
-          </DisqusWrapper>
         </div>
       </div>
-    </Layout >
+    </Layout>
   )
 }
 

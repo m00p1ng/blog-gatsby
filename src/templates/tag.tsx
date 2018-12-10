@@ -21,11 +21,11 @@ const Tags = ({ pageContext, data }: PageProps) => {
       <Helmet title={`#${pageContext.tag} | ${title}`} />
       <div className="postpreview-padding">
         <h1 className="title has-text-white">
-          #{pageContext.tag}
+          # {pageContext.tag}
         </h1>
         <div className="box">
           <div className="content is-medium">
-            <ul style={{ marginTop: '0rem' }}>
+            <ul>
               {
                 edges.map(({ node }) => {
                   return (

@@ -1,14 +1,28 @@
-.box {
+.card {
   overflow: auto;
+  border-radius: 14px;
 
+  @include mobile {
+    border-radius: 4px;
+    margin-top: -1rem;
+  }
+
+  &:not(:last-child) {
+    margin-bottom: 1.5rem;
+
+    @include mobile {
+      margin-bottom: 2rem;
+    }
+  }
+}
+
+.card-content {
   @include from($desktop) {
     padding: 3rem;
-    border-radius: 14px;
   }
 
   @include mobile {
     padding: 1.5rem;
-    border-radius: 4px;
   }
 
   @include tablet-only {
@@ -16,9 +30,23 @@
   }
 }
 
-.box-image-radius {
+.card-image-radius {
   border-top-left-radius: 0;
   border-top-right-radius: 0;
+}
+
+.postpreview-image {
+  @include from($desktop) {
+    margin-bottom: -2rem;
+  }
+
+  @include mobile {
+    margin-bottom: 1.5rem;
+  }
+
+  @include tablet-only {
+    margin-bottom: 0.5rem;
+  }
 }
 
 .postpreview-padding {
@@ -51,10 +79,7 @@
 
 .pagination-font {
   color: white;
-
-  @include from($tablet) {
-    font-size: 1.25rem;
-  }
+  font-size: 1.25rem;
 
   @include mobile {
     font-size: 1rem;
