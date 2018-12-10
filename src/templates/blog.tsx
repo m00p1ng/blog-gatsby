@@ -1,12 +1,17 @@
 // @ts-ignore
 import { graphql } from 'gatsby'
 import React from 'react'
+import styled from 'styled-components'
 
 import Layout from '../components/Layout'
 import PostPreview from '../components/PostPreview'
 import Pagination from '../components/Pagination'
 
 import PageProps from '../models/PageProps'
+
+const PostPreviewWrapper = styled.div`
+ margin-top: 1rem;
+`
 
 const IndexPage = ({ pageContext, data }: PageProps) => {
   const { edges } = data.allMarkdownRemark
@@ -15,14 +20,16 @@ const IndexPage = ({ pageContext, data }: PageProps) => {
   return (
     <Layout>
       <div className="postpreview-padding">
-        {
-          edges.map(({ node }) => {
-            return <PostPreview key={node.id} post={node} />
-          })
-        }
-        {(previousPagePath || nextPagePath) && (
-          <Pagination pageContext={pageContext} pathPrefix="/" />
-        )}
+        <PostPreviewWrapper>
+          {
+            edges.map(({ node }) => {
+              return <PostPreview key={node.id} post={node} />
+            })
+          }
+          {(previousPagePath || nextPagePath) && (
+            <Pagination pageContext={pageContext} pathPrefix="/" />
+          )}
+        </PostPreviewWrapper>
       </div>
     </Layout>
   )

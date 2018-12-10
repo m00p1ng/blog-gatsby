@@ -22,6 +22,7 @@ const TagsPage = ({ data }: PageProps) => {
       <Helmet title={`All Tags | ${title}`} />
       <div className="postpreview-padding">
         <h1 className="title has-text-white">All Tags</h1>
+        <h3 className="subtitle has-text-white">Total {tags.length} tags</h3>
         <div className="tags">
           {tags.map((tag) => (
             <Link
