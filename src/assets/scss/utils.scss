@@ -41,7 +41,7 @@
   }
 
   @include mobile {
-    margin: -1rem 0 -2rem 0;
+    margin-top: -1rem;
   }
 
   @include tablet-only {
@@ -62,7 +62,7 @@
 
 }
 
-a>.pagination-font {
+a>.title.pagination-font {
   color: lighten(orange, 10%);
 
   &:hover {

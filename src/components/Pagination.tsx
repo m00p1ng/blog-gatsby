@@ -11,7 +11,11 @@ interface Props {
 }
 
 const PaginationWrapper = styled.div`
-  margin-top: 2.5rem;
+  margin: 2.5rem 0;
+`
+
+const PageOfWrapper = styled.div`
+  margin-top: 0.3rem;
 `
 
 const PaginationTemplate = ({ pageContext, pathPrefix }: Props) => {
@@ -30,9 +34,11 @@ const PaginationTemplate = ({ pageContext, pathPrefix }: Props) => {
           )}
         </div>
         <div className="column has-text-centered pagination-page">
-          <h1 className="subtitle pagination-font">
-            Page {humanPageNumber} of {numberOfPages}
-          </h1>
+          <PageOfWrapper>
+            <h1 className="subtitle pagination-font is-size-6">
+              Page {humanPageNumber} of {numberOfPages}
+            </h1>
+          </PageOfWrapper>
         </div>
         <div className="column has-text-right">
           {nextPagePath && (

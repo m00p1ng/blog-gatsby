@@ -1,7 +1,7 @@
 @charset "utf-8";
 
 #___gatsby {
-  $footer-size: 1.5rem;
+  $footer-size: 2rem;
 
   .site {
     min-height: calc(100vh - 2*#{$footer-size});
@@ -12,7 +12,6 @@
   .site-content {
     flex: 1 0 auto;
     padding-top: 1rem;
-    padding-bottom: 2rem;
   }
 
   .footer {

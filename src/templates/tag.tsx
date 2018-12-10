@@ -1,18 +1,20 @@
 // @ts-ignore
-import { graphql } from 'gatsby'
+import { graphql, Link } from 'gatsby'
 import React from 'react'
 import Helmet from 'react-helmet'
+import styled from 'styled-components'
 
 import Layout from '../components/Layout'
-import PostPreview from '../components/PostPreview'
-import Pagination from '../components/Pagination'
 
 import PageProps from '../models/PageProps'
+
+const TagWrapper = styled.li`
+  margin-bottom: 0.5rem;
+`
 
 const Tags = ({ pageContext, data }: PageProps) => {
   const { edges } = data.allMarkdownRemark
   const { title } = data.site.siteMetadata
-  const { previousPagePath, nextPagePath } = pageContext
 
   return (
     <Layout>
@@ -21,14 +23,23 @@ const Tags = ({ pageContext, data }: PageProps) => {
         <h1 className="title has-text-white">
           #{pageContext.tag}
         </h1>
-        {
-          edges.map(({ node }) => {
-            return <PostPreview key={node.id} post={node} />
-          })
-        }
-        {(previousPagePath || nextPagePath) && (
-          <Pagination pageContext={pageContext} pathPrefix="/" />
-        )}
+        <div className="box">
+          <div className="content is-medium">
+            <ul style={{ marginTop: '0rem' }}>
+              {
+                edges.map(({ node }) => {
+                  return (
+                    <Link key={node.id} to={node.fields.slug}>
+                      <TagWrapper>
+                        {node.frontmatter.title}
+                      </TagWrapper>
+                    </Link>
+                  )
+                })
+              }
+            </ul>
+          </div>
+        </div>
       </div>
     </Layout>
   )
@@ -56,10 +67,7 @@ export const query = graphql`
             slug
           }
           frontmatter {
-            tags
             title
-            date(formatString: "MMMM DD, YYYY")
-            description
           }
         }
       }
