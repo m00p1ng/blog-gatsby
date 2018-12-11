@@ -45,7 +45,7 @@ const PostPreview = ({ post }: Props) => {
                 <Img
                   fadeIn
                   fluid={image.childImageSharp.fluid}
-                  alt={image.name} />
+                  alt={title} />
               </Link>
             </figure>
           </div>

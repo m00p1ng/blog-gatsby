@@ -30,11 +30,6 @@
   }
 }
 
-.card-image-radius {
-  border-top-left-radius: 0;
-  border-top-right-radius: 0;
-}
-
 .postpreview-image {
   @include from($desktop) {
     margin-bottom: -2rem;
@@ -56,20 +51,6 @@
 
   @include mobile {
     margin: 0 0.8rem;
-  }
-
-  @include tablet-only {
-    margin: 0 2.5rem;
-  }
-}
-
-.post-padding {
-  @include from($desktop) {
-    margin: 0 2rem;
-  }
-
-  @include mobile {
-    margin-top: -1rem;
   }
 
   @include tablet-only {

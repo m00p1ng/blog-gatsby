@@ -38,12 +38,6 @@
     }
   }
 
-  .post-header-mobile {
-    @include mobile {
-      font-size: 1.75rem;
-    }
-  }
-
   .navbar {
     background: linear-gradient(to left, #663399 40%, #77459b 100%);
   }

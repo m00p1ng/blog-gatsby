@@ -20,6 +20,7 @@ import Image from '../models/Image'
 import 'katex/dist/katex.min.css'
 import 'prismjs/themes/prism.css'
 import '../assets/scss/markdown.scss'
+import '../assets/scss/post.scss'
 
 const DateWrapper = styled.div`
   margin-top: -1.2rem;
@@ -38,7 +39,7 @@ const HRLine = styled.hr`
   height: 3px;
 `
 const hasImage = (image: Image) => (
-  image ? 'card-image-radius' : ''
+  image ? 'post__remove-image-radius' : ''
 )
 
 const PostTemplate = ({ data }: PageProps) => {
@@ -55,19 +56,19 @@ const PostTemplate = ({ data }: PageProps) => {
   return (
     <Layout>
       <Helmet title={`${postTitle} | ${title}`} />
-      <div className="post-padding">
+      <div className="post">
         <div className={`card ${hasImage(image)}`}>
           {image && (
             <div className="card-image">
               <figure className="image">
                 <Img
                   fluid={image.childImageSharp.fluid}
-                  alt={image.name} />
+                  alt={postTitle} />
               </figure>
             </div>
           )}
           <div className="card-content">
-            <h1 className="title post-header-mobile">{postTitle}</h1>
+            <h1 className="title post__header-mobile">{postTitle}</h1>
             <DateWrapper>
               <span className="icon">
                 <CalendarIcon icon="calendar-alt" />
@@ -108,7 +109,6 @@ export const query = graphql`
         date(formatString: "MMMM DD, YYYY | HH:mm")
         tags
         image {
-          name
           childImageSharp {
             fluid(maxWidth: 960, quality: 80) {
               ...GatsbyImageSharpFluid_withWebp
