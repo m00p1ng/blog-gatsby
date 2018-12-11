@@ -31,10 +31,6 @@ const Layout = ({ children }: Props) => (
       <div className="site">
         <Helmet
           title={`${data.site.siteMetadata.title} - ${data.site.siteMetadata.subtitle}`}
-          meta={[
-            { name: 'description', content: 'Sample' },
-            { name: 'keywords', content: 'sample, something' },
-          ]}
           bodyAttributes={{ class: 'has-navbar-fixed-top' }}
         >
           <html lang="en" />
@@ -42,9 +38,7 @@ const Layout = ({ children }: Props) => (
 
         <Header siteTitle={data.site.siteMetadata.title} />
         <div className="site-content">
-          <div className="container">
-            {children}
-          </div>
+          {children}
         </div>
         <Footer />
       </div>

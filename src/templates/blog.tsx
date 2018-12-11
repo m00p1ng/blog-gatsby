@@ -19,25 +19,27 @@ const IndexPage = ({ pageContext }: PageProps) => {
 
   return (
     <Layout>
-      {(page !== 1) && (
-        <Helmet title={`Page ${page} | ${siteTitle}`} />
-      )}
-      <div className="blog-padding">
-        <PostPreviewWrapper>
-          {
-            nodes.map(({ node }) => (
-              <PostPreview key={node.id} post={node} />
-            ))
-          }
-          {(next || prev) && (
-            <Pagination
-              next={next}
-              prev={prev}
-              page={page}
-              pages={pages}
-            />
-          )}
-        </PostPreviewWrapper>
+      <div className="container">
+        {(page !== 1) && (
+          <Helmet title={`Page ${page} | ${siteTitle}`} />
+        )}
+        <div className="blog-padding">
+          <PostPreviewWrapper>
+            {
+              nodes.map(({ node }) => (
+                <PostPreview key={node.id} post={node} />
+              ))
+            }
+            {(next || prev) && (
+              <Pagination
+                next={next}
+                prev={prev}
+                page={page}
+                pages={pages}
+              />
+            )}
+          </PostPreviewWrapper>
+        </div>
       </div>
     </Layout>
   )

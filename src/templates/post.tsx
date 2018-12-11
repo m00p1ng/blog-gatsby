@@ -55,37 +55,39 @@ const PostTemplate = ({ data, pageContext }: PageProps) => {
 
   return (
     <Layout>
-      <Helmet title={`${title} | ${siteTitle}`} />
-      <div className="post">
-        <div className={`card ${hasImage(image)}`}>
-          {image && (
-            <div className="card-image">
-              <figure className="image">
-                <Img
-                  fluid={image.childImageSharp.fluid}
-                  alt={title} />
-              </figure>
+      <div className="container">
+        <Helmet title={`${title} | ${siteTitle}`} />
+        <div className="post">
+          <div className={`card ${hasImage(image)}`}>
+            {image && (
+              <div className="card-image">
+                <figure className="image">
+                  <Img
+                    fluid={image.childImageSharp.fluid}
+                    alt={title} />
+                </figure>
+              </div>
+            )}
+            <div className="card-content">
+              <h1 className="title post__header-mobile">{title}</h1>
+              <DateWrapper>
+                <span className="icon">
+                  <CalendarIcon icon="calendar-alt" />
+                </span>
+                {date}
+              </DateWrapper>
+              <HRLine />
+              <div className="content markdown">
+                <div dangerouslySetInnerHTML={{ __html: post.html }} />
+              </div>
+              <TagList tags={tags} size="is-medium" />
+              <PostNavigation nextPost={nextPost} prevPost={prevPost} />
+              <DisqusWrapper>
+                <DiscussionEmbed
+                  shortname={disqusShortname}
+                  config={disqusConfig} />
+              </DisqusWrapper>
             </div>
-          )}
-          <div className="card-content">
-            <h1 className="title post__header-mobile">{title}</h1>
-            <DateWrapper>
-              <span className="icon">
-                <CalendarIcon icon="calendar-alt" />
-              </span>
-              {date}
-            </DateWrapper>
-            <HRLine />
-            <div className="content markdown">
-              <div dangerouslySetInnerHTML={{ __html: post.html }} />
-            </div>
-            <TagList tags={tags} size="is-medium" />
-            <PostNavigation nextPost={nextPost} prevPost={prevPost} />
-            <DisqusWrapper>
-              <DiscussionEmbed
-                shortname={disqusShortname}
-                config={disqusConfig} />
-            </DisqusWrapper>
           </div>
         </div>
       </div>

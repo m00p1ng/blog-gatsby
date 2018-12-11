@@ -118,7 +118,9 @@ exports.createPages = ({ graphql, actions }) => {
           createPage,
           edges: posts,
           limit: itemsPerPage,
-          pathFormatter: (pageNumber) => pageNumber === 1 ? '/' : `/page/${pageNumber}`,
+          pathFormatter: (pageNumber) => (
+            pageNumber === 1 ? '/' : `/page/${pageNumber}`
+          ),
           component: blogTemplate,
           context: {
             siteTitle,
@@ -128,7 +130,10 @@ exports.createPages = ({ graphql, actions }) => {
         // Create each tag page
         _.uniq(tags)
 
-        tags.forEach(tag => {
+
+        // For Tag simple generate page
+
+        /* tags.forEach(tag => {
           createPage({
             path: `/tags/${_.kebabCase(tag)}`,
             component: tagTemplate,
@@ -136,7 +141,31 @@ exports.createPages = ({ graphql, actions }) => {
               tag
             }
           })
+        }) */
+
+        tags.forEach(tag => {
+          const postsByTag = posts.filter(({ node }) =>
+            (node.frontmatter.tags.includes(tag))
+          )
+
+          createPaginationPages({
+            createPage,
+            edges: postsByTag,
+            limit: itemsPerPage,
+            pathFormatter: (pageNumber) => {
+              const tagPath = `/tags/${_.kebabCase(tag)}`
+              return (
+                pageNumber === 1 ? tagPath : `${tagPath}/page/${pageNumber}`
+              )
+            },
+            component: tagTemplate,
+            context: {
+              siteTitle,
+              tag,
+            }
+          })
         })
+
         resolve()
       })
   })

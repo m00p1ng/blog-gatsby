@@ -54,6 +54,7 @@
     "develop": "gatsby develop",
     "start": "npm run develop",
     "serve": "gatsby build && gatsby serve",
+    "post": "node scripts/new.js",
     "test": "echo \"Error: no test specified\" && exit 1",
     "deploy:github": "yarn build && gh-pages -d public -b master"
   },
