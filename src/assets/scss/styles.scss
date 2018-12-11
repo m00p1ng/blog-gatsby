@@ -25,19 +25,6 @@
     padding: $footer-size 0;
   }
 
-  .postpreview-header {
-    margin-top: 0.5rem;
-    margin-bottom: -0.01rem;
-
-    a {
-      color: #363636;
-
-      &:hover {
-        color: orange;
-      }
-    }
-  }
-
   .navbar {
     background: linear-gradient(to left, #663399 40%, #77459b 100%);
   }
@@ -54,24 +41,8 @@
       1px 3px 8px rgba(39, 44, 49, .1);
   }
 
-  .tag-size {
-    font-size: 1rem;
-
-    @include mobile {
-      font-size: 0.75rem;
-    }
-  }
-
   .pagination-page {
     padding: 0.75rem 0;
-  }
-
-  .readmore-padding {
-    padding-top: 0.75rem;
-
-    @include mobile {
-      padding-bottom: 0.75rem;
-    }
   }
 
   .post-navigation {

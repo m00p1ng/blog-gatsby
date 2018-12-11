@@ -30,21 +30,7 @@
   }
 }
 
-.postpreview-image {
-  @include from($desktop) {
-    margin-bottom: -2rem;
-  }
-
-  @include mobile {
-    margin-bottom: 1.5rem;
-  }
-
-  @include tablet-only {
-    margin-bottom: 0.5rem;
-  }
-}
-
-.postpreview-padding {
+.blog-padding {
   @include from($desktop) {
     margin: 0 3rem;
   }

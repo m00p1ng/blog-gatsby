@@ -11,6 +11,8 @@ import TagList from './TagList'
 
 import Post from '../models/Post'
 
+import '../assets/scss/postpreview.scss'
+
 interface Props {
   post: Post
 }
@@ -36,10 +38,10 @@ const PostPreview = ({ post }: Props) => {
   const { slug } = post.fields
 
   return (
-    <div className="card grow">
+    <div className="card grow postpreview">
       {image && (
         <ImageWrapper>
-          <div className="card-image postpreview-image">
+          <div className="card-image postpreview__image">
             <figure className="image">
               <Link to={post.fields.slug}>
                 <Img
@@ -52,7 +54,7 @@ const PostPreview = ({ post }: Props) => {
         </ImageWrapper>
       )}
       <div className="card-content">
-        <h1 className="title postpreview-header is-size-4-mobile">
+        <h1 className="title postpreview__header is-size-4-mobile">
           <Link to={post.fields.slug}>
             {title}
           </Link>
@@ -65,13 +67,13 @@ const PostPreview = ({ post }: Props) => {
         </DateWrapper>
         <PostContentWrapper>
           <p>{description}</p>
-          <div className="has-text-right readmore-padding">
+          <div className="has-text-right postpreview__readmore">
             <Link to={slug}>
               <strong>Read More...</strong>
             </Link>
           </div>
         </PostContentWrapper>
-        <TagList tags={tags} size="tag-size" />
+        <TagList tags={tags} size="postpreview__tag" />
       </div>
     </div>
   )

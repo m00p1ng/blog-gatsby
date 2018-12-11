@@ -18,7 +18,7 @@ const IndexPage = ({ pageContext }: PageProps) => {
 
   return (
     <Layout>
-      <div className="postpreview-padding">
+      <div className="blog-padding">
         <PostPreviewWrapper>
           {
             nodes.map(({ node }) => {
