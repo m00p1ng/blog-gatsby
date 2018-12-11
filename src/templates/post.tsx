@@ -58,7 +58,7 @@ const PostTemplate = ({ data, pageContext }: PageProps) => {
       <div className="container">
         <Helmet title={`${title} | ${siteTitle}`} />
         <div className="post">
-          <div className={`card ${hasImage(image)}`}>
+          <div className={`card orange-shadow ${hasImage(image)}`}>
             {image && (
               <div className="card-image">
                 <figure className="image">

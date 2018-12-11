@@ -31,7 +31,8 @@ const Tags = ({ pageContext }: PageProps) => {
         }
       />
       <div className="container">
-        <Helmet title={`#${tag} | ${siteTitle}`} />
+        <Helmet title={`#${tag}${page !== 1 ? ` • Page ${page}` : ''} | ${siteTitle}`} /> :
+
         <div className="blog-padding">
           {
             nodes.map(({ node }) => (
@@ -48,7 +49,7 @@ const Tags = ({ pageContext }: PageProps) => {
           )}
         </div>
       </div>
-    </Layout>
+    </Layout >
   )
 }
 

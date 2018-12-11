@@ -36,7 +36,7 @@ exports.createPages = ({ graphql, actions }) => {
   const postTemplate = path.resolve('./src/templates/post.tsx')
   const blogTemplate = path.resolve('./src/templates/blog.tsx')
   const tagTemplate = path.resolve('./src/templates/tag.tsx')
-  const itemsPerPage = 10;
+  const itemsPerPage = 5;
 
   return new Promise((resolve, reject) => {
     graphql(`
@@ -62,7 +62,6 @@ exports.createPages = ({ graphql, actions }) => {
                   childImageSharp {
                     fluid(maxWidth: 960, maxHeight: 500, quality: 50, cropFocus: CENTER) {
                       aspectRatio
-                      base64
                       sizes
                       src
                       srcSet
