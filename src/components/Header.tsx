@@ -1,6 +1,7 @@
 // @ts-ignore
 import { Link } from 'gatsby'
 import React from 'react'
+// @ts-ignore
 import Headroom from 'react-headroom'
 
 interface Props {

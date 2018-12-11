@@ -48,8 +48,22 @@
       1px 3px 8px rgba(39, 44, 49, .1);
   }
 
-  .pagination-page {
-    padding: 0.75rem 0;
+  .pagination-font {
+    color: white;
+    font-size: 1.25rem;
+
+    @include mobile {
+      font-size: 1rem;
+    }
+  }
+
+  .pagination-link {
+    border: 0;
+    color: lighten(orange, 10%);
+
+    &:hover {
+      color: white;
+    }
   }
 
   .hero-from-tablet {
