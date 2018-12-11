@@ -42,10 +42,10 @@ const hasImage = (image: Image) => (
   image ? 'post__remove-image-radius' : ''
 )
 
-const PostTemplate = ({ data }: PageProps) => {
+const PostTemplate = ({ data, pageContext }: PageProps) => {
   const { post, nextPost, prevPost } = data
-  const { title: postTitle, date, tags, image } = post.frontmatter
-  const { title } = data.site.siteMetadata
+  const { title, date, tags, image } = post.frontmatter
+  const { siteTitle } = pageContext
 
   const disqusShortname = 'm00p1ng-github-io'
   const disqusConfig = {
@@ -55,7 +55,7 @@ const PostTemplate = ({ data }: PageProps) => {
 
   return (
     <Layout>
-      <Helmet title={`${postTitle} | ${title}`} />
+      <Helmet title={`${title} | ${siteTitle}`} />
       <div className="post">
         <div className={`card ${hasImage(image)}`}>
           {image && (
@@ -63,12 +63,12 @@ const PostTemplate = ({ data }: PageProps) => {
               <figure className="image">
                 <Img
                   fluid={image.childImageSharp.fluid}
-                  alt={postTitle} />
+                  alt={title} />
               </figure>
             </div>
           )}
           <div className="card-content">
-            <h1 className="title post__header-mobile">{postTitle}</h1>
+            <h1 className="title post__header-mobile">{title}</h1>
             <DateWrapper>
               <span className="icon">
                 <CalendarIcon icon="calendar-alt" />
@@ -97,11 +97,6 @@ export default PostTemplate
 
 export const query = graphql`
   query PostsQuery($slug: String!, $prev: String!, $next: String!) {
-    site {
-      siteMetadata {
-        title
-      }
-    }
     post: markdownRemark(fields: {slug: {eq: $slug}}) {
       html
       frontmatter {

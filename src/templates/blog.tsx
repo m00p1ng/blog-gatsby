@@ -2,6 +2,7 @@
 import { graphql } from 'gatsby'
 import React from 'react'
 import styled from 'styled-components'
+import Helmet from 'react-helmet'
 
 import Layout from '../components/Layout'
 import PostPreview from '../components/PostPreview'
@@ -14,16 +15,19 @@ const PostPreviewWrapper = styled.div`
 `
 
 const IndexPage = ({ pageContext }: PageProps) => {
-  const { next, prev, nodes, page, pages } = pageContext
+  const { next, prev, nodes, page, pages, siteTitle } = pageContext
 
   return (
     <Layout>
+      {(page !== 1) && (
+        <Helmet title={`Page ${page} | ${siteTitle}`} />
+      )}
       <div className="blog-padding">
         <PostPreviewWrapper>
           {
-            nodes.map(({ node }) => {
-              return <PostPreview key={node.id} post={node} />
-            })
+            nodes.map(({ node }) => (
+              <PostPreview key={node.id} post={node} />
+            ))
           }
           {(next || prev) && (
             <Pagination

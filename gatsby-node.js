@@ -41,6 +41,11 @@ exports.createPages = ({ graphql, actions }) => {
   return new Promise((resolve, reject) => {
     graphql(`
       {
+        site {
+          siteMetadata {
+            title
+          }
+        }
         allMarkdownRemark(
           sort: {order: DESC, fields: [frontmatter___date]},
           filter: {frontmatter: {published: {eq:true}}}
@@ -81,7 +86,9 @@ exports.createPages = ({ graphql, actions }) => {
           reject(result.errors);
         }
 
+        const siteTitle = result.data.site.siteMetadata.title
         const posts = result.data.allMarkdownRemark.edges
+
         posts.forEach(({ node }) => {
           node.frontmatter.tags.forEach((tag) => {
             tags.push(tag);
@@ -99,6 +106,7 @@ exports.createPages = ({ graphql, actions }) => {
                 path: slug,
                 context: {
                   slug,
+                  siteTitle,
                 },
               };
             },
@@ -112,6 +120,9 @@ exports.createPages = ({ graphql, actions }) => {
           limit: itemsPerPage,
           pathFormatter: (pageNumber) => pageNumber === 1 ? '/' : `/page/${pageNumber}`,
           component: blogTemplate,
+          context: {
+            siteTitle,
+          }
         })
 
         // Create each tag page

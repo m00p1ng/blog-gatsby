@@ -30,7 +30,7 @@ const Layout = ({ children }: Props) => (
     render={(data: Data) => (
       <div className="site">
         <Helmet
-          title={`${data.site.siteMetadata.title} | ${data.site.siteMetadata.subtitle}`}
+          title={`${data.site.siteMetadata.title} - ${data.site.siteMetadata.subtitle}`}
           meta={[
             { name: 'description', content: 'Sample' },
             { name: 'keywords', content: 'sample, something' },

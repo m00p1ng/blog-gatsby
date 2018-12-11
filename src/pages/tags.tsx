@@ -20,7 +20,7 @@ const TagsPage = ({ data }: PageProps) => {
   return (
     <Layout>
       <Helmet title={`All Tags | ${title}`} />
-      <div className="postpreview-padding">
+      <div className="blog-padding">
         <h1 className="title has-text-white">All Tags</h1>
         <h3 className="subtitle has-text-white">Total {tags.length} tags</h3>
         <div className="tags">

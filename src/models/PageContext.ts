@@ -2,6 +2,7 @@ import Post from './Post'
 
 interface PageContext {
   tag?: string
+  siteTitle: string
 
   next: string
   prev: string
