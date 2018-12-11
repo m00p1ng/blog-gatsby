@@ -34,8 +34,8 @@ const CalendarIcon = styled(FontAwesomeIcon)`
 `
 
 const HRLine = styled.hr`
-  background-color: lightgray;
-  height: 1px;
+  background-color: rgba(0, 0, 0, 0.075);
+  height: 3px;
 `
 const hasImage = (image: Image) => (
   image ? 'card-image-radius' : ''
@@ -69,7 +69,9 @@ const PostTemplate = ({ data }: PageProps) => {
           <div className="card-content">
             <h1 className="title post-header-mobile">{postTitle}</h1>
             <DateWrapper>
-              <CalendarIcon icon="calendar-alt" />
+              <span className="icon">
+                <CalendarIcon icon="calendar-alt" />
+              </span>
               {date}
             </DateWrapper>
             <HRLine />

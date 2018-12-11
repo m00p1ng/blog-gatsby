@@ -58,7 +58,9 @@ const PostPreview = ({ post }: Props) => {
           </Link>
         </h1>
         <DateWrapper>
-          <CalendarIcon icon="calendar-alt" />
+          <span className="icon">
+            <CalendarIcon icon="calendar-alt" size="sm" />
+          </span>
           {date}
         </DateWrapper>
         <PostContentWrapper>
