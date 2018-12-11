@@ -31,7 +31,6 @@ const Layout = ({ children }: Props) => (
       <div className="site">
         <Helmet
           title={`${data.site.siteMetadata.title} - ${data.site.siteMetadata.subtitle}`}
-          bodyAttributes={{ class: 'has-navbar-fixed-top' }}
         >
           <html lang="en" />
         </Helmet>

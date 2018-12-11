@@ -36,7 +36,7 @@ exports.createPages = ({ graphql, actions }) => {
   const postTemplate = path.resolve('./src/templates/post.tsx')
   const blogTemplate = path.resolve('./src/templates/blog.tsx')
   const tagTemplate = path.resolve('./src/templates/tag.tsx')
-  const itemsPerPage = 5;
+  const itemsPerPage = 10;
 
   return new Promise((resolve, reject) => {
     graphql(`

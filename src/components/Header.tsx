@@ -1,6 +1,7 @@
 // @ts-ignore
 import { Link } from 'gatsby'
 import React from 'react'
+import Headroom from 'react-headroom'
 
 interface Props {
   siteTitle: string,
@@ -18,39 +19,41 @@ const ToggleBurger = () => {
 
 const Header = ({ siteTitle }: Props) => (
   <header>
-    <nav
-      id="main-navigation"
-      className="navbar is-fixed-top"
-      role="navigation"
-      aria-label="main navigation"
-    >
-      <div className="container">
-        <div className="navbar-brand">
-          <Link to="/" className="navbar-item navbar-center">
-            {siteTitle}
-          </Link>
-          <div onClick={ToggleBurger} className="navbar-burger" data-target="navbar-menu">
-            <span />
-            <span />
-            <span />
+    <Headroom>
+      <nav
+        id="main-navigation"
+        className="navbar"
+        role="navigation"
+        aria-label="main navigation"
+      >
+        <div className="container">
+          <div className="navbar-brand">
+            <Link to="/" className="navbar-item navbar-center">
+              {siteTitle}
+            </Link>
+            <div onClick={ToggleBurger} className="navbar-burger" data-target="navbar-menu">
+              <span />
+              <span />
+              <span />
+            </div>
           </div>
-        </div>
 
-        <div id="navbar-menu" className="navbar-menu">
-          <div className="navbar-end">
-            <Link to="/" className="navbar-item">
-              Home
+          <div id="navbar-menu" className="navbar-menu">
+            <div className="navbar-end">
+              <Link to="/" className="navbar-item">
+                Home
             </Link>
-            <Link to="/tags" className="navbar-item">
-              Tags
+              <Link to="/tags" className="navbar-item">
+                Tags
             </Link>
-            <Link to="/about" className="navbar-item">
-              About
+              <Link to="/about" className="navbar-item">
+                About
             </Link>
+            </div>
           </div>
         </div>
-      </div>
-    </nav>
+      </nav>
+    </Headroom>
   </header>
 )
 
