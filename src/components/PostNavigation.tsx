@@ -11,7 +11,7 @@ interface Props {
   prevPost: Page
 }
 
-const LinksPost = ({ nextPost, prevPost }: Props) => (
+const PostNavigation = ({ nextPost, prevPost }: Props) => (
   <nav className="post-navigation" aria-label="pagination">
     {nextPost && nextPost != null ? (
       <Link
@@ -42,4 +42,4 @@ const LinksPost = ({ nextPost, prevPost }: Props) => (
   </nav>
 )
 
-export default LinksPost
+export default PostNavigation

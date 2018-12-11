@@ -12,7 +12,7 @@ const TagWrapper = styled.li`
   margin-bottom: 0.5rem;
 `
 
-const Tags = ({ pageContext, data }: PageProps) => {
+const TagTemplate = ({ pageContext, data }: PageProps) => {
   const { edges } = data.allMarkdownRemark
   const { title } = data.site.siteMetadata
 
@@ -45,7 +45,7 @@ const Tags = ({ pageContext, data }: PageProps) => {
   )
 }
 
-export default Tags
+export default TagTemplate
 
 export const query = graphql`
   query TagQuery($tag: String!) {

@@ -12,7 +12,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 import Layout from '../components/Layout'
 import TagList from '../components/TagList'
-import LinksPost from '../components/LinksPost'
+import PostNavigation from '../components/PostNavigation'
 
 import PageProps from '../models/PageProps'
 import Image from '../models/Image'
@@ -21,7 +21,7 @@ import 'katex/dist/katex.min.css'
 import 'prismjs/themes/prism.css'
 import '../assets/scss/markdown.scss'
 
-const SubheaderWrapper = styled.div`
+const DateWrapper = styled.div`
   margin-top: -1.2rem;
 `
 
@@ -37,13 +37,9 @@ const HRLine = styled.hr`
   background-color: lightgray;
   height: 1px;
 `
-const hasImage = (image: Image) => {
-  if (image) {
-    return 'card-image-radius'
-  }
-
-  return ''
-}
+const hasImage = (image: Image) => (
+  image ? 'card-image-radius' : ''
+)
 
 const PostTemplate = ({ data }: PageProps) => {
   const { post, nextPost, prevPost } = data
@@ -72,15 +68,16 @@ const PostTemplate = ({ data }: PageProps) => {
           )}
           <div className="card-content">
             <h1 className="title post-header-mobile">{postTitle}</h1>
-            <SubheaderWrapper>
-              <CalendarIcon icon="calendar-alt" /> {date}
-            </SubheaderWrapper>
+            <DateWrapper>
+              <CalendarIcon icon="calendar-alt" />
+              {date}
+            </DateWrapper>
             <HRLine />
             <div className="content markdown">
               <div dangerouslySetInnerHTML={{ __html: post.html }} />
             </div>
             <TagList tags={tags} size="is-medium" />
-            <LinksPost nextPost={nextPost} prevPost={prevPost} />
+            <PostNavigation nextPost={nextPost} prevPost={prevPost} />
             <DisqusWrapper>
               <DiscussionEmbed
                 shortname={disqusShortname}

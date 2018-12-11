@@ -23,7 +23,7 @@ const CalendarIcon = styled(FontAwesomeIcon)`
   margin-right: 0.5rem;
 `
 
-const DateWrapper = styled.p`
+const DateWrapper = styled.div`
   margin-top: 0.2rem;
 `
 
