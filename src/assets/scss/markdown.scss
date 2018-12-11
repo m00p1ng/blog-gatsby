@@ -72,5 +72,11 @@
       margin-left: 1rem;
       margin-right: 1rem;
     }
+
+    .gatsby-resp-image-wrapper {
+      border: 1px solid rgba(0, 0, 0, 0.05);
+      border-radius: 8px;
+      overflow: hidden;
+    }
   }
 }
