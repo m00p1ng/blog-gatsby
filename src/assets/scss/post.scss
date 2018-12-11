@@ -17,10 +17,4 @@
     border-top-left-radius: 0;
     border-top-right-radius: 0;
   }
-
-  & &__header-mobile {
-    @include mobile {
-      font-size: 1.75rem;
-    }
-  }
 }

@@ -5,6 +5,7 @@ import KebabCase from 'lodash/kebabCase'
 import Helmet from 'react-helmet'
 
 import Layout from '../components/Layout'
+import Banner from '../components/Banner'
 
 import PageProps from '../models/PageProps'
 
@@ -19,11 +20,13 @@ const TagsPage = ({ data }: PageProps) => {
 
   return (
     <Layout>
+      <Banner
+        title="All Tags"
+        subtitle={`Total ${tags.length} tag${tags.length !== 1 ? 's' : ''}`}
+      />
       <div className="container">
         <Helmet title={`All Tags | ${title}`} />
         <div className="blog-padding">
-          <h1 className="title has-text-white">All Tags</h1>
-          <h3 className="subtitle has-text-white">Total {tags.length} tags</h3>
           <div className="tags">
             {tags.map((tag) => (
               <Link
@@ -37,7 +40,7 @@ const TagsPage = ({ data }: PageProps) => {
           </div>
         </div>
       </div>
-    </Layout>
+    </Layout >
   )
 }
 

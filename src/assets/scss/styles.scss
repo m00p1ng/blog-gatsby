@@ -25,6 +25,12 @@
     padding: $footer-size 0;
   }
 
+  .is-size-3_5-mobile {
+    @include mobile {
+      font-size: 1.75rem;
+    }
+  }
+
   .navbar {
     background: linear-gradient(to left, #663399 40%, #77459b 100%);
   }
@@ -44,6 +50,12 @@
 
   .pagination-page {
     padding: 0.75rem 0;
+  }
+
+  .hero-from-tablet {
+    @include until($desktop) {
+      padding: 2rem 1rem;
+    }
   }
 }
 

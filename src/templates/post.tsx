@@ -69,7 +69,7 @@ const PostTemplate = ({ data, pageContext }: PageProps) => {
               </div>
             )}
             <div className="card-content">
-              <h1 className="title post__header-mobile">{title}</h1>
+              <h1 className="title is-size-3_5-mobile">{title}</h1>
               <DateWrapper>
                 <span className="icon">
                   <CalendarIcon icon="calendar-alt" />
