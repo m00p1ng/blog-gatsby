@@ -23,7 +23,7 @@ const IndexPage = ({ pageContext }: PageProps) => {
         {(page !== 1) && (
           <Helmet title={`Page ${page} | ${siteTitle}`} />
         )}
-        <div className="blog-padding">
+        <div className="blog-container">
           <PostPreviewWrapper>
             {
               nodes.map(({ node }) => (

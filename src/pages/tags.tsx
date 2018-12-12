@@ -26,7 +26,7 @@ const TagsPage = ({ data }: PageProps) => {
       />
       <div className="container">
         <Helmet title={`All Tags | ${title}`} />
-        <div className="blog-padding">
+        <div className="blog-container">
           <div className="tags">
             {tags.map((tag) => (
               <Link

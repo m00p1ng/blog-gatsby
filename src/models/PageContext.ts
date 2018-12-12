@@ -3,6 +3,8 @@ import Post from './Post'
 interface PageContext {
   tag?: string
   siteTitle: string
+  // tslint:disable-next-line:no-any
+  posts?: any
 
   next: string
   prev: string

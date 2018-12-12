@@ -2,15 +2,15 @@
 
 .post {
   @include from($desktop) {
-    margin: 0 2rem;
+    margin: 2rem 2rem 0 2rem;
   }
 
   @include mobile {
-    margin-top: -1rem;
+    margin-top: 1rem;
   }
 
   @include tablet-only {
-    margin: 0 2.5rem;
+    margin: 2rem 2.5rem 0 2.5rem;
   }
 
   & &__remove-image-radius {

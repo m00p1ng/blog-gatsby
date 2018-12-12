@@ -18,7 +18,7 @@ interface Props {
 }
 
 const PostContentWrapper = styled.div`
-  padding-top: 1.5rem;
+  margin-top: 1.5rem;
 `
 
 const CalendarIcon = styled(FontAwesomeIcon)`

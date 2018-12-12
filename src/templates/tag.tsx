@@ -38,7 +38,7 @@ const Tags = ({ pageContext }: PageProps) => {
       <ResultWrapper className="container">
         <Helmet title={`#${tag}${page !== 1 ? ` • Page ${page}` : ''} | ${siteTitle}`} /> :
 
-        <div className="blog-padding">
+        <div className="blog-container">
           {
             nodes.map(({ node }) => (
               <PostPreview key={node.id} post={node} />

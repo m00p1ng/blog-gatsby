@@ -1,6 +1,6 @@
 .card {
   overflow: auto;
-  border-radius: 14px;
+  border-radius: 12px;
 
   @include mobile {
     border-radius: 4px;
@@ -30,7 +30,9 @@
   }
 }
 
-.blog-padding {
+.blog-container {
+  padding-top: 1rem;
+
   @include from($desktop) {
     margin: 0 3rem;
   }

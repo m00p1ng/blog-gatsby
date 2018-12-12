@@ -4,14 +4,13 @@
   $footer-size: 2rem;
 
   .site {
-    min-height: calc(100vh - 2*#{$footer-size});
+    min-height: 100vh;
     display: flex;
     flex-direction: column;
   }
 
   .site-content {
     flex: 1 0 auto;
-    padding-top: 1rem;
 
     .container {
       @include from($desktop) {
