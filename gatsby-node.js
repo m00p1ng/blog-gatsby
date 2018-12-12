@@ -62,17 +62,23 @@ const createTagSimplePage = ({ createPage, posts, siteTitle }) => {
   const tags = getUniqueTag(posts)
 
   tags.forEach(tag => {
-    const postsByTag = posts.filter(({ node }) =>
-      (node.frontmatter.tags.includes(tag))
-    )
+    const postsByTag = posts
+      .filter(({ node }) => (node.frontmatter.tags.includes(tag)))
+      .map(({ node }) => ({
+        id: node.id,
+        slug: node.fields.slug,
+        title: node.frontmatter.title,
+        date: node.frontmatter.date,
+      }))
 
     createPage({
-      path: `/tags/${_.kebabCase(tag)}`,
+      path: `/tags/${_.kebabCase(tag)}/all`,
       component: tagTemplate,
       context: {
         tag,
-        postsByTag,
+        posts: postsByTag,
         siteTitle,
+        total: postsByTag.length,
       }
     })
   })
@@ -168,6 +174,12 @@ exports.createPages = ({ graphql, actions }) => {
         })
 
         createPublishedPage({
+          createPage,
+          posts,
+          siteTitle,
+        })
+
+        createTagSimplePage({
           createPage,
           posts,
           siteTitle,

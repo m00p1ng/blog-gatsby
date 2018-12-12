@@ -34,12 +34,6 @@
     background: linear-gradient(to left, #663399 40%, #77459b 100%);
   }
 
-  .navbar-center {
-    flex-grow: 1;
-    margin-left: $navbar-height;
-    flex-direction: column;
-    justify-content: center;
-  }
 
   .tag {
     background-color: lighten($link, 5%);
@@ -74,6 +68,19 @@
 
   .orange-shadow {
     box-shadow: 8px 14px 38px rgba(255, 165, 0, 0.25), 1px 3px 8px rgba(255, 165, 0, 0.3);
+  }
+
+  .hero-tag-hover:hover {
+    text-decoration: underline;
+  }
+}
+
+.navbar-center {
+  @include until($desktop) {
+    flex-grow: 1;
+    margin-left: $navbar-height;
+    flex-direction: column;
+    justify-content: center;
   }
 }
 

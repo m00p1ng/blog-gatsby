@@ -1,8 +1,8 @@
-.navbar-item:hover {
-  @include from($desktop) {
-    animation: shake 0.4s infinite;
-  }
-}
+// .navbar-item:hover {
+//   @include from($desktop) {
+//     animation: shake 0.4s infinite;
+//   }
+// }
 
 @keyframes shake {
   0% {

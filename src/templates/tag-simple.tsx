@@ -3,41 +3,57 @@ import { graphql, Link } from 'gatsby'
 import React from 'react'
 import Helmet from 'react-helmet'
 import styled from 'styled-components'
+import KebabCase from 'lodash/kebabCase'
 
 import Layout from '../components/Layout'
+import Banner from '../components/Banner'
 
 import PageProps from '../models/PageProps'
 
 const TagWrapper = styled.li`
-  margin-bottom: 0.5rem;
+  margin-bottom: 1.2rem;
 `
 
-const TagTemplate = ({ pageContext, data }: PageProps) => {
-  const { edges } = data.allMarkdownRemark
-  const { title } = data.site.siteMetadata
+interface TagPost {
+  id: string
+  slug: string
+  title: string
+  date: string
+}
+
+const TagTemplate = ({ pageContext }: PageProps) => {
+  const { siteTitle, tag, posts, total } = pageContext
 
   return (
     <Layout>
-      <Helmet title={`#${pageContext.tag} | ${title}`} />
-      <div className="postpreview-padding">
-        <h1 className="title has-text-white">
-          # {pageContext.tag}
-        </h1>
-        <div className="box">
-          <div className="content is-medium">
-            <ul>
-              {
-                edges.map(({ node }) => {
-                  return (
-                    <Link key={node.id} to={node.fields.slug}>
-                      <TagWrapper>
-                        {node.frontmatter.title}
+      <Helmet title={`#${tag} - All posts | ${siteTitle}`} />
+      <Banner
+        title={
+          <Link to={`/tags/${KebabCase(tag)}`} className="hero-tag-hover">
+            #{tag}
+          </Link>
+        }
+        subtitle={`${total} post${total !== 1 ? 's' : ''}`}
+      />
+      <div className="container">
+        <div className="post">
+          <div className="box">
+            <div className="content is-medium">
+              <ul>
+                {
+                  posts.map((post: TagPost) => {
+                    return (
+                      <TagWrapper key={post.id} >
+                        <Link to={post.slug}>
+                          {post.title}
+                        </Link>
+                        {' '} - {post.date}
                       </TagWrapper>
-                    </Link>
-                  )
-                })
-              }
-            </ul>
+                    )
+                  })
+                }
+              </ul>
+            </div>
           </div>
         </div>
       </div>
@@ -46,32 +62,3 @@ const TagTemplate = ({ pageContext, data }: PageProps) => {
 }
 
 export default TagTemplate
-
-// Uncomment this if you want to use this template
-/*
-export const query = graphql`
-  query TagQuery($tag: String!) {
-    site {
-      siteMetadata {
-        title
-      }
-    }
-    allMarkdownRemark(
-        sort: {order: DESC, fields: [frontmatter___date]},
-        filter: {frontmatter: {published: {eq: true}, tags: {eq: $tag}}}
-      ) {
-      edges {
-        node {
-          id
-          fields {
-            slug
-          }
-          frontmatter {
-            title
-          }
-        }
-      }
-    }
-  }
-`
-*/

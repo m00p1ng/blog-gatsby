@@ -1,8 +1,9 @@
 // @ts-ignore
-import { graphql } from 'gatsby'
+import { graphql, Link } from 'gatsby'
 import React from 'react'
 import Helmet from 'react-helmet'
 import styled from 'styled-components'
+import KebabCase from 'lodash/kebabCase'
 
 import Layout from '../components/Layout'
 import PostPreview from '../components/PostPreview'
@@ -30,7 +31,11 @@ const Tags = ({ pageContext }: PageProps) => {
   return (
     <Layout>
       <Banner
-        title={`#${tag}`}
+        title={
+          <Link to={`/tags/${KebabCase(tag)}/all`} className="hero-tag-hover">
+            #{tag}
+          </Link>
+        }
         subtitle={
           `${total} post${(total !== 1) ? 's' : ''} ${(pages !== 1) ? `• Page ${page} of ${pages} ` : ''}`
         }

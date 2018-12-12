@@ -2,7 +2,7 @@ import React from 'react'
 import styled from 'styled-components'
 
 interface Props {
-  title: string
+  title: string | JSX.Element
   subtitle: string
 }
 
