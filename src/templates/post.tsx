@@ -42,16 +42,45 @@ const hasImage = (image: Image) => (
   image ? 'post__remove-image-radius' : ''
 )
 
+const ImageHeader = ({ image, title }: { image: Image, title: string }) => (
+  <div className="card-image">
+    <figure className="image">
+      <Img
+        fluid={image.childImageSharp.fluid}
+        alt={title} />
+    </figure>
+  </div>
+)
+
+const DateSubHeader = ({ date }: { date: string }) => (
+  <DateWrapper>
+    <span className="icon">
+      <CalendarIcon icon="calendar-alt" />
+    </span>
+    {date}
+  </DateWrapper>
+)
+
+const Disqus = ({ id, title }: { id: string, title: string }) => {
+  const disqusShortname = 'm00p1ng-github-io'
+  const disqusConfig = {
+    identifier: id,
+    title: title,
+  }
+
+  return (
+    <DisqusWrapper>
+      <DiscussionEmbed
+        shortname={disqusShortname}
+        config={disqusConfig} />
+    </DisqusWrapper>
+  )
+}
+
 const PostTemplate = ({ data, pageContext }: PageProps) => {
   const { post, nextPost, prevPost } = data
   const { title, date, tags, image } = post.frontmatter
   const { siteTitle } = pageContext
-
-  const disqusShortname = 'm00p1ng-github-io'
-  const disqusConfig = {
-    identifier: post.id,
-    title: post.frontmatter.title,
-  }
 
   return (
     <Layout>
@@ -60,33 +89,18 @@ const PostTemplate = ({ data, pageContext }: PageProps) => {
         <div className="post">
           <div className={`card orange-shadow ${hasImage(image)}`}>
             {image && (
-              <div className="card-image">
-                <figure className="image">
-                  <Img
-                    fluid={image.childImageSharp.fluid}
-                    alt={title} />
-                </figure>
-              </div>
+              <ImageHeader image={image} title={title} />
             )}
-            <div className="card-content">
+            <div className="card-content is-medium">
               <h1 className="title is-size-3_5-mobile">{title}</h1>
-              <DateWrapper>
-                <span className="icon">
-                  <CalendarIcon icon="calendar-alt" />
-                </span>
-                {date}
-              </DateWrapper>
+              <DateSubHeader date={date} />
               <HRLine />
               <div className="content markdown">
                 <div dangerouslySetInnerHTML={{ __html: post.html }} />
               </div>
               <TagList tags={tags} size="is-medium" />
               <PostNavigation nextPost={nextPost} prevPost={prevPost} />
-              <DisqusWrapper>
-                <DiscussionEmbed
-                  shortname={disqusShortname}
-                  config={disqusConfig} />
-              </DisqusWrapper>
+              <Disqus id={post.id} title={post.frontmatter.title} />
             </div>
           </div>
         </div>

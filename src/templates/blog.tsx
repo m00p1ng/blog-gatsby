@@ -11,7 +11,7 @@ import Pagination from '../components/Pagination'
 import PageProps from '../models/PageProps'
 
 const PostPreviewWrapper = styled.div`
- margin-top: 1rem;
+  margin-top: 1rem;
 `
 
 const IndexPage = ({ pageContext }: PageProps) => {
@@ -25,20 +25,18 @@ const IndexPage = ({ pageContext }: PageProps) => {
         )}
         <div className="blog-container">
           <PostPreviewWrapper>
-            {
-              nodes.map(({ node }) => (
-                <PostPreview key={node.id} post={node} />
-              ))
-            }
-            {(next || prev) && (
-              <Pagination
-                next={next}
-                prev={prev}
-                page={page}
-                pages={pages}
-              />
-            )}
+            {nodes.map(({ node }) => (
+              <PostPreview key={node.id} post={node} />
+            ))}
           </PostPreviewWrapper>
+          {(next || prev) && (
+            <Pagination
+              next={next}
+              prev={prev}
+              page={page}
+              pages={pages}
+            />
+          )}
         </div>
       </div>
     </Layout>

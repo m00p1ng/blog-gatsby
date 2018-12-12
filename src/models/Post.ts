@@ -4,7 +4,7 @@ interface Post {
   fields: {
     slug: string
   }
-  id: number
+  id: string
   excerpt: string
   html: string
   frontmatter: Frontmatter
