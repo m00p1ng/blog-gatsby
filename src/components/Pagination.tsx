@@ -28,7 +28,7 @@ const PaginationTemplate = ({ next, prev, page, pages }: Props) => {
         <div className="column">
           {prev && (
             <Link to={prev} rel="prev">
-              <h1 className="title pagination-font pagination-link">
+              <h1 className="title pagination-font pagination-link pagination-link__left">
                 ← Newer
               </h1>
             </Link>
@@ -42,7 +42,7 @@ const PaginationTemplate = ({ next, prev, page, pages }: Props) => {
         <div className="column has-text-right">
           {next && (
             <Link to={next} rel="next">
-              <h1 className="title pagination-font pagination-link">
+              <h1 className="title pagination-font pagination-link pagination-link__right">
                 Older →
               </h1>
             </Link>

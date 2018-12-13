@@ -60,6 +60,12 @@
     }
   }
 
+  .pagination-page {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
   .hero-from-tablet {
     @include until($desktop) {
       padding: 2rem 1rem;
@@ -94,11 +100,9 @@
 
   & &__previous,
   & &__next {
+    transition-duration: 0.2s;
     margin: 1rem 0;
     flex: 0 0 100%;
-    background-color: red;
-    border-color: red;
-    color: #fff;
 
     @include from($desktop) {
       flex-basis: calc(50% - 1rem);

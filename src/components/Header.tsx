@@ -9,7 +9,7 @@ interface Props {
 }
 
 const ToggleBurger = () => {
-  const burgerMenu = document.getElementById('navbar-menu')
+  const burgerMenu = document.getElementById('main-navbar-menu')
   const burgerButton = document.querySelector('.navbar-burger')
 
   if (burgerMenu && burgerButton) {
@@ -32,14 +32,14 @@ const Header = ({ siteTitle }: Props) => (
             <Link to="/" className="navbar-item navbar-center">
               {siteTitle}
             </Link>
-            <div onClick={ToggleBurger} className="navbar-burger" data-target="navbar-menu">
+            <div onClick={ToggleBurger} className="navbar-burger" data-target="main-navbar-menu">
               <span />
               <span />
               <span />
             </div>
           </div>
 
-          <div id="navbar-menu" className="navbar-menu">
+          <div id="main-navbar-menu" className="navbar-menu">
             <div className="navbar-end">
               <Link to="/" className="navbar-item">
                 Home

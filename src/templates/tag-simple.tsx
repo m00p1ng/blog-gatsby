@@ -47,7 +47,8 @@ const TagTemplate = ({ pageContext }: PageProps) => {
                         <Link to={post.slug}>
                           {post.title}
                         </Link>
-                        {' '} - {post.date}
+                        {' '}
+                        <small>- {post.date}</small>
                       </TagWrapper>
                     )
                   })
