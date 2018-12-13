@@ -1,7 +1,6 @@
-// @ts-ignore
 import { Link } from 'gatsby'
-import React from 'react'
 import KebabCase from 'lodash/kebabCase'
+import React from 'react'
 
 interface Props {
   tags: string[]

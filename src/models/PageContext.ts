@@ -5,15 +5,15 @@ interface PageContext {
   tag?: string
   siteTitle?: string
   // tslint:disable-next-line:no-any
-  posts?: Post[]
+  posts: any
   recommended: RecommendedPost
 
-  next?: string
-  prev?: string
-  total?: number
-  page?: number
-  pages?: number
-  nodes?: Node[]
+  next: string
+  prev: string
+  total: number
+  page: number
+  pages: number
+  nodes: Node[]
 }
 
 interface Node {

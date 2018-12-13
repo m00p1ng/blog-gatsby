@@ -1,12 +1,11 @@
-// @ts-ignore
-import { GatsbyImageProps } from 'gatsby-image'
+import Image from './Image'
 
 interface Frontmatter {
   date: string
   title: string
   tags: string[]
   description: string
-  image: GatsbyImageProps
+  image: Image
 }
 
 export default Frontmatter

@@ -1,22 +1,18 @@
-// @ts-ignore
-import { graphql, Link } from 'gatsby'
-// @ts-ignore
-import Img, { GatsbyImageProps } from 'gatsby-image'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { DiscussionEmbed } from 'disqus-react'
+import { graphql } from 'gatsby'
+import Img from 'gatsby-image'
 import React from 'react'
 import Helmet from 'react-helmet'
-import styled from 'styled-components'
-// @ts-ignore
-import { DiscussionEmbed } from 'disqus-react'
-// @ts-ignore
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-// @ts-ignore
 import readingTime from 'reading-time'
+import styled from 'styled-components'
 
 import Layout from '../components/Layout'
-import TagList from '../components/TagList'
 import PostNavigation from '../components/PostNavigation'
 import RecommendedWidget from '../components/RecommendedWidget'
+import TagList from '../components/TagList'
 
+import Image from '../models/Image'
 import PageProps from '../models/PageProps'
 
 import 'katex/dist/katex.min.css'
@@ -40,11 +36,16 @@ const HRLine = styled.hr`
   background-color: rgba(0, 0, 0, 0.075);
   height: 3px;
 `
-const hasImage = (image: GatsbyImageProps) => (
+const hasImage = (image: Image) => (
   image ? 'post__remove-image-radius' : ''
 )
 
-const ImageHeader = ({ image, title }: { image: GatsbyImageProps, title: string }) => (
+interface ImageHeaderProps {
+  image: Image
+  title: string
+}
+
+const ImageHeader = ({ image, title }: ImageHeaderProps) => (
   <div className="card-image">
     <figure className="image">
       <Img

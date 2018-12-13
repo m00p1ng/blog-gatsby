@@ -1,6 +1,6 @@
 import AllMarkdownRemark from './AllMarkdownRemark'
-import Post from './Post'
 import Page from './Page'
+import Post from './Post'
 import Site from './Site'
 
 interface Data {

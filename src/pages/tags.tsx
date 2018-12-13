@@ -1,11 +1,10 @@
-// @ts-ignore
-import { Link, graphql } from 'gatsby'
-import React from 'react'
+import { graphql, Link } from 'gatsby'
 import KebabCase from 'lodash/kebabCase'
+import React from 'react'
 import Helmet from 'react-helmet'
 
-import Layout from '../components/Layout'
 import Banner from '../components/Banner'
+import Layout from '../components/Layout'
 
 import PageProps from '../models/PageProps'
 
@@ -30,7 +29,7 @@ const TagsPage = ({ data }: PageProps) => {
           <div className="tags">
             {tags.map((tag) => (
               <Link
-                key={tag}
+                key={tag.fieldValue}
                 className="tag is-link is-medium"
                 to={`/tags/${KebabCase(tag.fieldValue)}`}
               >

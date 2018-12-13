@@ -1,14 +1,13 @@
-// @ts-ignore
-import { graphql, Link } from 'gatsby'
+import { Link } from 'gatsby'
+import KebabCase from 'lodash/kebabCase'
 import React from 'react'
 import Helmet from 'react-helmet'
 import styled from 'styled-components'
-import KebabCase from 'lodash/kebabCase'
 
-import Layout from '../components/Layout'
-import PostPreview from '../components/PostPreview'
-import Pagination from '../components/Pagination'
 import Banner from '../components/Banner'
+import Layout from '../components/Layout'
+import Pagination from '../components/Pagination'
+import PostPreview from '../components/PostPreview'
 
 import PageProps from '../models/PageProps'
 

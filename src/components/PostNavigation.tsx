@@ -1,8 +1,6 @@
-// @ts-ignore
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { Link } from 'gatsby'
 import React from 'react'
-// @ts-ignore
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 import Page from '../models/Page'
 

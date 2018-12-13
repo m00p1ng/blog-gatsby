@@ -1,11 +1,8 @@
-// @ts-ignore
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { Link } from 'gatsby'
-// @ts-ignore
 import Img from 'gatsby-image'
 import React from 'react'
 import styled from 'styled-components'
-// @ts-ignore
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 import TagList from './TagList'
 
