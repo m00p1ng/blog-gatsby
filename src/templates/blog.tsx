@@ -1,10 +1,10 @@
 import React from 'react'
-import styled from 'styled-components'
 import Helmet from 'react-helmet'
+import styled from 'styled-components'
 
 import Layout from '../components/Layout'
-import PostPreview from '../components/PostPreview'
 import Pagination from '../components/Pagination'
+import PostPreview from '../components/PostPreview'
 
 import PageProps from '../models/PageProps'
 

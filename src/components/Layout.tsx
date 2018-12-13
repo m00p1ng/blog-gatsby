@@ -14,6 +14,26 @@ interface Props {
   children: React.ReactNode
 }
 
+interface LayoutRenderProps {
+  children: React.ReactNode
+  data: Data
+}
+
+const LayoutRender = ({ children, data }: LayoutRenderProps) => {
+  const { title, subtitle } = data.site.siteMetadata
+
+  return (
+    <div className="site">
+      <Helmet title={`${title} - ${subtitle}`} />
+      <Header siteTitle={title} />
+      <div className="site-content">
+        {children}
+      </div>
+      <Footer />
+    </div>
+  )
+}
+
 const Layout = ({ children }: Props) => (
   <StaticQuery
     query={graphql`
@@ -27,19 +47,7 @@ const Layout = ({ children }: Props) => (
       }
     `}
     render={(data: Data) => (
-      <div className="site">
-        <Helmet
-          title={`${data.site.siteMetadata.title} - ${data.site.siteMetadata.subtitle}`}
-        >
-          <html lang="en" />
-        </Helmet>
-
-        <Header siteTitle={data.site.siteMetadata.title} />
-        <div className="site-content">
-          {children}
-        </div>
-        <Footer />
-      </div>
+      LayoutRender({ children, data })
     )}
   />
 )

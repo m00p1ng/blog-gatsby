@@ -10,7 +10,7 @@ interface Props {
 const TagList = ({ tags, size }: Props) => {
   return (
     <div className="tags">
-      {tags.map((tag: string) => (
+      {tags.map((tag) => (
         <Link
           key={tag}
           className={`tag is-link ${size}`}

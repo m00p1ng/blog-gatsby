@@ -28,7 +28,10 @@ const TagTemplate = ({ pageContext }: PageProps) => {
       <Helmet title={`#${tag} - All posts | ${siteTitle}`} />
       <Banner
         title={
-          <Link to={`/tags/${KebabCase(tag)}`} className="hero-tag-hover">
+          <Link
+            to={`/tags/${KebabCase(tag)}`}
+            className="hero-tag-hover"
+          >
             #{tag}
           </Link>
         }
@@ -39,19 +42,14 @@ const TagTemplate = ({ pageContext }: PageProps) => {
           <div className="box">
             <div className="content is-medium">
               <ul>
-                {
-                  posts.map((post: TagPost) => {
-                    return (
-                      <TagWrapper key={post.id} >
-                        <Link to={post.slug}>
-                          {post.title}
-                        </Link>
-                        {' '}
-                        <small>- {post.date}</small>
-                      </TagWrapper>
-                    )
-                  })
-                }
+                {posts.map((post: TagPost) => (
+                  <TagWrapper key={post.id} >
+                    <Link to={post.slug}>
+                      {post.title}
+                    </Link>
+                    <small> - {post.date}</small>
+                  </TagWrapper>
+                ))}
               </ul>
             </div>
           </div>

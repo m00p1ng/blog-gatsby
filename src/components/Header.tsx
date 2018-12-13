@@ -30,7 +30,11 @@ const Header = ({ siteTitle }: Props) => (
             <Link to="/" className="navbar-item navbar-center">
               {siteTitle}
             </Link>
-            <div onClick={ToggleBurger} className="navbar-burger" data-target="main-navbar-menu">
+            <div
+              onClick={ToggleBurger}
+              className="navbar-burger"
+              data-target="main-navbar-menu"
+            >
               <span />
               <span />
               <span />

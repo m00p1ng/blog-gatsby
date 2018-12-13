@@ -15,7 +15,11 @@ const recommendHeader = (type: string) => (
   type === 'recommend' ? 'Related' : 'Latest'
 )
 
-const RecommendedWidget = ({ recommended }: { recommended: RecommendedPost }) => (
+interface Props {
+  recommended: RecommendedPost
+}
+
+const RecommendedWidget = ({ recommended }: Props) => (
   <RecommendWrapper>
     <HeaderWrapper>
       <h1 className="title is-5">
@@ -26,7 +30,8 @@ const RecommendedWidget = ({ recommended }: { recommended: RecommendedPost }) =>
       <ul>
         {recommended.posts.map(post => (
           <li key={post.slug}>
-            <Link to={post.slug}>{post.title}</Link> - <small>{post.date}</small>
+            <Link to={post.slug}>{post.title}</Link>
+            <small> - {post.date}</small>
           </li>
         ))}
       </ul>

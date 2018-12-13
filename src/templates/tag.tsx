@@ -27,27 +27,39 @@ const Tags = ({ pageContext }: PageProps) => {
     tag
   } = pageContext
 
+  const postText = (total: number) => {
+    const post = `post${(total !== 1) ? 's' : ''}`
+
+    return `${total} ${post}`
+  }
+
+  const pageText = (page: number, pages: number) => (
+    pages !== 1 ? `• Page ${page} of ${pages}` : ''
+  )
+
+  const pageTitleText = (page: number) => (
+    page !== 1 ? `• Page ${page}` : ''
+  )
+
   return (
     <Layout>
       <Banner
         title={
-          <Link to={`/tags/${KebabCase(tag)}/all`} className="hero-tag-hover">
+          <Link
+            to={`/tags/${KebabCase(tag)}/all`}
+            className="hero-tag-hover"
+          >
             #{tag}
           </Link>
         }
-        subtitle={
-          `${total} post${(total !== 1) ? 's' : ''} ${(pages !== 1) ? `• Page ${page} of ${pages} ` : ''}`
-        }
+        subtitle={`${postText(total)} ${pageText(page, pages)}`}
       />
       <ResultWrapper className="container">
-        <Helmet title={`#${tag}${page !== 1 ? ` • Page ${page}` : ''} | ${siteTitle}`} /> :
-
+        <Helmet title={`#${tag} ${pageTitleText(page)} | ${siteTitle}`} />
         <div className="blog-container">
-          {
-            nodes.map(({ node }) => (
-              <PostPreview key={node.id} post={node} />
-            ))
-          }
+          {nodes.map(({ node }) => (
+            <PostPreview key={node.id} post={node} />
+          ))}
           {(next || prev) && (
             <Pagination
               next={next}
