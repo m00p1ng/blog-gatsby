@@ -11,5 +11,5 @@ import { faAngleDoubleRight } from '@fortawesome/free-solid-svg-icons/faAngleDou
 library.add(
   faCalendarAlt,
   faAngleDoubleLeft,
-  faAngleDoubleRight
+  faAngleDoubleRight,
 )

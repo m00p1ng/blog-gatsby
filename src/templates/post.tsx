@@ -9,6 +9,8 @@ import styled from 'styled-components'
 import { DiscussionEmbed } from 'disqus-react'
 // @ts-ignore
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+// @ts-ignore
+import readingTime from 'reading-time'
 
 import Layout from '../components/Layout'
 import TagList from '../components/TagList'
@@ -52,14 +54,18 @@ const ImageHeader = ({ image, title }: { image: Image, title: string }) => (
   </div>
 )
 
-const DateSubHeader = ({ date }: { date: string }) => (
-  <DateWrapper>
-    <span className="icon">
-      <CalendarIcon icon="calendar-alt" />
-    </span>
-    {date}
-  </DateWrapper>
-)
+const DateSubHeader = ({ date, html }: { date: string, html: string }) => {
+  const readingStat = readingTime(html)
+
+  return (
+    <DateWrapper>
+      <span className="icon">
+        <CalendarIcon icon="calendar-alt" />
+      </span>
+      {date}・{readingStat.text}
+    </DateWrapper>
+  )
+}
 
 const Disqus = ({ id, title }: { id: string, title: string }) => {
   const disqusShortname = 'm00p1ng-github-io'
@@ -93,7 +99,7 @@ const PostTemplate = ({ data, pageContext }: PageProps) => {
             )}
             <div className="card-content is-medium">
               <h1 className="title is-size-3_5-mobile">{title}</h1>
-              <DateSubHeader date={date} />
+              <DateSubHeader date={date} html={post.html} />
               <HRLine />
               <div className="content markdown">
                 <div dangerouslySetInnerHTML={{ __html: post.html }} />
@@ -117,7 +123,7 @@ export const query = graphql`
       html
       frontmatter {
         title
-        date(formatString: "MMMM DD, YYYY | HH:mm")
+        date(formatString: "MMMM DD, YYYY")
         tags
         image {
           childImageSharp {
