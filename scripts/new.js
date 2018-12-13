@@ -7,6 +7,11 @@ const getData = async () => {
   const meta = await inquirer.prompt([
     {
       type: 'string',
+      message: `folder name post?`,
+      name: 'folder',
+    },
+    {
+      type: 'string',
       message: `Title of post?`,
       name: 'title',
     },
@@ -29,22 +34,27 @@ const getFrontmatter = ({
   title,
   description,
   tags,
+  folder,
 }) => {
   const today = new Date()
   const todayTimezoneOffset = today.getTime() - (today.getTimezoneOffset() * 60000)
   const todayISODate = new Date(todayTimezoneOffset).toISOString()
 
   return {
-    title,
-    date: todayISODate,
-    tags: `[${tags
-      .split(',')
-      .map(tag => `"${tag.trim()}"`)
-      .join(',')}]`,
-    description,
-    published: false,
-  };
-};
+    folder,
+    frontmatter: {
+      title,
+      folder,
+      date: todayISODate,
+      tags: `[${tags
+        .split(',')
+        .map(tag => `"${tag.trim()}"`)
+        .join(',')}]`,
+      description,
+      published: false,
+    }
+  }
+}
 
 const getConfirmation = async (frontmatter) => {
   console.log(`Creating a new post with the following data.`);
@@ -59,16 +69,16 @@ const getConfirmation = async (frontmatter) => {
   return confirm.confirm;
 };
 
-const createPage = async (frontmatter) => {
+const createPage = async (frontmatter, folder) => {
   const markdown = `---${Object.keys(frontmatter).reduce(
     (prev, current) => `${prev}\n${current}: ${frontmatter[current]}`,
     ''
   )}\n---\n\nA new post`;
 
-  const { title, date } = frontmatter;
+  const { date } = frontmatter;
 
   const fullDate = date.slice(0, 10);
-  const folderName = `${fullDate}___${_.kebabCase(title)}`;
+  const folderName = `${fullDate}___${_.kebabCase(folder)}`;
   const pathContent = path.join(
     __dirname,
     `../src/content/${folderName}`
@@ -105,14 +115,14 @@ const createPage = async (frontmatter) => {
 
 const init = () => {
   getData().then(async data => {
-    const frontmatter = getFrontmatter(data);
-    const confirmed = await getConfirmation(frontmatter);
+    const meta = getFrontmatter(data);
+    const confirmed = await getConfirmation(meta.frontmatter);
     if (!confirmed) {
       init();
       return;
     }
     console.log(`Creating new post`);
-    createPage(frontmatter);
+    createPage(meta.frontmatter, meta.folder);
   });
 }
 
