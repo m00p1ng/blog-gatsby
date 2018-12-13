@@ -23,8 +23,100 @@ const createIndexPaage = ({ createPage, posts, siteTitle, limit }) => {
   })
 }
 
+const getSeries = ({ allPosts, post }) => {
+  const postByseries = allPosts.filter(({ node }) => (
+    node.frontmatter.series === post.series
+  ))
+  postByseries.sort((a, b) =>
+    a.node.frontmatter.episode - b.node.frontmatter.episode
+  )
+
+  const currentEPIndex = postByseries.findIndex(
+    x => x.node.frontmatter.episode == post.episode
+  )
+
+  if (currentEPIndex == 0) {
+    return postByseries.slice(1)
+  } else if (currentEPIndex == postByseries.length - 1) {
+    return postByseries.slice(0, -1).reverse()
+  } else {
+    let remainPost = []
+    if (currentEPIndex - 1 >= 0) {
+      remainPost = postByseries.slice(0, currentEPIndex - 1)
+    }
+    return [
+      postByseries[currentEPIndex - 1],
+      ...postByseries.slice(currentEPIndex + 1),
+      ...remainPost,
+    ]
+  }
+}
+
+const getRelatedPost = ({ allPosts, post, includedSeries = false }) => {
+  const hasRelatedTags = ({ node }) => {
+    if (post.title === node.frontmatter.title) {
+      return false
+    }
+
+    if (
+      !includedSeries &&
+      post.series !== null &&
+      post.series === node.frontmatter.series
+    ) {
+      return false
+    }
+
+    const commonTags = _.intersection(post.tags, node.frontmatter.tags)
+    return commonTags.length >= 1
+  }
+
+  const diffDate = (a, b) => {
+    const dateA = new Date(a).getTime();
+    const dateB = new Date(b).getTime();
+    return Math.abs(dateA - dateB)
+  }
+
+  const filteredResult = allPosts.filter(hasRelatedTags)
+  filteredResult.sort((a, b) => {
+    const commonTagsA = _.intersection(post.tags, a.node.frontmatter.tags)
+    const commonTagsB = _.intersection(post.tags, b.node.frontmatter.tags)
+    const dateA = diffDate(a.node.frontmatter.ISODate, post.ISODate)
+    const dateB = diffDate(b.node.frontmatter.ISODate, post.ISODate)
+
+    if (commonTagsA.length != commonTagsB.length) {
+      return commonTagsB.length - commonTagsA.length
+    }
+
+    return dateA - dateB
+  })
+
+  return filteredResult
+}
+
+const generateRecommendedPost = ({ allPosts, post, limit }) => {
+  let recommendList = []
+
+  if (post.series !== null) {
+    recommendList = getSeries({ allPosts, post })
+  }
+
+  if (recommendList.length >= limit) {
+    return recommendList.slice(0, limit)
+  }
+
+  const remainList = limit - recommendList.length
+  const relatedPost = getRelatedPost({ allPosts, post })
+  recommendList = [
+    ...recommendList,
+    ...relatedPost.slice(0, remainList),
+  ]
+
+  return recommendList
+}
+
 const createPublishedPage = ({ createPage, posts, siteTitle }) => {
   const postTemplate = path.resolve('./src/templates/post.tsx')
+  const RECOMMENDED_LIMIT = 5
 
   createLinkedPages({
     createPage,
@@ -33,12 +125,37 @@ const createPublishedPage = ({ createPage, posts, siteTitle }) => {
     edgeParser: edge => {
       const {
         fields: { slug },
+        frontmatter,
       } = edge.node;
+
+      let recommendedPosts = generateRecommendedPost({
+        allPosts: posts,
+        post: frontmatter,
+        limit: RECOMMENDED_LIMIT,
+      })
+
+      let recommendType = 'recommend'
+      if (recommendedPosts.length == 0) {
+        recommendType = 'latest'
+        recommendedPosts = posts.slice(0, RECOMMENDED_LIMIT)
+      }
+
+      const recommendResult = recommendedPosts
+        .map(({ node }) => ({
+          title: node.frontmatter.title,
+          slug: node.fields.slug,
+          date: node.frontmatter.date,
+        }))
+
       return {
         path: slug,
         context: {
           slug,
           siteTitle,
+          recommended: {
+            type: recommendType,
+            posts: recommendResult,
+          },
         },
       }
     },
@@ -134,7 +251,10 @@ exports.createPages = ({ graphql, actions }) => {
               frontmatter {
                 title
                 date(formatString: "MMMM DD, YYYY")
+                ISODate: date
                 tags
+                series
+                episode
                 description
                 image {
                   childImageSharp {

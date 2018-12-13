@@ -15,6 +15,7 @@ import readingTime from 'reading-time'
 import Layout from '../components/Layout'
 import TagList from '../components/TagList'
 import PostNavigation from '../components/PostNavigation'
+import RecommendedWidget from '../components/RecommendedWidget'
 
 import PageProps from '../models/PageProps'
 
@@ -85,7 +86,7 @@ const Disqus = ({ id, title }: { id: string, title: string }) => {
 const PostTemplate = ({ data, pageContext }: PageProps) => {
   const { post, nextPost, prevPost } = data
   const { title, date, tags, image } = post.frontmatter
-  const { siteTitle } = pageContext
+  const { siteTitle, recommended } = pageContext
 
   return (
     <Layout>
@@ -105,6 +106,9 @@ const PostTemplate = ({ data, pageContext }: PageProps) => {
               </div>
               <TagList tags={tags} size="is-medium" />
               <PostNavigation nextPost={nextPost} prevPost={prevPost} />
+              {recommended.posts.length !== 0 && (
+                <RecommendedWidget recommended={recommended} />
+              )}
               <Disqus id={post.id} title={post.frontmatter.title} />
             </div>
           </div>
