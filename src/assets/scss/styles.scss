@@ -61,7 +61,7 @@
   }
 
   .pagination-page {
-    display: flex;
+    display: inline-flex;
     justify-content: center;
     align-items: center;
   }
@@ -72,12 +72,12 @@
     }
   }
 
-  .orange-shadow {
-    box-shadow: 8px 14px 38px rgba(255, 165, 0, 0.25), 1px 3px 8px rgba(255, 165, 0, 0.3);
-  }
-
   .hero-tag-hover:hover {
     text-decoration: underline;
+  }
+
+  .orange-shadow {
+    box-shadow: 8px 14px 38px rgba(255, 165, 0, 0.25), 1px 3px 8px rgba(255, 165, 0, 0.3);
   }
 }
 
