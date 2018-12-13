@@ -26,7 +26,7 @@ const RecommendedWidget = ({ recommended }: { recommended: RecommendedPost }) =>
     <div className="content markdown">
       <ul>
         {recommended.posts.map(post => (
-          <li>
+          <li key={post.slug}>
             <Link to={post.slug}>{post.title}</Link> - <small>{post.date}</small>
           </li>
         ))}

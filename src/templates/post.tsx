@@ -29,7 +29,7 @@ const DateWrapper = styled.div`
 `
 
 const DisqusWrapper = styled.div`
-  margin-top: 1.5rem;
+  margin-top: 3rem;
 `
 
 const CalendarIcon = styled(FontAwesomeIcon)`
@@ -86,7 +86,7 @@ const Disqus = ({ id, title }: { id: string, title: string }) => {
 const PostTemplate = ({ data, pageContext }: PageProps) => {
   const { post, nextPost, prevPost } = data
   const { title, date, tags, image } = post.frontmatter
-  const { siteTitle, recommended } = pageContext
+  const { siteTitle, recommended, total } = pageContext
 
   return (
     <Layout>
@@ -105,9 +105,11 @@ const PostTemplate = ({ data, pageContext }: PageProps) => {
                 <div dangerouslySetInnerHTML={{ __html: post.html }} />
               </div>
               <TagList tags={tags} size="is-medium" />
-              <PostNavigation nextPost={nextPost} prevPost={prevPost} />
-              {recommended.posts.length !== 0 && (
-                <RecommendedWidget recommended={recommended} />
+              {total && total >= 3 && (
+                <>
+                  <PostNavigation nextPost={nextPost} prevPost={prevPost} />
+                  <RecommendedWidget recommended={recommended} />
+                </>
               )}
               <Disqus id={post.id} title={post.frontmatter.title} />
             </div>
@@ -121,7 +123,7 @@ const PostTemplate = ({ data, pageContext }: PageProps) => {
 export default PostTemplate
 
 export const query = graphql`
-  query PostsQuery($slug: String!, $prev: String!, $next: String!) {
+  query PostsQuery($slug: String!, $prev: String, $next: String) {
     post: markdownRemark(fields: {slug: {eq: $slug}}) {
       html
       frontmatter {
