@@ -43,14 +43,13 @@ const getFrontmatter = ({
   return {
     folder,
     frontmatter: {
-      title,
-      folder,
+      title: `"${title}"`,
       date: todayISODate,
       tags: `[${tags
         .split(',')
         .map(tag => `"${tag.trim()}"`)
         .join(',')}]`,
-      description,
+      description: `"${description}"`,
       published: false,
     }
   }
