@@ -1,7 +1,7 @@
 // @ts-ignore
 import { graphql, Link } from 'gatsby'
 // @ts-ignore
-import Img from 'gatsby-image'
+import Img, { GatsbyImageProps } from 'gatsby-image'
 import React from 'react'
 import Helmet from 'react-helmet'
 import styled from 'styled-components'
@@ -17,7 +17,6 @@ import TagList from '../components/TagList'
 import PostNavigation from '../components/PostNavigation'
 
 import PageProps from '../models/PageProps'
-import Image from '../models/Image'
 
 import 'katex/dist/katex.min.css'
 import 'prismjs/themes/prism.css'
@@ -40,11 +39,11 @@ const HRLine = styled.hr`
   background-color: rgba(0, 0, 0, 0.075);
   height: 3px;
 `
-const hasImage = (image: Image) => (
+const hasImage = (image: GatsbyImageProps) => (
   image ? 'post__remove-image-radius' : ''
 )
 
-const ImageHeader = ({ image, title }: { image: Image, title: string }) => (
+const ImageHeader = ({ image, title }: { image: GatsbyImageProps, title: string }) => (
   <div className="card-image">
     <figure className="image">
       <Img
