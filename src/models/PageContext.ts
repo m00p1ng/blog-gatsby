@@ -7,6 +7,7 @@ interface PageContext {
   // tslint:disable-next-line:no-any
   posts: any
   recommended: RecommendedPost
+  slug: string
 
   next: string
   prev: string

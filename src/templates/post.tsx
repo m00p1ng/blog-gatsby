@@ -10,6 +10,7 @@ import styled from 'styled-components'
 import Layout from '../components/Layout'
 import PostNavigation from '../components/PostNavigation'
 import RecommendedWidget from '../components/RecommendedWidget'
+import SocialShareWidget from '../components/SocialShareWidget'
 import TagList from '../components/TagList'
 
 import Image from '../models/Image'
@@ -85,9 +86,10 @@ const Disqus = ({ id, title }: { id: string, title: string }) => {
 }
 
 const PostTemplate = ({ data, pageContext }: PageProps) => {
-  const { post, nextPost, prevPost } = data
-  const { title, date, tags, image } = post.frontmatter
-  const { siteTitle, recommended, total } = pageContext
+  const { post, nextPost, prevPost, site } = data
+  const { date, tags, image, title } = post.frontmatter
+  const { siteTitle, recommended, total, slug } = pageContext
+  const { url } = site.siteMetadata
 
   return (
     <Layout>
@@ -106,10 +108,11 @@ const PostTemplate = ({ data, pageContext }: PageProps) => {
                 <div dangerouslySetInnerHTML={{ __html: post.html }} />
               </div>
               <TagList tags={tags} size="is-medium" />
+              <SocialShareWidget url={`${url}/${slug}`} tags={tags} title={title} />
               {total && total >= 3 && (
                 <>
-                  <PostNavigation nextPost={nextPost} prevPost={prevPost} />
                   <RecommendedWidget recommended={recommended} />
+                  <PostNavigation nextPost={nextPost} prevPost={prevPost} />
                 </>
               )}
               <Disqus id={post.id} title={post.frontmatter.title} />
@@ -125,6 +128,11 @@ export default PostTemplate
 
 export const query = graphql`
   query PostsQuery($slug: String!, $prev: String, $next: String) {
+    site {
+      siteMetadata {
+        url
+      }
+    }
     post: markdownRemark(fields: {slug: {eq: $slug}}) {
       html
       frontmatter {

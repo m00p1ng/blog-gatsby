@@ -5,7 +5,7 @@ import styled from 'styled-components'
 import RecommendedPost from '../models/RecommendedPost'
 
 const RecommendWrapper = styled.div`
-  margin-bottom: 3rem;
+  margin-top: 3rem;
 `
 const HeaderWrapper = styled.div`
   margin-bottom: -0.5rem;

@@ -1,7 +1,9 @@
 module.exports = {
   siteMetadata: {
     title: 'm00p1ng',
-    subtitle: 'test subtitle',
+    subtitle: 'All about me',
+    url: 'https://m00p1ng.github.io',
+    description: 'Personal Blog'
   },
   plugins: [
     {
@@ -10,6 +12,12 @@ module.exports = {
         name: 'content',
         path: `${__dirname}/src/content`,
       },
+    },
+    {
+      resolve: 'gatsby-plugin-google-analytics',
+      options: {
+        // trackingId: 'ADD YOUR TRACKING ID HERE'
+      }
     },
     {
       resolve: 'gatsby-source-filesystem',
@@ -29,7 +37,7 @@ module.exports = {
           {
             resolve: `gatsby-remark-prismjs`,
             options: {
-              classPrefix: "language-",
+              classPrefix: 'language-',
               inlineCodeMarker: null,
               aliases: {},
               showLineNumbers: false,

@@ -24,7 +24,7 @@ const LayoutRender = ({ children, data }: LayoutRenderProps) => {
 
   return (
     <div className="site">
-      <Helmet title={`${title} - ${subtitle}`} >
+      <Helmet title={`${title} - ${subtitle}`}>
         <html lang="en" />
       </Helmet>
       <Header siteTitle={title} />
