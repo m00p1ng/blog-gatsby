@@ -1,3 +1,4 @@
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { Link } from 'gatsby'
 import React from 'react'
 import styled from 'styled-components'
@@ -17,15 +18,15 @@ interface NavLinkProps {
   link: string
   rel: string
   className: string
-  text: string
+  content: JSX.Element
 }
 
-const NavLink = ({ link, rel, className, text }: NavLinkProps) => (
+const NavLink = ({ link, rel, className, content }: NavLinkProps) => (
   <Link to={link} rel={rel}>
     <h1 className={
       `title pagination-font pagination-link ${className}`
     }>
-      {text}
+      {content}
     </h1>
   </Link>
 )
@@ -39,7 +40,14 @@ const PaginationTemplate = ({ next, prev, page, pages }: Props) => (
             link={prev}
             rel={'prev'}
             className="pagination-link__left"
-            text="← Newer"
+            content={
+              <>
+                <span className="icon is-medium">
+                  <FontAwesomeIcon icon="angle-double-left" />
+                </span>
+                Newer
+              </>
+            }
           />
         )}
       </div>
@@ -54,7 +62,14 @@ const PaginationTemplate = ({ next, prev, page, pages }: Props) => (
             link={next}
             rel={'next'}
             className="pagination-link__right"
-            text="Older →"
+            content={
+              <>
+                Older
+                <span className="icon is-medium">
+                  <FontAwesomeIcon icon="angle-double-right" />
+                </span>
+              </>
+            }
           />
         )}
       </div>

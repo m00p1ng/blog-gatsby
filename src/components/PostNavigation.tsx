@@ -14,12 +14,12 @@ const PostNavigation = ({ nextPost, prevPost }: Props) => (
     {nextPost && nextPost != null ? (
       <Link
         to={nextPost.fields.slug}
-        className="post-navigation__previous button is-outlined is-link is-rounded"
+        className="post-navigation__previous button is-outlined is-link is-rounded pagination-link__left"
       >
         <span className="icon is-medium">
           <FontAwesomeIcon icon="angle-double-left" />
         </span>
-        <span className="post-navigation__label">
+        <span>
           {nextPost.frontmatter.title}
         </span>
       </Link>
@@ -27,9 +27,9 @@ const PostNavigation = ({ nextPost, prevPost }: Props) => (
     {prevPost && prevPost != null ? (
       <Link
         to={prevPost.fields.slug}
-        className="post-navigation__next button is-outlined is-link is-rounded"
+        className="post-navigation__next button is-outlined is-link is-rounded pagination-link__right"
       >
-        <span className="post-navigation__label">
+        <span>
           {prevPost.frontmatter.title}
         </span>
         <span className="icon is-medium">
