@@ -40,14 +40,10 @@ const getSeries = ({ allPosts, post }) => {
   } else if (currentEPIndex == postByseries.length - 1) {
     return postByseries.slice(0, -1).reverse()
   } else {
-    let remainPost = []
-    if (currentEPIndex - 1 >= 0) {
-      remainPost = postByseries.slice(0, currentEPIndex - 1)
-    }
     return [
       postByseries[currentEPIndex - 1],
       ...postByseries.slice(currentEPIndex + 1),
-      ...remainPost,
+      ...postByseries.slice(0, currentEPIndex - 1)
     ]
   }
 }
@@ -103,12 +99,12 @@ const generateRecommendedPost = ({ allPosts, post, limit }) => {
   if (recommendList.length >= limit) {
     return recommendList.slice(0, limit)
   }
-
-  const remainList = limit - recommendList.length
+  const remainLimit = limit - recommendList.length
   const relatedPost = getRelatedPost({ allPosts, post })
+
   recommendList = [
     ...recommendList,
-    ...relatedPost.slice(0, remainList),
+    ...relatedPost.slice(0, remainLimit),
   ]
 
   return recommendList
