@@ -108,7 +108,7 @@ const PostTemplate = ({ data, pageContext }: PageProps) => {
                 <div dangerouslySetInnerHTML={{ __html: post.html }} />
               </div>
               <TagList tags={tags} size="is-medium" />
-              <SocialShareWidget url={`${url}/${slug}`} tags={tags} title={title} />
+              <SocialShareWidget url={`${url}${slug}`} tags={tags} title={title} />
               {total && total >= 3 && (
                 <>
                   <RecommendedWidget recommended={recommended} />
