@@ -4,6 +4,7 @@ interface Site {
     subtitle: string
     url: string
     description: string
+    author: string
   }
 }
 

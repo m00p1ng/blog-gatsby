@@ -10,6 +10,7 @@ import styled from 'styled-components'
 import Layout from '../components/Layout'
 import PostNavigation from '../components/PostNavigation'
 import RecommendedWidget from '../components/RecommendedWidget'
+import SEOHelmet from '../components/SEOHelmet'
 import SocialShareWidget from '../components/SocialShareWidget'
 import TagList from '../components/TagList'
 
@@ -86,25 +87,22 @@ const Disqus = ({ id, title }: { id: string, title: string }) => {
 }
 
 const PostTemplate = ({ data, pageContext }: PageProps) => {
+  const { post, nextPost, prevPost, site } = data
+  const { date, tags, image, title } = post.frontmatter
   const { siteTitle, recommended, total, slug } = pageContext
-
-  const {
-    site: {
-      siteMetadata: { url }
-    },
-    post: {
-      id,
-      html,
-      frontmatter: { date, tags, image, title }
-    },
-    prevPost,
-    nextPost,
-  } = data
+  const { url } = site.siteMetadata
+  const siteTitleName = `${title} | ${siteTitle}`
 
   return (
     <Layout>
       <div className="container">
-        <Helmet title={`${title} | ${siteTitle}`} />
+        <Helmet title={siteTitleName} />
+        <SEOHelmet
+          post={post}
+          site={site}
+          siteTitle={siteTitleName}
+          slug={slug}
+        />
         <div className="post">
           <div className={`card orange-shadow ${hasImage(image)}`}>
             {image && (
@@ -112,10 +110,10 @@ const PostTemplate = ({ data, pageContext }: PageProps) => {
             )}
             <div className="card-content is-medium">
               <h1 className="title is-size-3_5-mobile">{title}</h1>
-              <DateSubHeader date={date} html={html} />
+              <DateSubHeader date={date} html={post.html} />
               <HRLine />
               <div className="content markdown">
-                <div dangerouslySetInnerHTML={{ __html: html }} />
+                <div dangerouslySetInnerHTML={{ __html: post.html }} />
               </div>
               <TagList tags={tags} size="is-medium" />
               <SocialShareWidget url={`${url}${slug}`} tags={tags} title={title} />
@@ -125,7 +123,7 @@ const PostTemplate = ({ data, pageContext }: PageProps) => {
                   <PostNavigation nextPost={nextPost} prevPost={prevPost} />
                 </>
               )}
-              <Disqus id={id} title={title} />
+              <Disqus id={post.id} title={title} />
             </div>
           </div>
         </div>

@@ -26,7 +26,8 @@ const LayoutRender = ({ children, data }: LayoutRenderProps) => {
       siteMetadata: {
         title,
         description,
-        subtitle
+        subtitle,
+        author,
       },
     },
   } = data
@@ -35,7 +36,16 @@ const LayoutRender = ({ children, data }: LayoutRenderProps) => {
     <div className="site">
       <Helmet title={`${title} - ${subtitle}`}>
         <html lang="en" />
+
         <meta name="description" content={description} />
+        <meta name="author" content={author} />
+
+        <meta property="og:title" content="m00p1ng - Personal Blog" />
+        <meta property="og:site_name" content="m00p1ng - Personal Blog" />
+        <meta property="og:type" content="blog" />
+        <meta property="og:locale" content="th" />
+        <meta property="og:description" content={description} />
+
       </Helmet>
       <Header siteTitle={`:${title}:`} />
       <div className="site-content">
@@ -55,6 +65,8 @@ const Layout = ({ children }: Props) => (
           siteMetadata {
             title
             subtitle
+            description
+            author
           }
         }
       }

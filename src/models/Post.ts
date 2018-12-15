@@ -5,7 +5,6 @@ interface Post {
     slug: string
   }
   id: string
-  excerpt: string
   html: string
   frontmatter: Frontmatter
 }

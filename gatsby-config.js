@@ -3,7 +3,8 @@ module.exports = {
     title: 'm00p1ng',
     subtitle: 'All about me',
     url: 'https://m00p1ng.github.io',
-    description: 'Personal Blog'
+    description: 'Personal Blog of m00p1ng',
+    author: 'Mongkonchai Priyachiwa',
   },
   plugins: [
     {
