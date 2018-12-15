@@ -13,10 +13,8 @@
     flex: 1 0 auto;
 
     .container {
-      @include from($desktop) {
-        max-width: 960px;
-        width: 960px;
-      }
+      max-width: 960px;
+      width: 100%;
     }
   }
 
@@ -39,39 +37,41 @@
     opacity: 0;
     transition: opacity .3s ease-in;
     position: fixed;
-    bottom: 20px;
-    right: 20px;
+    bottom: 30px;
+    right: 30px;
     z-index: 99;
     cursor: default;
   }
 
-  .scroll-text {
-    display: inline-flex;
-    justify-content: center;
-    align-items: center;
-  }
-
-  .scroll-mobile {
+  .scroll {
     transition-duration: 1s;
 
-    @include until($desktop) {
-      display: block;
+    &__text {
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
     }
 
-    @include from($desktop) {
-      display: none;
+    &__mobile {
+
+      @include until($desktop) {
+        display: block;
+      }
+
+      @include from($desktop) {
+        display: none;
+      }
     }
-  }
 
-  .scroll-not-mobile {
-    transition-duration: 1s;
+    &__not-mobile {
 
-    @include until($desktop) {
-      display: none;
-    }
+      @include until($desktop) {
+        display: none;
+      }
 
-    @include from($desktop) {
-      display: block;
+      @include from($desktop) {
+        display: block;
+      }
     }
   }
 
