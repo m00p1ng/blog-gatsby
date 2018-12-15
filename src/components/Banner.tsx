@@ -7,29 +7,23 @@ interface Props {
 }
 
 const BannerWrapper = styled.div`
-  margin-bottom: 1rem;
-`
-
-const HeroContentWrapper = styled.div`
-  margin-top: -1rem;
+  margin: 1rem 0;
 `
 
 const Banner = ({ title, subtitle }: Props) => (
   <BannerWrapper>
-    <section className="hero is-warning">
-      <div className="hero-body hero-from-tablet">
-        <div className="container">
-          <HeroContentWrapper className="blog-container">
-            <h1 className="title has-text-white is-size-3_5-mobile">
-              {title}
-            </h1>
-            <h2 className="subtitle has-text-white">
-              {subtitle}
-            </h2>
-          </HeroContentWrapper>
+    <div className="banner">
+      <div className="container">
+        <div className="blog-container">
+          <h1 className="title has-text-warning is-size-3_5-mobile">
+            {title}
+          </h1>
+          <h2 className="subtitle has-text-white">
+            {subtitle}
+          </h2>
         </div>
       </div>
-    </section>
+    </div>
   </BannerWrapper>
 )
 

@@ -36,9 +36,14 @@
 
 
   .tag {
-    background-color: lighten($link, 5%);
+    color: white;
+    background-color: lighten($link, 4.5%);
     box-shadow: 8px 14px 38px rgba(39, 44, 49, .1),
       1px 3px 8px rgba(39, 44, 49, .1);
+
+    &:hover {
+      opacity: 0.9;
+    }
   }
 
   .pagination-font {
@@ -66,14 +71,23 @@
     align-items: center;
   }
 
-  .hero-from-tablet {
+  .banner {
     @include until($desktop) {
-      padding: 2rem 1rem;
+      padding: 0 0.5rem;
     }
   }
 
-  .hero-tag-hover:hover {
+  a.hero-tag-hover:hover {
     text-decoration: underline;
+    color: orange !important;
+  }
+
+  .tag-content {
+    font-size: 1.25rem;
+
+    @include mobile {
+      font-size: 1rem;
+    }
   }
 
   .orange-shadow {
@@ -90,6 +104,10 @@
   }
 }
 
+.navbar-brand {
+  font-family: 'Roboto Mono', monospace;
+}
+
 .post-navigation {
   display: flex;
   flex-flow: row wrap;
@@ -98,8 +116,7 @@
   border-top: 4px solid rgba(0, 0, 0, 0.05);
   justify-content: space-between;
 
-  & &__previous,
-  & &__next {
+  .button {
     transition-duration: 0.2s;
     margin: 1rem 0;
     flex: 0 0 100%;
@@ -107,9 +124,7 @@
     @include from($desktop) {
       flex-basis: calc(50% - 1rem);
     }
-  }
 
-  .button {
     white-space: normal;
     height: auto;
   }

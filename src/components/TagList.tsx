@@ -13,7 +13,7 @@ const TagList = ({ tags, size }: Props) => {
       {tags.map((tag) => (
         <Link
           key={tag}
-          className={`tag is-link ${size}`}
+          className={`tag ${size}`}
           to={`/tags/${KebabCase(tag)}`}
         >
           {tag}

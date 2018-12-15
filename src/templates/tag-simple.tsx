@@ -28,19 +28,22 @@ const TagTemplate = ({ pageContext }: PageProps) => {
       <Helmet title={`#${tag} - All posts | ${siteTitle}`} />
       <Banner
         title={
-          <Link
-            to={`/tags/${KebabCase(tag)}`}
-            className="hero-tag-hover"
-          >
-            #{tag}
-          </Link>
+          <>
+            #
+            <Link
+              to={`/tags/${KebabCase(tag)}`}
+              className="hero-tag-hover has-text-warning"
+            >
+              {tag}
+            </Link>
+          </>
         }
         subtitle={`${total} post${total !== 1 ? 's' : ''}`}
       />
       <div className="container">
-        <div className="post">
+        <div className="blog-container">
           <div className="box">
-            <div className="content is-medium">
+            <div className="content tag-content">
               <ul>
                 {posts.map((post: TagPost) => (
                   <TagWrapper key={post.id} >
