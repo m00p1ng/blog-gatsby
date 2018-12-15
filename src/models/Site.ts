@@ -5,6 +5,7 @@ interface Site {
     url: string
     description: string
     author: string
+    disqus: string
   }
 }
 

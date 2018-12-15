@@ -5,6 +5,7 @@ module.exports = {
     url: 'https://m00p1ng.github.io',
     description: 'Personal Blog of m00p1ng',
     author: 'Mongkonchai Priyachiwa',
+    disqus: 'm00p1ng-github-io'
   },
   plugins: [
     {

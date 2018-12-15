@@ -26,7 +26,7 @@ const DateWrapper = styled.div`
   margin-top: -1.2rem;
 `
 
-const DisqusWrapper = styled.div`
+const DisqusWrapper = styled(DiscussionEmbed)`
   margin-top: 3rem;
 `
 
@@ -57,32 +57,31 @@ const ImageHeader = ({ image, title }: ImageHeaderProps) => (
   </div>
 )
 
-const DateSubHeader = ({ date, html }: { date: string, html: string }) => {
-  const readingStat = readingTime(html)
+const DateSubHeader = ({ date, html }: { date: string, html: string }) => (
+  <DateWrapper>
+    <span className="icon">
+      <CalendarIcon icon="calendar-alt" />
+    </span>
+    {date}・{readingTime(html).text}
+  </DateWrapper>
+)
 
-  return (
-    <DateWrapper>
-      <span className="icon">
-        <CalendarIcon icon="calendar-alt" />
-      </span>
-      {date}・{readingStat.text}
-    </DateWrapper>
-  )
+interface DisqusProps {
+  id: string
+  title: string
+  disqus: string
 }
 
-const Disqus = ({ id, title }: { id: string, title: string }) => {
-  const disqusShortname = 'm00p1ng-github-io'
+const Disqus = ({ id, title, disqus: disqusShortname }: DisqusProps) => {
   const disqusConfig = {
     identifier: id,
     title: title,
   }
 
   return (
-    <DisqusWrapper>
-      <DiscussionEmbed
-        shortname={disqusShortname}
-        config={disqusConfig} />
-    </DisqusWrapper>
+    <DisqusWrapper
+      shortname={disqusShortname}
+      config={disqusConfig} />
   )
 }
 
@@ -90,7 +89,7 @@ const PostTemplate = ({ data, pageContext }: PageProps) => {
   const { post, nextPost, prevPost, site } = data
   const { date, tags, image, title } = post.frontmatter
   const { siteTitle, recommended, total, slug } = pageContext
-  const { url } = site.siteMetadata
+  const { url, disqus } = site.siteMetadata
   const siteTitleName = `${title} | ${siteTitle}`
 
   return (
@@ -123,7 +122,7 @@ const PostTemplate = ({ data, pageContext }: PageProps) => {
                   <PostNavigation nextPost={nextPost} prevPost={prevPost} />
                 </>
               )}
-              <Disqus id={post.id} title={title} />
+              <Disqus id={post.id} title={title} disqus={disqus} />
             </div>
           </div>
         </div>
@@ -139,6 +138,7 @@ export const query = graphql`
     site {
       siteMetadata {
         url
+        disqus
       }
     }
     post: markdownRemark(fields: {slug: {eq: $slug}}) {
