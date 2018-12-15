@@ -32,7 +32,7 @@ const NavLink = ({ link, rel, className, content }: NavLinkProps) => (
 )
 
 const PaginationTemplate = ({ next, prev, page, pages }: Props) => (
-  <PaginationWrapper>
+  <PaginationWrapper id="pagination-blog">
     <nav className="columns is-mobile">
       <div className="column">
         {prev && (
