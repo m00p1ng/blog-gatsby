@@ -34,6 +34,46 @@
     background: linear-gradient(to left, #663399 40%, #77459b 100%);
   }
 
+  #scroll-to-top {
+    display: block;
+    opacity: 0;
+    transition: opacity .3s ease-in;
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 99;
+    cursor: default;
+  }
+
+  .scroll-text {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .scroll-mobile {
+    transition-duration: 1s;
+
+    @include until($desktop) {
+      display: block;
+    }
+
+    @include from($desktop) {
+      display: none;
+    }
+  }
+
+  .scroll-not-mobile {
+    transition-duration: 1s;
+
+    @include until($desktop) {
+      display: none;
+    }
+
+    @include from($desktop) {
+      display: block;
+    }
+  }
 
   .tag.is-purple {
     color: white;

@@ -4,12 +4,14 @@ import { faFacebookF } from '@fortawesome/free-brands-svg-icons/faFacebookF'
 import { faTwitter } from '@fortawesome/free-brands-svg-icons/faTwitter'
 import { faAngleDoubleLeft } from '@fortawesome/free-solid-svg-icons/faAngleDoubleLeft'
 import { faAngleDoubleRight } from '@fortawesome/free-solid-svg-icons/faAngleDoubleRight'
+import { faArrowUp } from '@fortawesome/free-solid-svg-icons/faArrowUp'
 import { faCalendarAlt } from '@fortawesome/free-solid-svg-icons/faCalendarAlt'
 
 library.add(
   faCalendarAlt,
   faAngleDoubleLeft,
   faAngleDoubleRight,
+  faArrowUp,
   faFacebookF,
   faTwitter,
 )

@@ -4,6 +4,7 @@ import Helmet from 'react-helmet'
 
 import Footer from './Footer'
 import Header from './Header'
+import ScrollToTopButton from './ScrollToTopButton'
 
 import Data from '../models/Data'
 import './fontawesome'
@@ -32,6 +33,7 @@ const LayoutRender = ({ children, data }: LayoutRenderProps) => {
         {children}
       </div>
       <Footer />
+      <ScrollToTopButton />
     </div>
   )
 }
