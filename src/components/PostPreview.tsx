@@ -33,12 +33,14 @@ const ImageWrapper = styled.div`
 const PostPreview = ({ post }: Props) => {
   const { slug } = post.fields
   const {
-    title,
-    date,
-    description,
-    tags,
-    image
-  } = post.frontmatter
+    frontmatter: {
+      title,
+      date,
+      description,
+      tags,
+      image
+    }
+  } = post
 
   return (
     <div className="card grow postpreview">

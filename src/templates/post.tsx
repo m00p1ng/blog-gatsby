@@ -86,10 +86,20 @@ const Disqus = ({ id, title }: { id: string, title: string }) => {
 }
 
 const PostTemplate = ({ data, pageContext }: PageProps) => {
-  const { post, nextPost, prevPost, site } = data
-  const { date, tags, image, title } = post.frontmatter
   const { siteTitle, recommended, total, slug } = pageContext
-  const { url } = site.siteMetadata
+
+  const {
+    site: {
+      siteMetadata: { url }
+    },
+    post: {
+      id,
+      html,
+      frontmatter: { date, tags, image, title }
+    },
+    prevPost,
+    nextPost,
+  } = data
 
   return (
     <Layout>
@@ -102,10 +112,10 @@ const PostTemplate = ({ data, pageContext }: PageProps) => {
             )}
             <div className="card-content is-medium">
               <h1 className="title is-size-3_5-mobile">{title}</h1>
-              <DateSubHeader date={date} html={post.html} />
+              <DateSubHeader date={date} html={html} />
               <HRLine />
               <div className="content markdown">
-                <div dangerouslySetInnerHTML={{ __html: post.html }} />
+                <div dangerouslySetInnerHTML={{ __html: html }} />
               </div>
               <TagList tags={tags} size="is-medium" />
               <SocialShareWidget url={`${url}${slug}`} tags={tags} title={title} />
@@ -115,7 +125,7 @@ const PostTemplate = ({ data, pageContext }: PageProps) => {
                   <PostNavigation nextPost={nextPost} prevPost={prevPost} />
                 </>
               )}
-              <Disqus id={post.id} title={post.frontmatter.title} />
+              <Disqus id={id} title={title} />
             </div>
           </div>
         </div>

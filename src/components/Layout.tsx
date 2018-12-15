@@ -21,12 +21,21 @@ interface LayoutRenderProps {
 }
 
 const LayoutRender = ({ children, data }: LayoutRenderProps) => {
-  const { title, subtitle } = data.site.siteMetadata
+  const {
+    site: {
+      siteMetadata: {
+        title,
+        description,
+        subtitle
+      },
+    },
+  } = data
 
   return (
     <div className="site">
       <Helmet title={`${title} - ${subtitle}`}>
         <html lang="en" />
+        <meta name="description" content={description} />
       </Helmet>
       <Header siteTitle={`:${title}:`} />
       <div className="site-content">
