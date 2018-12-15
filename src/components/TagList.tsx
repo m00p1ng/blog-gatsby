@@ -4,16 +4,17 @@ import React from 'react'
 
 interface Props {
   tags: string[]
-  size: string
+  size?: string
+  color?: string
 }
 
-const TagList = ({ tags, size }: Props) => {
+const TagList = ({ tags, size, color }: Props) => {
   return (
     <div className="tags">
       {tags.map((tag) => (
         <Link
           key={tag}
-          className={`tag ${size}`}
+          className={`tag ${color || ''} ${size || ''}`}
           to={`/tags/${KebabCase(tag)}`}
         >
           {tag}

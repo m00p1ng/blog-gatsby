@@ -19,18 +19,18 @@ const TagsPage = ({ data }: PageProps) => {
 
   return (
     <Layout>
+      <Helmet title={`All Tags | ${title}`} />
       <Banner
         title="All Tags"
         subtitle={`Total ${tags.length} tag${tags.length !== 1 ? 's' : ''}`}
       />
       <div className="container">
-        <Helmet title={`All Tags | ${title}`} />
         <div className="blog-container">
           <div className="tags">
             {tags.map((tag) => (
               <Link
                 key={tag.fieldValue}
-                className="tag is-link is-medium"
+                className="tag is-medium"
                 to={`/tags/${KebabCase(tag.fieldValue)}`}
               >
                 {tag.fieldValue} ({tag.totalCount})

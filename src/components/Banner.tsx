@@ -3,7 +3,7 @@ import styled from 'styled-components'
 
 interface Props {
   title: string | JSX.Element
-  subtitle: string
+  subtitle?: string
 }
 
 const BannerWrapper = styled.div`
@@ -18,9 +18,11 @@ const Banner = ({ title, subtitle }: Props) => (
           <h1 className="title has-text-warning is-size-3_5-mobile">
             {title}
           </h1>
-          <h2 className="subtitle has-text-white">
-            {subtitle}
-          </h2>
+          {subtitle &&
+            (<h2 className="subtitle has-text-white">
+              {subtitle}
+            </h2>)
+          }
         </div>
       </div>
     </div>

@@ -1,14 +1,31 @@
+import { graphql, StaticQuery } from 'gatsby'
 import React from 'react'
+import Helmet from 'react-helmet'
 
+import Banner from '../components/Banner'
 import Layout from '../components/Layout'
+
+import Data from '../models/data'
 
 const About = () => (
   <Layout>
-    <div className="container">
-      <div className="blog-container">
-        <h3 className="title has-text-white">About</h3>
-      </div>
-    </div>
+    <StaticQuery
+      query={graphql`
+        query {
+            site {
+            siteMetadata {
+              title
+            }
+          }
+        }
+    `}
+      render={(data: Data) => (
+        <Helmet title={`About | ${data.site.siteMetadata.title}`} />
+      )}
+    />
+    <Banner
+      title="About"
+    />
   </Layout>
 )
 
