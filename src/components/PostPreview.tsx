@@ -76,7 +76,7 @@ const PostPreview = ({ post }: Props) => {
             </Link>
           </div>
         </PostContentWrapper>
-        <TagList tags={tags} size="postpreview__tag" color="is-purple" />
+        <TagList tags={tags} size="postpreview__tag" />
       </div>
     </div>
   )

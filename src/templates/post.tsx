@@ -107,7 +107,7 @@ const PostTemplate = ({ data, pageContext }: PageProps) => {
               <div className="content markdown">
                 <div dangerouslySetInnerHTML={{ __html: post.html }} />
               </div>
-              <TagList tags={tags} color="is-purple" size="is-medium" />
+              <TagList tags={tags} size="is-medium" />
               <SocialShareWidget url={`${url}/${slug}`} tags={tags} title={title} />
               {total && total >= 3 && (
                 <>
