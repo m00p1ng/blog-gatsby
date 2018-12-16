@@ -16,12 +16,17 @@
     }
   }
 
-  // & &__has-image {
-  //   @include tablet-only {}
+  .gatsby-image-wrapper {
+    div:first-child {
+      @include from($tablet) {
+        padding-bottom: 100% !important;
+      }
+    }
 
-  //   @include from($desktop) {
-  //     margin: -0.5rem;
-  //   }
-  // }
-
+    img {
+      @include from($tablet) {
+        border: 1px solid rgba(0, 0, 0, 0.1);
+      }
+    }
+  }
 }
