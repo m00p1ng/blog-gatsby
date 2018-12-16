@@ -2,6 +2,8 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import React from 'react'
 import { animateScroll } from 'react-scroll'
 
+import '../assets/scss/scroll.scss'
+
 if (typeof window !== 'undefined') {
   window.onscroll = function () {
     scrollFunction()

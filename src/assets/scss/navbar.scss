@@ -1,0 +1,15 @@
+.navbar-center {
+  font-family: 'Roboto Mono', monospace;
+  font-weight: 600;
+
+  @include until($desktop) {
+    flex-grow: 1;
+    margin-left: $navbar-height;
+    flex-direction: column;
+    justify-content: center;
+  }
+}
+
+#main-navigation {
+  background: linear-gradient(to left, #663399 40%, #77459b 100%);
+}

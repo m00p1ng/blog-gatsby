@@ -2,26 +2,9 @@
 
 @import url('https://fonts.googleapis.com/css?family=Nunito:400,700|Roboto+Mono');
 
-$family-sans-serif: "Nunito",
-Helvetica,
-sans-serif;
-
-$card-shadow: 8px 14px 38px rgba(136, 0, 255, 0.25),
-1px 3px 8px rgba(237, 170, 247, 0.3);
-
-$body-background-color: #272727;
-$footer-background-color: $body-background-color;
-$link: #A239CA;
-$title-line-height: 1.4;
-$warning: orange;
-
-$navbar-background-color: #663399;
-$navbar-item-color: #FAFAFA;
-$navbar-item-active-color: $navbar-item-color;
-$navbar-item-hover-color: white;
-$navbar-item-hover-background-color: $link;
-
+@import "variables";
 @import "bulma";
 @import "./utils.scss";
 @import "./styles.scss";
 @import "./animation.scss";
+@import "./navbar.scss";

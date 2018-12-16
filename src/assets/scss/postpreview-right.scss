@@ -8,14 +8,6 @@
     }
   }
 
-  & &__readmore {
-    margin-top: 0.75rem;
-
-    @include mobile {
-      margin-bottom: 0.75rem;
-    }
-  }
-
   .gatsby-image-wrapper {
     div:first-child {
       @include from($tablet) {

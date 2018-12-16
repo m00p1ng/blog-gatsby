@@ -1,10 +1,6 @@
 @import '~bulma/sass/utilities/mixins.sass';
 
 .post {
-  @include from($desktop) {
-    margin: 2rem 2rem 0 2rem;
-  }
-
   @include mobile {
     margin-top: 1rem;
   }
@@ -13,22 +9,26 @@
     margin: 2rem 2.5rem 0 2.5rem;
   }
 
+  @include from($desktop) {
+    margin: 2rem 2rem 0 2rem;
+  }
+
   & &__remove-image-radius {
     border-top-left-radius: 0;
     border-top-right-radius: 0;
   }
 
   & &__content {
-    @include from($desktop) {
-      padding: 3rem;
-    }
-
     @include mobile {
       padding: 1.5rem;
     }
 
     @include tablet-only {
       padding: 2.5rem;
+    }
+
+    @include from($desktop) {
+      padding: 3rem;
     }
   }
 }

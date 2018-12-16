@@ -30,7 +30,7 @@ const TagTemplate = ({ pageContext }: PageProps) => {
             #
             <Link
               to={`/tags/${KebabCase(tag)}`}
-              className="hero-tag-hover has-text-warning"
+              className="banner-link has-text-warning"
             >
               {tag}
             </Link>

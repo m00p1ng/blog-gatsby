@@ -44,7 +44,7 @@ const Tags = ({ pageContext }: PageProps) => {
             #
             <Link
               to={`/tags/${KebabCase(tag)}/all`}
-              className="hero-tag-hover has-text-warning"
+              className="banner-link has-text-warning"
             >
               {tag}
             </Link>
