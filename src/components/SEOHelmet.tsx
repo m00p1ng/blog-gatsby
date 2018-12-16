@@ -13,19 +13,19 @@ interface Props {
 
 const SEOHelmet = ({ post, site, siteTitle, slug }: Props) => {
   const {
-    siteMetadata: { author, url }
+    siteMetadata: { url }
   } = site
 
   const {
-    frontmatter: { description, date, image }
+    frontmatter: { description, ISODate, image }
   } = post
 
-  const thumbnail = (image !== null) ? `${url}${image.childImageSharp.fluid!.src}` : ''
+  const iconImage = `${url}/favicon.png`
+  const thumbnail = (image !== null) ? `${url}${image.childImageSharp.fluid!.src}` : iconImage
 
   return (
     <Helmet>
       <meta name="description" content={description} />
-      <meta name="author" content={author} />
 
       <meta name="twitter:description" content={description} />
       <meta name="twitter:title" content={siteTitle} />
@@ -37,8 +37,7 @@ const SEOHelmet = ({ post, site, siteTitle, slug }: Props) => {
       <meta property="og:description" content={description} />
       <meta property="og:url" content={`${url}${slug}`} />
       <meta property="og:type" content="article" />
-      <meta property="og:locale" content="th" />
-      <meta property="og:updated_time" content={date} />
+      <meta property="og:updated_time" content={ISODate} />
       <meta property="og:site_name" content={siteTitle} />
       <meta property="og:image" content={thumbnail} />
       <meta property="og:image:secure_url" content={thumbnail} />

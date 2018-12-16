@@ -146,7 +146,9 @@ export const query = graphql`
       frontmatter {
         title
         date(formatString: "MMMM DD, YYYY")
+        ISODate: date
         tags
+        description
         image {
           childImageSharp {
             fluid(maxWidth: 960, quality: 80) {
