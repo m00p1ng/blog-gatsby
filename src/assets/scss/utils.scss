@@ -18,6 +18,10 @@
 
 .blog-container {
   padding-top: 1rem;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
 
   @include from($desktop) {
     margin: 0 3rem;
