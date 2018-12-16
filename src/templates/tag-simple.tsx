@@ -45,7 +45,7 @@ const TagTemplate = ({ pageContext }: PageProps) => {
               <ul>
                 {posts!.map((post) => (
                   <TagWrapper key={post.id} >
-                    <Link to={post.slug}>
+                    <Link to={post.slug} className="rainbow">
                       {post.title}
                     </Link>
                     <small> - {post.date}</small>
