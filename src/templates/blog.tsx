@@ -13,7 +13,14 @@ const PostPreviewWrapper = styled.div`
 `
 
 const IndexPage = ({ pageContext }: PageProps) => {
-  const { next, prev, nodes, page, pages, siteTitle } = pageContext
+  const {
+    next,
+    prev,
+    nodes,
+    page,
+    pages,
+    siteTitle
+  } = pageContext!
 
   return (
     <Layout>
@@ -23,16 +30,16 @@ const IndexPage = ({ pageContext }: PageProps) => {
         )}
         <div className="blog-container">
           <PostPreviewWrapper>
-            {nodes.map(({ node }) => (
+            {nodes!.map(({ node }) => (
               <PostPreview key={node.id} post={node} />
             ))}
           </PostPreviewWrapper>
           {(next || prev) && (
             <Pagination
-              next={next}
-              prev={prev}
-              page={page}
-              pages={pages}
+              next={next!}
+              prev={prev!}
+              page={page!}
+              pages={pages!}
             />
           )}
         </div>

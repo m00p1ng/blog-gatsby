@@ -13,15 +13,13 @@ const TagWrapper = styled.li`
   margin-bottom: 1.2rem;
 `
 
-interface TagPost {
-  id: string
-  slug: string
-  title: string
-  date: string
-}
-
 const TagTemplate = ({ pageContext }: PageProps) => {
-  const { siteTitle, tag, posts, total } = pageContext
+  const {
+    siteTitle,
+    tag,
+    postByTags: posts,
+    total
+  } = pageContext!
 
   return (
     <Layout>
@@ -45,7 +43,7 @@ const TagTemplate = ({ pageContext }: PageProps) => {
           <div className="box">
             <div className="content tag-content">
               <ul>
-                {posts.map((post: TagPost) => (
+                {posts!.map((post) => (
                   <TagWrapper key={post.id} >
                     <Link to={post.slug}>
                       {post.title}

@@ -12,16 +12,16 @@ interface Props {
 }
 
 const SEOHelmet = ({ post, site, siteTitle, slug }: Props) => {
-  const {
-    siteMetadata: { url }
-  } = site
+  const { url } = site.siteMetadata
 
   const {
-    frontmatter: { description, ISODate, image }
-  } = post
+    description,
+    ISODate,
+    image,
+  } = post.frontmatter!
 
   const iconImage = `${url}/favicon.png`
-  const thumbnail = (image !== null) ? `${url}${image.childImageSharp.fluid!.src}` : iconImage
+  const thumbnail = (image !== null) ? `${url}${image!.childImageSharp.fluid!.src}` : iconImage
 
   return (
     <Helmet>

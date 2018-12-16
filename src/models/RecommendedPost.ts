@@ -1,9 +1,9 @@
 interface RecommendedPost {
   type: string
-  posts: Post[]
+  posts: PostRecommend[]
 }
 
-interface Post {
+interface PostRecommend {
   title: string
   slug: string
   date: string

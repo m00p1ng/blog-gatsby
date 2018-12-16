@@ -12,7 +12,7 @@ const NotFoundPage = () => (
     <StaticQuery
       query={graphql`
         query {
-            site {
+          site {
             siteMetadata {
               title
             }
@@ -20,7 +20,7 @@ const NotFoundPage = () => (
         }
     `}
       render={(data: Data) => (
-        <Helmet title={`Not Found | ${data.site.siteMetadata.title}`} />
+        <Helmet title={`Not Found | ${data.site!.siteMetadata.title}`} />
       )}
     />
     <Banner

@@ -89,7 +89,7 @@ const createTagSimplePage = ({ createPage, posts, siteTitle }) => {
   const tags = getUniqueTag(posts)
 
   tags.forEach(tag => {
-    const postsByTag = posts
+    const postByTags = posts
       .filter(({ node }) => (node.frontmatter.tags.includes(tag)))
       .map(({ node }) => ({
         id: node.id,
@@ -103,9 +103,9 @@ const createTagSimplePage = ({ createPage, posts, siteTitle }) => {
       component: tagTemplate,
       context: {
         tag,
-        posts: postsByTag,
+        postByTags,
         siteTitle,
-        total: postsByTag.length,
+        total: postByTags.length,
       }
     })
   })

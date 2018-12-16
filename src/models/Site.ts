@@ -1,11 +1,11 @@
 interface Site {
   siteMetadata: {
-    title: string
-    subtitle: string
-    url: string
-    description: string
-    author: string
-    disqus: string
+    title?: string
+    subtitle?: string
+    url?: string
+    description?: string
+    author?: string
+    disqus?: string
   }
 }
 

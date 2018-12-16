@@ -20,7 +20,7 @@ const About = () => (
         }
     `}
       render={(data: Data) => (
-        <Helmet title={`About | ${data.site.siteMetadata.title}`} />
+        <Helmet title={`About | ${data!.site!.siteMetadata.title}`} />
       )}
     />
     <Banner

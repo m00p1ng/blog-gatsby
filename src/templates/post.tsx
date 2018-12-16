@@ -86,10 +86,10 @@ const Disqus = ({ id, title, disqus: disqusShortname }: DisqusProps) => {
 }
 
 const PostTemplate = ({ data, pageContext }: PageProps) => {
-  const { post, nextPost, prevPost, site } = data
-  const { date, tags, image, title } = post.frontmatter
-  const { siteTitle, recommended, total, slug } = pageContext
-  const { url, disqus } = site.siteMetadata
+  const { post, nextPost, prevPost, site } = data!
+  const { date, tags, image, title } = post!.frontmatter!
+  const { siteTitle, recommended, total, slug } = pageContext!
+  const { url, disqus } = site!.siteMetadata
   const siteTitleName = `${title} | ${siteTitle}`
 
   return (
@@ -97,32 +97,32 @@ const PostTemplate = ({ data, pageContext }: PageProps) => {
       <div className="container">
         <Helmet title={siteTitleName} />
         <SEOHelmet
-          post={post}
-          site={site}
+          post={post!}
+          site={site!}
           siteTitle={siteTitleName}
-          slug={slug}
+          slug={slug!}
         />
         <div className="post">
-          <div className={`card orange-shadow ${hasImage(image)}`}>
+          <div className={`card orange-shadow ${hasImage(image!)}`}>
             {image && (
-              <ImageHeader image={image} title={title} />
+              <ImageHeader image={image} title={title!} />
             )}
             <div className="card-content is-medium">
               <h1 className="title is-size-3_5-mobile">{title}</h1>
-              <DateSubHeader date={date} html={post.html} />
+              <DateSubHeader date={date!} html={post!.html!} />
               <HRLine />
               <div className="content markdown">
-                <div dangerouslySetInnerHTML={{ __html: post.html }} />
+                <div dangerouslySetInnerHTML={{ __html: post!.html! }} />
               </div>
-              <TagList tags={tags} size="is-medium" />
-              <SocialShareWidget url={`${url}${slug}`} tags={tags} title={title} />
+              <TagList tags={tags!} size="is-medium" />
+              <SocialShareWidget url={`${url}${slug}`} tags={tags!} title={title!} />
               {total && total >= 3 && (
                 <>
-                  <RecommendedWidget recommended={recommended} />
-                  <PostNavigation nextPost={nextPost} prevPost={prevPost} />
+                  <RecommendedWidget recommended={recommended!} />
+                  <PostNavigation nextPost={nextPost!} prevPost={prevPost!} />
                 </>
               )}
-              <Disqus id={post.id} title={title} disqus={disqus} />
+              <Disqus id={post!.id!} title={title!} disqus={disqus!} />
             </div>
           </div>
         </div>

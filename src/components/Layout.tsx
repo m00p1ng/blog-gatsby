@@ -22,16 +22,12 @@ interface LayoutRenderProps {
 
 const LayoutRender = ({ children, data }: LayoutRenderProps) => {
   const {
-    site: {
-      siteMetadata: {
-        title,
-        description,
-        subtitle,
-        author,
-        url,
-      },
-    },
-  } = data
+    title,
+    description,
+    subtitle,
+    author,
+    url,
+  } = data.site!.siteMetadata
   const siteTitleName = `${title} - ${subtitle}`
   const iconImage = `${url}/favicon.png`
 

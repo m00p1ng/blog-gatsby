@@ -20,7 +20,7 @@ const Tags = ({ pageContext }: PageProps) => {
     total,
     siteTitle,
     tag
-  } = pageContext
+  } = pageContext!
 
   const postText = (total: number) => {
     const post = `post${(total !== 1) ? 's' : ''}`
@@ -50,20 +50,20 @@ const Tags = ({ pageContext }: PageProps) => {
             </Link>
           </>
         }
-        subtitle={`${postText(total)} ${pageText(page, pages)}`}
+        subtitle={`${postText(total!)} ${pageText(page!, pages!)}`}
       />
       <div className="container">
-        <Helmet title={`#${tag} ${pageTitleText(page)} | ${siteTitle}`} />
+        <Helmet title={`#${tag} ${pageTitleText(page!)} | ${siteTitle}`} />
         <div className="blog-container">
-          {nodes.map(({ node }) => (
+          {nodes!.map(({ node }) => (
             <PostPreview key={node.id} post={node} />
           ))}
           {(next || prev) && (
             <Pagination
-              next={next}
-              prev={prev}
-              page={page}
-              pages={pages}
+              next={next!}
+              prev={prev!}
+              page={page!}
+              pages={pages!}
             />
           )}
         </div>

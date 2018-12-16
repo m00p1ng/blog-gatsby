@@ -31,16 +31,14 @@ const ImageWrapper = styled.div`
 `
 
 const PostPreview = ({ post }: Props) => {
-  const { slug } = post.fields
+  const { slug } = post.fields!
   const {
-    frontmatter: {
-      title,
-      date,
-      description,
-      tags,
-      image
-    }
-  } = post
+    title,
+    date,
+    description,
+    tags,
+    image
+  } = post.frontmatter!
 
   return (
     <div className="card grow postpreview">
@@ -48,7 +46,7 @@ const PostPreview = ({ post }: Props) => {
         <ImageWrapper>
           <div className="card-image postpreview__image">
             <figure className="image">
-              <Link to={post.fields.slug}>
+              <Link to={slug}>
                 <Img
                   fadeIn
                   fluid={image.childImageSharp.fluid}
@@ -60,7 +58,7 @@ const PostPreview = ({ post }: Props) => {
       )}
       <div className="card-content">
         <h1 className="title postpreview__header is-size-4-mobile">
-          <Link to={post.fields.slug}>
+          <Link to={slug}>
             {title}
           </Link>
         </h1>
@@ -78,7 +76,7 @@ const PostPreview = ({ post }: Props) => {
             </Link>
           </div>
         </PostContentWrapper>
-        <TagList tags={tags} size="postpreview__tag" />
+        <TagList tags={tags!} size="postpreview__tag" />
       </div>
     </div>
   )

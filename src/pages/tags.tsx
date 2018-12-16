@@ -9,8 +9,8 @@ import Layout from '../components/Layout'
 import PageProps from '../models/PageProps'
 
 const TagsPage = ({ data }: PageProps) => {
-  const { title } = data.site.siteMetadata
-  const tags = data.allMarkdownRemark.group
+  const { title } = data!.site!.siteMetadata
+  const tags = data!.allMarkdownRemark!.group!
 
   return (
     <Layout>
