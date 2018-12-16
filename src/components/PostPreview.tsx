@@ -44,41 +44,49 @@ const PostPreview = ({ post }: Props) => {
 
   return (
     <div className="card grow postpreview">
-      {image && (
-        <ImageWrapper>
-          <div className="card-image postpreview__image">
-            <figure className="image">
-              <Link to={post.fields.slug}>
-                <Img
-                  fadeIn
-                  fluid={image.childImageSharp.fluid}
-                  alt={title} />
-              </Link>
-            </figure>
-          </div>
-        </ImageWrapper>
-      )}
       <div className="card-content">
-        <h1 className="title postpreview__header is-size-4-mobile">
-          <Link to={post.fields.slug}>
-            {title}
-          </Link>
-        </h1>
-        <DateWrapper>
-          <span className="icon">
-            <CalendarIcon icon="calendar-alt" size="sm" />
-          </span>
-          {date}
-        </DateWrapper>
-        <PostContentWrapper>
-          <p>{description}</p>
-          <div className="has-text-right postpreview__readmore">
-            <Link to={slug}>
-              <strong>Read More...</strong>
-            </Link>
+        <div className="columns">
+          {image && (
+            <div className="column is-one-third">
+              <ImageWrapper>
+                <div className="postpreview__image">
+                  <figure className="image">
+                    <Link to={post.fields.slug}>
+                      <Img
+                        fadeIn
+                        fluid={image.childImageSharp.fluid}
+                        alt={title} />
+                    </Link>
+                  </figure>
+                </div>
+              </ImageWrapper>
+            </div>
+          )}
+          <div className="column">
+            <h1 className="title postpreview__header is-4">
+              <Link to={post.fields.slug}>
+                {title}
+              </Link>
+            </h1>
+            <DateWrapper>
+              <span className="icon">
+                <CalendarIcon icon="calendar-alt" size="sm" />
+              </span>
+              {date}
+            </DateWrapper>
+            <PostContentWrapper>
+              <p>{description}</p>
+              <div className="has-text-right postpreview__readmore">
+                <Link to={slug}>
+                  <strong>Read More...</strong>
+                </Link>
+              </div>
+            </PostContentWrapper>
           </div>
-        </PostContentWrapper>
-        <TagList tags={tags} size="postpreview__tag" />
+        </div>
+        <div style={{ marginTop: '-1.5rem' }}>
+          <TagList tags={tags} size="postpreview__tag" />
+        </div>
       </div>
     </div>
   )
