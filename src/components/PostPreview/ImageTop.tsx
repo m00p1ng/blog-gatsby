@@ -4,11 +4,11 @@ import Img from 'gatsby-image'
 import React from 'react'
 import styled from 'styled-components'
 
-import TagList from './TagList'
+import TagList from '../TagList'
 
-import Post from '../models/Post'
+import Post from '../../models/Post'
 
-import '../assets/scss/postpreview.scss'
+import '../../assets/scss/postpreview-top.scss'
 
 interface Props {
   post: Post
@@ -49,6 +49,7 @@ const PostPreview = ({ post }: Props) => {
               <Link to={slug}>
                 <Img
                   fadeIn
+                  backgroundColor
                   fluid={image.childImageSharp.fluid}
                   alt={title} />
               </Link>
@@ -56,8 +57,8 @@ const PostPreview = ({ post }: Props) => {
           </div>
         </ImageWrapper>
       )}
-      <div className="card-content">
-        <h1 className="title postpreview__header is-size-4-mobile">
+      <div className="postpreview__content">
+        <h1 className="title postpreview__header is-4">
           <Link to={slug}>
             {title}
           </Link>

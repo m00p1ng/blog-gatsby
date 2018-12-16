@@ -1,5 +1,5 @@
 .card {
-  overflow: auto;
+  overflow: hidden;
   border-radius: 12px;
 
   @include mobile {
@@ -13,20 +13,6 @@
     @include mobile {
       margin-bottom: 2rem;
     }
-  }
-}
-
-.card-content {
-  @include from($desktop) {
-    padding: 3rem;
-  }
-
-  @include mobile {
-    padding: 1.5rem;
-  }
-
-  @include tablet-only {
-    padding: 2.5rem;
   }
 }
 

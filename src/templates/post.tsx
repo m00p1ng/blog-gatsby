@@ -51,6 +51,7 @@ const ImageHeader = ({ image, title }: ImageHeaderProps) => (
   <div className="card-image">
     <figure className="image">
       <Img
+        backgroundColor
         fluid={image.childImageSharp.fluid}
         alt={title} />
     </figure>
@@ -107,7 +108,7 @@ const PostTemplate = ({ data, pageContext }: PageProps) => {
             {image && (
               <ImageHeader image={image} title={title!} />
             )}
-            <div className="card-content is-medium">
+            <div className="post__content is-medium">
               <h1 className="title is-size-3_5-mobile">{title}</h1>
               <DateSubHeader date={date!} html={post!.html!} />
               <HRLine />

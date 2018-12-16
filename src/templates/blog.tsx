@@ -4,7 +4,7 @@ import styled from 'styled-components'
 
 import Layout from '../components/Layout'
 import Pagination from '../components/Pagination'
-import PostPreview from '../components/PostPreview'
+import PostPreview from '../components/PostPreview/ImageRight'
 
 import PageProps from '../models/PageProps'
 
