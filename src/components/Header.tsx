@@ -45,13 +45,16 @@ const Header = ({ siteTitle }: Props) => (
             <div className="navbar-end">
               <Link to="/" className="navbar-item">
                 Home
-            </Link>
+              </Link>
+              <Link to="/archive" className="navbar-item">
+                Archive
+              </Link>
               <Link to="/tags" className="navbar-item">
                 Tags
-            </Link>
+              </Link>
               <Link to="/about" className="navbar-item">
                 About
-            </Link>
+              </Link>
             </div>
           </div>
         </div>
