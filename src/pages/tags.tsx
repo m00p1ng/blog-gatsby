@@ -8,14 +8,9 @@ import Layout from '../components/Layout'
 
 import PageProps from '../models/PageProps'
 
-interface TagGroup {
-  fieldValue: string
-  totalCount: number
-}
-
 const TagsPage = ({ data }: PageProps) => {
   const { title } = data.site.siteMetadata
-  const tags: TagGroup[] = data.allMarkdownRemark.group
+  const tags = data.allMarkdownRemark.group
 
   return (
     <Layout>
@@ -39,7 +34,7 @@ const TagsPage = ({ data }: PageProps) => {
           </div>
         </div>
       </div>
-    </Layout >
+    </Layout>
   )
 }
 

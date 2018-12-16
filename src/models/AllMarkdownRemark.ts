@@ -2,9 +2,18 @@ import Post from './Post'
 
 interface AllMarkdownRemark {
   totalCount: number
-  edges: { node: Post }[]
-  // tslint:disable-next-line:no-any
-  group?: any
+  edges: Node[]
+  group: Group[]
+}
+
+interface Group {
+  field: string
+  fieldValue: string
+  totalCount: number
+}
+
+interface Node {
+  node: Post
 }
 
 export default AllMarkdownRemark
