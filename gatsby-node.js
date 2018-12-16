@@ -168,7 +168,7 @@ exports.createPages = ({ graphql, actions }) => {
                 description
                 image {
                   childImageSharp {
-                    fluid(maxWidth: 960, maxHeight: 500, quality: 50, cropFocus: CENTER) {
+                    fluid(maxWidth: 768, maxHeight: 400, quality: 50, cropFocus: CENTER) {
                       aspectRatio
                       sizes
                       src

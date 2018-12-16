@@ -149,6 +149,20 @@
   }
 }
 
+.gatsby-image-wrapper {
+  div:first-child {
+    @include from($tablet) {
+      padding-bottom: 100% !important;
+    }
+  }
+
+  img {
+    @include from($tablet) {
+      border: 1px solid rgba(0, 0, 0, 0.1);
+    }
+  }
+}
+
 .navbar-center {
   font-family: 'Roboto Mono', monospace;
   font-weight: 600;
