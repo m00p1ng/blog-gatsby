@@ -1,17 +1,9 @@
-@import '~bulma/sass/utilities/mixins.sass';
+@import './postpreview.scss';
 
 .postpreview {
   & &__image {
-    @include from($desktop) {
-      margin-bottom: -2rem;
-    }
-
-    @include mobile {
-      margin-bottom: 1.5rem;
-    }
-
-    @include tablet-only {
-      margin-bottom: 0.5rem;
+    @include from($tablet) {
+      margin-bottom: -1rem;
     }
   }
 
@@ -20,29 +12,6 @@
 
     @include mobile {
       margin-bottom: 0.75rem;
-    }
-  }
-
-  & &__tag {
-    font-size: 1rem;
-
-    @include mobile {
-      font-size: 0.75rem;
-    }
-  }
-}
-
-#___gatsby {
-  .postpreview__header {
-    margin-top: 0.5rem;
-    margin-bottom: -0.01rem;
-
-    a {
-      color: #363636;
-
-      &:hover {
-        color: orange;
-      }
     }
   }
 }

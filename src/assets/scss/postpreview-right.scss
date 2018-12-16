@@ -1,47 +1,18 @@
-@import '~bulma/sass/utilities/mixins.sass';
+@import './postpreview.scss';
 
 .postpreview {
   & &__image {
-    // @include from($desktop) {
-    //   margin-bottom: -2rem;
-    // }
-
     @include mobile {
-      margin: -1.5rem -1.5rem 0 -1.5rem;
+      margin: -$postpreview-mobile-padding;
+      margin-bottom: 0;
     }
-
-    // @include tablet-only {
-    //   margin-bottom: 0.5rem;
-    // }
   }
 
   & &__readmore {
-    margin-top: 1rem;
+    margin-top: 0.75rem;
 
     @include mobile {
-      margin-bottom: 1rem;
-    }
-  }
-
-  & &__tag {
-    font-size: 1rem;
-
-    @include mobile {
-      font-size: 0.75rem;
-    }
-  }
-
-  & &__content {
-    @include from($desktop) {
-      padding: 3rem;
-    }
-
-    @include mobile {
-      padding: 1.5rem;
-    }
-
-    @include tablet-only {
-      padding: 2.5rem;
+      margin-bottom: 0.75rem;
     }
   }
 
@@ -53,18 +24,4 @@
   //   }
   // }
 
-}
-
-#___gatsby {
-  .postpreview__header {
-    margin-bottom: -0.01rem;
-
-    a {
-      color: #363636;
-
-      &:hover {
-        color: orange;
-      }
-    }
-  }
 }

@@ -1,0 +1,40 @@
+@import '~bulma/sass/utilities/mixins.sass';
+$postpreview-mobile-padding: 1.75rem;
+
+.postpreview {
+  & &__content {
+    @include from($desktop) {
+      padding: 3rem;
+    }
+
+    @include mobile {
+      padding: $postpreview-mobile-padding;
+    }
+
+    @include tablet-only {
+      padding: 2.5rem;
+    }
+  }
+
+  & &__tag {
+    font-size: 1rem;
+
+    @include mobile {
+      font-size: 0.75rem;
+    }
+  }
+}
+
+#___gatsby {
+  .postpreview__header {
+    margin-bottom: 0;
+
+    a {
+      color: #363636;
+
+      &:hover {
+        color: orange;
+      }
+    }
+  }
+}

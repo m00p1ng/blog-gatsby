@@ -26,10 +26,6 @@ const DateWrapper = styled.div`
   margin-top: 0.2rem;
 `
 
-const ImageWrapper = styled.div`
-  margin-bottom: -2rem;
-`
-
 const PostPreview = ({ post }: Props) => {
   const { slug } = post.fields!
   const {
@@ -43,19 +39,17 @@ const PostPreview = ({ post }: Props) => {
   return (
     <div className="card grow postpreview">
       {image && (
-        <ImageWrapper>
-          <div className="card-image postpreview__image">
-            <figure className="image">
-              <Link to={slug}>
-                <Img
-                  fadeIn
-                  backgroundColor
-                  fluid={image.childImageSharp.fluid}
-                  alt={title} />
-              </Link>
-            </figure>
-          </div>
-        </ImageWrapper>
+        <div className="card-image postpreview__image">
+          <figure className="image">
+            <Link to={slug}>
+              <Img
+                fadeIn
+                backgroundColor
+                fluid={image.childImageSharp.fluid}
+                alt={title} />
+            </Link>
+          </figure>
+        </div>
       )}
       <div className="postpreview__content">
         <h1 className="title postpreview__header is-4">
