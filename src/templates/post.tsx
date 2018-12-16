@@ -51,7 +51,6 @@ const ImageHeader = ({ image, title }: ImageHeaderProps) => (
   <div className="card-image">
     <figure className="image">
       <Img
-        backgroundColor
         fluid={image.childImageSharp.fluid}
         alt={title} />
     </figure>

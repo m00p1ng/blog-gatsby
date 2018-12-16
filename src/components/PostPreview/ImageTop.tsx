@@ -44,7 +44,6 @@ const PostPreview = ({ post }: Props) => {
             <Link to={slug}>
               <Img
                 fadeIn
-                backgroundColor
                 fluid={image.childImageSharp.fluid}
                 alt={title} />
             </Link>
