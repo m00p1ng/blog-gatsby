@@ -54,19 +54,21 @@ const Tags = ({ pageContext }: PageProps) => {
         subtitle={`${postText(total!)} ${pageText(page!, pages!)}`}
       />
       <div className="container">
-        <div className="postpreview__container">
-          {nodes!.map(({ node }) => (
-            <PostPreview key={node.id} post={node} />
-          ))}
+        <div className="blog-container">
+          <div className="postpreview__container">
+            {nodes!.map(({ node }) => (
+              <PostPreview key={node.id} post={node} />
+            ))}
+          </div>
+          {(next || prev) && (
+            <BlogNavigation
+              next={next!}
+              prev={prev!}
+              page={page!}
+              pages={pages!}
+            />
+          )}
         </div>
-        {(next || prev) && (
-          <BlogNavigation
-            next={next!}
-            prev={prev!}
-            page={page!}
-            pages={pages!}
-          />
-        )}
       </div>
     </Layout >
   )

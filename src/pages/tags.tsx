@@ -11,6 +11,7 @@ import PageProps from '../models/PageProps'
 const TagsPage = ({ data }: PageProps) => {
   const { title } = data!.site!.siteMetadata
   const tags = data!.allMarkdownRemark!.group!
+    .filter(tag => tag.fieldValue !== 'null')
 
   return (
     <Layout>
