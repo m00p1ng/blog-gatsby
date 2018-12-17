@@ -107,7 +107,7 @@ const PostTemplate = ({ data, pageContext }: PageProps) => {
             {image && (
               <ImageHeader image={image} title={title!} />
             )}
-            <div className="post__content is-medium">
+            <div className="page-content is-medium">
               <h1 className="title is-size-3_5-mobile">{title}</h1>
               <DateSubHeader date={date!} html={post!.html!} />
               <HRLine />

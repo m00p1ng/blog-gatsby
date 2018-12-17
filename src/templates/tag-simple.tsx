@@ -9,7 +9,7 @@ import Layout from '../components/Layout'
 
 import PageProps from '../models/PageProps'
 
-const TagWrapper = styled.li`
+const LinkWrapper = styled.li`
   margin-bottom: 1.2rem;
 `
 
@@ -40,16 +40,16 @@ const TagTemplate = ({ pageContext }: PageProps) => {
       />
       <div className="container">
         <div className="blog-container">
-          <div className="box">
-            <div className="content page-content">
+          <div className="card">
+            <div className="content page-content page-fontsize">
               <ul>
                 {posts!.map((post) => (
-                  <TagWrapper key={post.id} >
+                  <LinkWrapper key={post.id} >
                     <Link to={post.slug} className="rainbow">
                       {post.title}
                     </Link>
                     <small> - {post.date}</small>
-                  </TagWrapper>
+                  </LinkWrapper>
                 ))}
               </ul>
             </div>

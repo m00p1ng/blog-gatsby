@@ -17,18 +17,4 @@
     border-top-left-radius: 0;
     border-top-right-radius: 0;
   }
-
-  & &__content {
-    @include mobile {
-      padding: 1.5rem;
-    }
-
-    @include tablet-only {
-      padding: 2.5rem;
-    }
-
-    @include from($desktop) {
-      padding: 3rem;
-    }
-  }
 }

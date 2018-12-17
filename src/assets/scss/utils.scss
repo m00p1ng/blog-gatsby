@@ -31,3 +31,17 @@
     margin: 0 3rem;
   }
 }
+
+.page-content {
+  @include mobile {
+    padding: 1.5rem;
+  }
+
+  @include tablet-only {
+    padding: 2.5rem;
+  }
+
+  @include from($desktop) {
+    padding: 3rem;
+  }
+}
