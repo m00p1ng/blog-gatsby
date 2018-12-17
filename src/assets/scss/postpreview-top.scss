@@ -7,3 +7,22 @@
     }
   }
 }
+
+.postpreview__container {
+  padding-top: 1rem;
+
+  @include mobile {
+    margin: 0 0.8rem;
+  }
+
+  @include tablet-only {
+    margin: 0 2.5rem;
+  }
+
+  @include from($tablet) {
+    max-width: 700px;
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+  }
+}

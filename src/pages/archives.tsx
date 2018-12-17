@@ -13,11 +13,6 @@ const LinkWrapper = styled.li`
   margin-bottom: 1.2rem;
 `
 
-// const DateWrapper = styled.div`
-//   margin-right: 0.5rem;
-/* min-width: 110px; */
-// `
-
 const Archive = ({ data }: PageProps) => {
   const { title: siteTitle } = data!.site!.siteMetadata
   const { totalCount: total, edges: posts } = data!.allMarkdownRemark!
@@ -44,9 +39,9 @@ const Archive = ({ data }: PageProps) => {
                     {groupYear[year].map(({ node }) => (
                       <LinkWrapper key={node.id} >
                         <div className="archive-content">
-                          <small className="archive-date">
+                          <span className="archive-date">
                             {node.frontmatter!.shortDate}
-                          </small>
+                          </span>
                           <div>
                             <Link to={node.fields!.slug} className="rainbow">
                               {node.frontmatter!.title}

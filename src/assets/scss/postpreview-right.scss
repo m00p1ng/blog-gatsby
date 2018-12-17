@@ -1,10 +1,26 @@
 @import './postpreview.scss';
 
 .postpreview {
+  & &__content {
+    @include mobile {
+      padding: $postpreview-mobile-padding;
+    }
+
+    @include from($tablet) {
+      padding: 2.1rem;
+    }
+  }
+
   & &__image {
     @include mobile {
       margin: -$postpreview-mobile-padding;
       margin-bottom: 0;
+    }
+  }
+
+  & &__not-has-image {
+    @include from($tablet) {
+      padding: 3rem;
     }
   }
 

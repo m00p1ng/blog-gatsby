@@ -1,16 +1,11 @@
 import React from 'react'
 import Helmet from 'react-helmet'
-import styled from 'styled-components'
 
 import BlogNavigation from '../components/BlogNavigation'
 import Layout from '../components/Layout'
-import PostPreview from '../components/PostPreview/ImageRight'
+import PostPreview from '../components/PostPreview/ImageLeft'
 
 import PageProps from '../models/PageProps'
-
-const PostPreviewWrapper = styled.div`
-  margin-top: 1rem;
-`
 
 const IndexPage = ({ pageContext }: PageProps) => {
   const {
@@ -24,16 +19,16 @@ const IndexPage = ({ pageContext }: PageProps) => {
 
   return (
     <Layout>
+      {(page !== 1) && (
+        <Helmet title={`Page ${page} | ${siteTitle}`} />
+      )}
       <div className="container">
-        {(page !== 1) && (
-          <Helmet title={`Page ${page} | ${siteTitle}`} />
-        )}
         <div className="blog-container">
-          <PostPreviewWrapper>
+          <div className="postpreview__container">
             {nodes!.map(({ node }) => (
               <PostPreview key={node.id} post={node} />
             ))}
-          </PostPreviewWrapper>
+          </div>
           {(next || prev) && (
             <BlogNavigation
               next={next!}

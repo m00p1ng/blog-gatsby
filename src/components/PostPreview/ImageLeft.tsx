@@ -6,6 +6,7 @@ import styled from 'styled-components'
 
 import TagList from '../TagList'
 
+import Image from '../../models/Image'
 import Post from '../../models/Post'
 
 import '../../assets/scss/postpreview-right.scss'
@@ -15,6 +16,8 @@ interface Props {
 }
 
 const PostContentWrapper = styled.div`
+  display:flex;
+  flex-direction: column;
   margin-top: 1.5rem;
 `
 
@@ -36,9 +39,13 @@ const PostPreview = ({ post }: Props) => {
     image
   } = post.frontmatter!
 
+  const hasImage = (image: Image) => (
+    image ? '' : 'postpreview__not-has-image'
+  )
+
   return (
     <div className="card grow postpreview">
-      <div className="postpreview__content">
+      <div className={`postpreview__content ${hasImage(image!)}`}>
         <div className="columns">
           {image && (
             <div className="column is-one-third">
@@ -73,10 +80,10 @@ const PostPreview = ({ post }: Props) => {
                   <strong>Read More...</strong>
                 </Link>
               </div>
-              {tags && (
-                <TagList tags={tags} size="postpreview__tag" />
-              )}
             </PostContentWrapper>
+            {tags && (
+              <TagList tags={tags} size="postpreview__tag" />
+            )}
           </div>
         </div>
       </div>

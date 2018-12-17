@@ -6,7 +6,7 @@ import Helmet from 'react-helmet'
 import Banner from '../components/Banner'
 import BlogNavigation from '../components/BlogNavigation'
 import Layout from '../components/Layout'
-import PostPreview from '../components/PostPreview/ImageRight'
+import PostPreview from '../components/PostPreview/ImageLeft'
 
 import PageProps from '../models/PageProps'
 
@@ -38,6 +38,7 @@ const Tags = ({ pageContext }: PageProps) => {
 
   return (
     <Layout>
+      <Helmet title={`#${tag} ${pageTitleText(page!)} | ${siteTitle}`} />
       <Banner
         title={
           <>
@@ -53,20 +54,19 @@ const Tags = ({ pageContext }: PageProps) => {
         subtitle={`${postText(total!)} ${pageText(page!, pages!)}`}
       />
       <div className="container">
-        <Helmet title={`#${tag} ${pageTitleText(page!)} | ${siteTitle}`} />
-        <div className="blog-container">
+        <div className="postpreview__container">
           {nodes!.map(({ node }) => (
             <PostPreview key={node.id} post={node} />
           ))}
-          {(next || prev) && (
-            <BlogNavigation
-              next={next!}
-              prev={prev!}
-              page={page!}
-              pages={pages!}
-            />
-          )}
         </div>
+        {(next || prev) && (
+          <BlogNavigation
+            next={next!}
+            prev={prev!}
+            page={page!}
+            pages={pages!}
+          />
+        )}
       </div>
     </Layout >
   )
