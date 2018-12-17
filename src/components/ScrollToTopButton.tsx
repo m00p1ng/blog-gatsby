@@ -21,9 +21,11 @@ const scrollFunction = () => {
     ) {
       scrollButton.style.opacity = '1'
       scrollButton.style.cursor = 'pointer'
+      scrollButton.style.pointerEvents = 'auto'
     } else {
       scrollButton.style.opacity = '0'
       scrollButton.style.cursor = 'default'
+      scrollButton.style.pointerEvents = 'none'
     }
   }
 }

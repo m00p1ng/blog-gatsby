@@ -1,4 +1,5 @@
 @import './postpreview.scss';
+@import 'shared-variable';
 
 .postpreview {
   & &__content {
@@ -34,6 +35,10 @@
     img {
       @include from($tablet) {
         border: 1px solid rgba(0, 0, 0, 0.1);
+      }
+
+      &:hover {
+        @extend %image-hover
       }
     }
   }

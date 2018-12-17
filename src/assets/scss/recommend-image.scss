@@ -1,4 +1,5 @@
 @import '~bulma/sass/utilities/mixins.sass';
+@import 'shared-variable';
 
 $recommend-breakpoint: 650px;
 
@@ -21,7 +22,6 @@ $recommend-breakpoint: 650px;
 
 .recommend-section .gatsby-image-wrapper {
   img:hover {
-    opacity: 0.8 !important;
-    transition: opacity 2s;
+    @extend %image-hover
   }
 }
