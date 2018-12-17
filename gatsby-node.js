@@ -29,7 +29,7 @@ const createIndexPaage = ({ createPage, posts, siteTitle, limit }) => {
 
 const createPublishedPage = ({ createPage, posts, siteTitle }) => {
   const postTemplate = path.resolve('./src/templates/post.tsx')
-  const RECOMMENDED_LIMIT = 5
+  const RECOMMENDED_LIMIT = 3
 
   const filterField = (posts) => posts
     .map(({ node }) => ({

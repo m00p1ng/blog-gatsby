@@ -120,7 +120,7 @@ const PostTemplate = ({ data, pageContext }: PageProps) => {
               <SocialShareWidget url={`${url}${slug}`} tags={tags!} title={title!} />
               {total && total >= 3 && (
                 <>
-                  <RecommendedWidget recommended={recommended!.latest} />
+                  <RecommendedWidget recommendedGroup={recommended!} />
                   <PostNavigation nextPost={nextPost!} prevPost={prevPost!} />
                 </>
               )}
