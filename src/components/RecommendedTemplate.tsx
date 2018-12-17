@@ -27,7 +27,7 @@ const RecommendedTemplate = ({ recommended, title }: Props) => (
       <ul>
         {recommended.posts.map(post => (
           <li key={post.slug}>
-            <Link to={post.slug}>{post.title}</Link>
+            <Link to={post.slug} className="rainbow">{post.title}</Link>
             <small> - {post.date}</small>
           </li>
         ))}

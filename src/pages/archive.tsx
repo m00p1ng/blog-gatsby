@@ -8,8 +8,12 @@ import Layout from '../components/Layout'
 
 import PageProps from '../models/PageProps'
 
-const TagWrapper = styled.li`
+const LinkWrapper = styled.li`
   margin-bottom: 1.2rem;
+`
+
+const DateWrapper = styled.small`
+  margin-right: 1rem;
 `
 
 const Archive = ({ data }: PageProps) => {
@@ -26,15 +30,15 @@ const Archive = ({ data }: PageProps) => {
       <div className="container">
         <div className="blog-container">
           <div className="box">
-            <div className="content tag-content">
+            <div className="content page-content">
               <ul>
                 {posts!.map(({ node }) => (
-                  <TagWrapper key={node.id} >
+                  <LinkWrapper key={node.id} >
+                    <DateWrapper>{node.frontmatter!.date}</DateWrapper>
                     <Link to={node.fields!.slug} className="rainbow">
                       {node.frontmatter!.title}
                     </Link>
-                    <small> - {node.frontmatter!.date}</small>
-                  </TagWrapper>
+                  </LinkWrapper>
                 ))}
               </ul>
             </div>

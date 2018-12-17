@@ -24,21 +24,23 @@
 }
 
 .rainbow {
-  transition: 200ms cubic-bezier(.17, .67, .83, .67);
+  @include from($desktop) {
+    transition: 200ms cubic-bezier(.17, .67, .83, .67);
 
-  background-image: linear-gradient(45deg,
-    #eb4d9c,
-    #d33024,
-    #e48233,
-    #f4e24d,
-    #b4dc48,
-    #54b2ea,
-    #663399 50%);
-  background-size: 200% 200%;
-  -webkit-background-clip: text;
+    background-image: linear-gradient(45deg,
+      #eb4d9c,
+      #d33024,
+      #e48233,
+      #f4e24d,
+      #b4dc48,
+      #54b2ea,
+      #663399 50%);
+    background-size: 200% 200%;
+    -webkit-background-clip: text;
 
-  &:hover {
-    background-position: 0 0;
-    color: rgba(102, 51, 153, 0);
+    &:hover {
+      background-position: 0 0;
+      color: rgba(102, 51, 153, 0);
+    }
   }
 }

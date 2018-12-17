@@ -41,7 +41,7 @@ const TagTemplate = ({ pageContext }: PageProps) => {
       <div className="container">
         <div className="blog-container">
           <div className="box">
-            <div className="content tag-content">
+            <div className="content page-content">
               <ul>
                 {posts!.map((post) => (
                   <TagWrapper key={post.id} >
