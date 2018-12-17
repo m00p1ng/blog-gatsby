@@ -31,8 +31,8 @@ const IndexPage = ({ pageContext }: PageProps) => {
           </div>
           {(next || prev) && (
             <BlogNavigation
-              next={next!}
-              prev={prev!}
+              next={next}
+              prev={prev}
               page={page!}
               pages={pages!}
             />

@@ -117,11 +117,11 @@ const PostTemplate = ({ data, pageContext }: PageProps) => {
               {tags && (
                 <TagList tags={tags} size="is-medium" />
               )}
-              <SocialShareWidget url={`${url}${slug}`} tags={tags!} title={title!} />
+              <SocialShareWidget url={`${url}${slug}`} tags={tags} title={title!} />
               {total && total >= 3 && (
                 <>
                   <RecommendedWidget recommendedGroup={recommended!} />
-                  <PostNavigation nextPost={nextPost!} prevPost={prevPost!} />
+                  <PostNavigation nextPost={nextPost} prevPost={prevPost} />
                 </>
               )}
               <Disqus id={post!.id!} title={title!} disqus={disqus!} />

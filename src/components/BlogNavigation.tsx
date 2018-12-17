@@ -4,8 +4,8 @@ import React from 'react'
 import styled from 'styled-components'
 
 interface Props {
-  next: string
-  prev: string
+  next?: string
+  prev?: string
   page: number
   pages: number
 }

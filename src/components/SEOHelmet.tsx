@@ -21,7 +21,7 @@ const SEOHelmet = ({ post, site, siteTitle, slug }: Props) => {
   } = post.frontmatter!
 
   const iconImage = `${url}/favicon.png`
-  const thumbnail = (image !== null) ? `${url}${image!.childImageSharp.fluid!.src}` : iconImage
+  const thumbnail = image ? `${url}${image.childImageSharp.fluid!.src}` : iconImage
 
   return (
     <Helmet>

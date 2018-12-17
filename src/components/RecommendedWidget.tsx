@@ -10,21 +10,21 @@ interface Props {
 
 const RecommendedWidget = ({ recommendedGroup }: Props) => (
   <div className="recommend-section">
-    {recommendedGroup!.series && (
+    {recommendedGroup.series && (
       <RecommendedTemplate
-        recommended={recommendedGroup.series!}
+        recommended={recommendedGroup.series}
         title="In Series"
       />
     )}
-    {recommendedGroup!.tags && (
+    {recommendedGroup.tags && (
       <RecommendedTemplate
-        recommended={recommendedGroup.tags!}
+        recommended={recommendedGroup.tags}
         title="Related Story"
       />
     )}
-    {recommendedGroup!.latest && (
+    {recommendedGroup.latest && (
       <RecommendedTemplate
-        recommended={recommendedGroup.latest!}
+        recommended={recommendedGroup.latest}
         title="Latest Story"
       />
     )}
