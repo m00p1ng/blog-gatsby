@@ -95,6 +95,25 @@
   }
 }
 
+$recommend-breakpoint: 650px;
+
+.title.recommend-title {
+  @include until($recommend-breakpoint) {
+    font-size: 1.4rem;
+  }
+}
+
+.columns.recommend-breakpoint {
+  @include from($recommend-breakpoint) {
+    display: flex;
+
+    .column {
+      flex: none;
+      width: 33.33%;
+    }
+  }
+}
+
 .archive-date {
   min-width: 110px;
 

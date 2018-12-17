@@ -20,7 +20,7 @@ interface LayoutRenderProps {
   data: Data
 }
 
-const LayoutRender = ({ children, data }: LayoutRenderProps) => {
+const renderLayout = ({ children, data }: LayoutRenderProps) => {
   const {
     title,
     description,
@@ -63,24 +63,24 @@ const LayoutRender = ({ children, data }: LayoutRenderProps) => {
   )
 }
 
+const siteTitleQuery = graphql`
+  query SiteTitleQuery {
+    site {
+      siteMetadata {
+        title
+        subtitle
+        description
+        author
+        url,
+      }
+    }
+  }
+`
+
 const Layout = ({ children }: Props) => (
   <StaticQuery
-    query={graphql`
-      query SiteTitleQuery {
-        site {
-          siteMetadata {
-            title
-            subtitle
-            description
-            author
-            url,
-          }
-        }
-      }
-    `}
-    render={(data: Data) => (
-      LayoutRender({ children, data })
-    )}
+    query={siteTitleQuery}
+    render={(data: Data) => renderLayout({ children, data })}
   />
 )
 

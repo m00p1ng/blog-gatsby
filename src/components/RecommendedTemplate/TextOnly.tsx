@@ -2,7 +2,7 @@ import { Link } from 'gatsby'
 import React from 'react'
 import styled from 'styled-components'
 
-import RecommendedPost from '../models/RecommendedPost'
+import RecommendedPost from '../../models/RecommendedPost'
 
 const RecommendWrapper = styled.div`
   margin-top: 3rem;

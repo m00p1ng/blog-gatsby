@@ -1,7 +1,7 @@
 import RecommendedPost from './RecommendedPost'
 
 interface RecommendedGroup {
-  latest: RecommendedPost
+  latest?: RecommendedPost
   tags?: RecommendedPost
   series?: RecommendedPost
 }

@@ -36,6 +36,7 @@ const createPublishedPage = ({ createPage, posts, siteTitle }) => {
       title: node.frontmatter.title,
       slug: node.fields.slug,
       date: node.frontmatter.date,
+      image: node.frontmatter.image,
     }))
   const latestPost = filterField(posts.slice(0, RECOMMENDED_LIMIT))
 
