@@ -1,11 +1,12 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { Link } from 'gatsby'
+import { graphql, Link, StaticQuery } from 'gatsby'
 import Img from 'gatsby-image'
 import React from 'react'
 import styled from 'styled-components'
 
 import TagList from '../TagList'
 
+import Data from '../../models/Data'
 import Image from '../../models/Image'
 import Post from '../../models/Post'
 
@@ -29,6 +30,56 @@ const DateWrapper = styled.div`
   margin-top: 0.2rem;
 `
 
+interface RenderImageProps {
+  image?: Image
+  data: Data
+  slug: string
+  title?: string
+}
+
+const renderImage = ({ image, data, slug, title }: RenderImageProps) => {
+  const hasImage = (image?: Image) => (
+    image ? '' : 'is-hidden-mobile'
+  )
+
+  return (
+    <div className={`column is-one-third ${hasImage(image)}`}>
+      <div className="postpreview__image">
+        <figure className="image">
+          <Link to={slug}>
+            <Img
+              fadeIn
+              fluid={
+                image ?
+                  image.childImageSharp.fluid :
+                  data.defaultImage!.childImageSharp.fluid
+              }
+              alt={title} />
+          </Link>
+        </figure>
+      </div>
+    </div>
+  )
+}
+
+const defaultImageQuery = graphql`
+  query {
+    defaultImage: file(relativePath: { eq: "m00p1ng-icon.png" }) {
+      childImageSharp {
+        fluid(maxWidth: 768, maxHeight: 400, quality: 60, cropFocus: CENTER) {
+          aspectRatio
+          base64
+          sizes
+          src
+          srcSet
+          srcWebp
+          srcSetWebp
+        }
+      }
+    }
+  }
+`
+
 const PostPreview = ({ post }: Props) => {
   const { slug } = post.fields!
   const {
@@ -39,28 +90,18 @@ const PostPreview = ({ post }: Props) => {
     image
   } = post.frontmatter!
 
-  const hasImage = (image: Image) => (
+  const hasImage = (image?: Image) => (
     image ? '' : 'postpreview__not-has-image'
   )
 
   return (
     <div className="card grow postpreview">
-      <div className={`postpreview__content ${hasImage(image!)}`}>
+      <div className={`postpreview__content ${hasImage(image)}`}>
         <div className="columns">
-          {image && (
-            <div className="column is-one-third">
-              <div className="postpreview__image">
-                <figure className="image">
-                  <Link to={slug}>
-                    <Img
-                      fadeIn
-                      fluid={image.childImageSharp.fluid}
-                      alt={title} />
-                  </Link>
-                </figure>
-              </div>
-            </div>
-          )}
+          <StaticQuery
+            query={defaultImageQuery}
+            render={(data: Data) => renderImage({ image, data, slug, title })}
+          />
           <div className="column">
             <h1 className="title postpreview__header is-4">
               <Link to={slug}>

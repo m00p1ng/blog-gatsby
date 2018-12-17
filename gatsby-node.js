@@ -62,24 +62,23 @@ const createPublishedPage = ({ createPage, posts, siteTitle }) => {
         limit: RECOMMENDED_LIMIT,
       })
 
-      let recommended = {
-        latest: {
-          type: 'latest',
-          posts: latestPost,
-        }
-      }
+      let recommended = {}
 
       if (relatedSeriesList.length != 0) {
         recommended['series'] = {
-          type: 'series',
           posts: filterField(relatedSeriesList)
         }
       }
 
       if (relatedTagList.length != 0) {
         recommended['tags'] = {
-          type: 'tags',
           posts: filterField(relatedTagList)
+        }
+      }
+
+      if (relatedSeriesList.length == 0 || relatedTagList.length == 0) {
+        recommended['latest'] = {
+          posts: latestPost
         }
       }
 

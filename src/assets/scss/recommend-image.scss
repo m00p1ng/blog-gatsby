@@ -1,0 +1,27 @@
+@import '~bulma/sass/utilities/mixins.sass';
+
+$recommend-breakpoint: 650px;
+
+.title.recommend-title {
+  @include until($recommend-breakpoint) {
+    font-size: 1.4rem;
+  }
+}
+
+.columns.recommend-breakpoint {
+  @include from($recommend-breakpoint) {
+    display: flex;
+
+    .column {
+      flex: none;
+      width: 33.33%;
+    }
+  }
+}
+
+.recommend-section .gatsby-image-wrapper {
+  img:hover {
+    opacity: 0.8 !important;
+    transition: opacity 2s;
+  }
+}

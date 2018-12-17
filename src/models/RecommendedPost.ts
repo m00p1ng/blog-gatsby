@@ -1,6 +1,5 @@
 import Image from './Image'
 interface RecommendedPost {
-  type: string
   posts: PostRecommend[]
 }
 

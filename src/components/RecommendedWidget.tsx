@@ -9,11 +9,11 @@ interface Props {
 }
 
 const RecommendedWidget = ({ recommendedGroup }: Props) => (
-  <>
+  <div className="recommend-section">
     {recommendedGroup!.series && (
       <RecommendedTemplate
         recommended={recommendedGroup.series!}
-        title="This Series"
+        title="In Series"
       />
     )}
     {recommendedGroup!.tags && (
@@ -28,7 +28,7 @@ const RecommendedWidget = ({ recommendedGroup }: Props) => (
         title="Latest Story"
       />
     )}
-  </>
+  </div>
 )
 
 export default RecommendedWidget

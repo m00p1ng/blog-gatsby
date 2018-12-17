@@ -6,6 +6,8 @@ import styled from 'styled-components'
 import Data from '../../models/Data'
 import RecommendedPost from '../../models/RecommendedPost'
 
+import '../../assets/scss/recommend-image.scss'
+
 const RecommendWrapper = styled.div`
   margin-top: 3rem;
 `
@@ -14,7 +16,7 @@ const HeaderWrapper = styled.div`
 `
 
 const TitleWrapper = styled.div`
-  margin-top: 1rem;
+  margin: 1rem 0.2rem 0;
 `
 
 const StoryWrapper = styled.div`
