@@ -72,6 +72,7 @@ const renderRecommendList = (recommended: RecommendedPost, data: Data) => (
 )
 
 const RecommendedTemplate = ({ recommended, title }: Props) => {
+  console.log(recommended)
   return (
     <RecommendWrapper>
       <HeaderWrapper>
@@ -79,7 +80,7 @@ const RecommendedTemplate = ({ recommended, title }: Props) => {
           {title}
         </h1>
       </HeaderWrapper>
-      <div className="columns recommend-breakpoint">
+      <div className="columns is-multiline recommend-breakpoint">
         <StaticQuery
           query={defaultImageQuery}
           render={data => renderRecommendList(recommended, data)}

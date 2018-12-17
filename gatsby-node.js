@@ -29,7 +29,7 @@ const createIndexPaage = ({ createPage, posts, siteTitle, limit }) => {
 
 const createPublishedPage = ({ createPage, posts, siteTitle }) => {
   const postTemplate = path.resolve('./src/templates/post.tsx')
-  const RECOMMENDED_LIMIT = 3
+  const RECOMMENDED_LIMIT = 6
 
   const filterField = (posts) => posts
     .map(({ node }) => ({
@@ -76,9 +76,17 @@ const createPublishedPage = ({ createPage, posts, siteTitle }) => {
         }
       }
 
-      if (relatedSeriesList.length == 0 || relatedTagList.length == 0) {
+      if (relatedSeriesList.length > 3) {
+
+      } else if (relatedTagList.length > 3) {
+
+      } else if (relatedSeriesList.length == 0 && relatedTagList.length == 0) {
         recommended['latest'] = {
           posts: latestPost
+        }
+      } else if (relatedSeriesList.length == 0 || relatedTagList.length == 0) {
+        recommended['latest'] = {
+          posts: latestPost.slice(0, 3)
         }
       }
 

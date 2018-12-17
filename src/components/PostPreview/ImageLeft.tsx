@@ -10,7 +10,7 @@ import Data from '../../models/Data'
 import Image from '../../models/Image'
 import Post from '../../models/Post'
 
-import '../../assets/scss/postpreview-right.scss'
+import '../../assets/scss/postpreview-left.scss'
 
 interface Props {
   post: Post
@@ -19,7 +19,7 @@ interface Props {
 const PostContentWrapper = styled.div`
   display:flex;
   flex-direction: column;
-  margin-top: 1.5rem;
+  margin: 1rem 0;
 `
 
 const CalendarIcon = styled(FontAwesomeIcon)`
@@ -90,13 +90,9 @@ const PostPreview = ({ post }: Props) => {
     image
   } = post.frontmatter!
 
-  const hasImage = (image?: Image) => (
-    image ? '' : 'postpreview__not-has-image'
-  )
-
   return (
     <div className="card grow postpreview">
-      <div className={`postpreview__content ${hasImage(image)}`}>
+      <div className="postpreview__content">
         <div className="columns">
           <StaticQuery
             query={defaultImageQuery}
@@ -116,11 +112,6 @@ const PostPreview = ({ post }: Props) => {
             </DateWrapper>
             <PostContentWrapper>
               <p>{description}</p>
-              <div className="has-text-right postpreview__readmore" >
-                <Link to={slug}>
-                  <strong>Read More...</strong>
-                </Link>
-              </div>
             </PostContentWrapper>
             {tags && (
               <TagList tags={tags} size="postpreview__tag" />
