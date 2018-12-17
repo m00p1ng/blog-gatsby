@@ -1,5 +1,5 @@
 @charset "utf-8";
-@import "~bulma/sass/utilities/mixins.sass";
+@import 'shared-variable';
 
 #___gatsby {
   $content-color: #373a3c;
@@ -88,6 +88,10 @@
 
     .gatsby-resp-iframe-wrapper {
       margin-bottom: 1.5rem;
+    }
+
+    a {
+      @extend %rainbow
     }
   }
 }
