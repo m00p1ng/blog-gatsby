@@ -11,7 +11,7 @@ import '../assets/scss/social.scss'
 interface Props {
   url: string
   title: string
-  tags: string[]
+  tags?: string[]
 }
 
 const SocialShareWrapper = styled.div`
@@ -34,7 +34,7 @@ const SocialShareWidget = ({ url, title, tags }: Props) => (
         <TwitterShareButton
           url={url}
           title={title}
-          hashtags={tags}
+          hashtags={tags ? tags.map(tag => tag.replace(' ', '')) : []}
         >
           <span className="icon">
             <FontAwesomeIcon icon={['fab', 'twitter']} />
