@@ -1,5 +1,5 @@
 import { graphql, Link } from 'gatsby'
-import groupBy from 'lodash/groupby'
+import groupBy from 'lodash/groupBy'
 import React from 'react'
 import Helmet from 'react-helmet'
 import styled from 'styled-components'
