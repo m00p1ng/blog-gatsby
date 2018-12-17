@@ -18,7 +18,7 @@ const Archive = ({ data }: PageProps) => {
 
   return (
     <Layout>
-      <Helmet title={`Archive - All posts | ${siteTitle}`} />
+      <Helmet title={`Archive | ${siteTitle}`} />
       <Banner
         title={'Archive'}
         subtitle={`${total} post${total !== 1 ? 's' : ''}`}

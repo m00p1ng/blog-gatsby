@@ -5,7 +5,7 @@ const {
   createPaginationPages,
   createLinkedPages,
 } = require("gatsby-pagination")
-const generateRecommendedPost = require('./plugins/gatsby-recommend-story')
+const generateRecommendedPost = require('./plugins/gatsby-related-story')
 
 const createIndexPaage = ({ createPage, posts, siteTitle, limit }) => {
   const blogTemplate = path.resolve('./src/templates/blog.tsx')
