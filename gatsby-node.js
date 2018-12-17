@@ -98,7 +98,7 @@ const createPublishedPage = ({ createPage, posts, siteTitle }) => {
 const getUniqueTag = (posts) => {
   const tags = [];
   posts.forEach(({ node }) => {
-    if (posts.tags == null) {
+    if (node.frontmatter.tags === null) {
       return
     }
 
@@ -116,7 +116,9 @@ const createTagSimplePage = ({ createPage, posts, siteTitle }) => {
 
   tags.forEach(tag => {
     const postByTags = posts
-      .filter(({ node }) => (node.frontmatter.tags.includes(tag)))
+      .filter(({ node }) => (
+        node.frontmatter.tags && node.frontmatter.tags.includes(tag))
+      )
       .map(({ node }) => ({
         id: node.id,
         slug: node.fields.slug,
@@ -125,7 +127,7 @@ const createTagSimplePage = ({ createPage, posts, siteTitle }) => {
       }))
 
     createPage({
-      path: `/tags/${_.kebabCase(tag)}/all`,
+      path: `/tags/${_.kebabCase(tag)}/list`,
       component: tagTemplate,
       context: {
         tag,
@@ -143,7 +145,7 @@ const createTagPage = ({ createPage, posts, siteTitle, limit }) => {
 
   tags.forEach(tag => {
     const postsByTag = posts.filter(({ node }) =>
-      (node.frontmatter.tags.includes(tag))
+      (node.frontmatter.tags && node.frontmatter.tags.includes(tag))
     )
 
     createPaginationPages({
