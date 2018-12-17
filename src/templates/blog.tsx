@@ -2,8 +2,8 @@ import React from 'react'
 import Helmet from 'react-helmet'
 import styled from 'styled-components'
 
+import BlogNavigation from '../components/BlogNavigation'
 import Layout from '../components/Layout'
-import Pagination from '../components/Pagination'
 import PostPreview from '../components/PostPreview/ImageRight'
 
 import PageProps from '../models/PageProps'
@@ -35,7 +35,7 @@ const IndexPage = ({ pageContext }: PageProps) => {
             ))}
           </PostPreviewWrapper>
           {(next || prev) && (
-            <Pagination
+            <BlogNavigation
               next={next!}
               prev={prev!}
               page={page!}

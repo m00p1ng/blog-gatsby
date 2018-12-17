@@ -4,8 +4,8 @@ import React from 'react'
 import Helmet from 'react-helmet'
 
 import Banner from '../components/Banner'
+import BlogNavigation from '../components/BlogNavigation'
 import Layout from '../components/Layout'
-import Pagination from '../components/Pagination'
 import PostPreview from '../components/PostPreview/ImageRight'
 
 import PageProps from '../models/PageProps'
@@ -59,7 +59,7 @@ const Tags = ({ pageContext }: PageProps) => {
             <PostPreview key={node.id} post={node} />
           ))}
           {(next || prev) && (
-            <Pagination
+            <BlogNavigation
               next={next!}
               prev={prev!}
               page={page!}

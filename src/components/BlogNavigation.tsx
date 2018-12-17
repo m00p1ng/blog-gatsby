@@ -10,7 +10,7 @@ interface Props {
   pages: number
 }
 
-const PaginationWrapper = styled.div`
+const NavigationWrapper = styled.div`
   margin: 1rem 0;
 `
 
@@ -31,21 +31,21 @@ const NavLink = ({ link, rel, className, content }: NavLinkProps) => (
   </Link>
 )
 
-const PaginationTemplate = ({ next, prev, page, pages }: Props) => (
-  <PaginationWrapper id="pagination-blog">
+const BlogNavigation = ({ next, prev, page, pages }: Props) => (
+  <NavigationWrapper id="pagination-blog">
     <nav className="columns is-mobile">
-      <div className="column">
-        {prev && (
+      <div className="column has-text-left">
+        {next && (
           <NavLink
-            link={prev}
-            rel={'prev'}
+            link={next}
+            rel={'next'}
             className="pagination-link__left"
             content={
               <>
                 <span className="icon is-medium">
                   <FontAwesomeIcon icon="angle-double-left" />
                 </span>
-                Newer
+                Older
               </>
             }
           />
@@ -57,14 +57,14 @@ const PaginationTemplate = ({ next, prev, page, pages }: Props) => (
         </h1>
       </div>
       <div className="column has-text-right">
-        {next && (
+        {prev && (
           <NavLink
-            link={next}
-            rel={'next'}
+            link={prev}
+            rel={'prev'}
             className="pagination-link__right"
             content={
               <>
-                Older
+                Newer
                 <span className="icon is-medium">
                   <FontAwesomeIcon icon="angle-double-right" />
                 </span>
@@ -74,7 +74,7 @@ const PaginationTemplate = ({ next, prev, page, pages }: Props) => (
         )}
       </div>
     </nav>
-  </PaginationWrapper>
+  </NavigationWrapper>
 )
 
-export default PaginationTemplate
+export default BlogNavigation
