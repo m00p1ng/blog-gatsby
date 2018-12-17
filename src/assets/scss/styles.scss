@@ -95,6 +95,22 @@
   }
 }
 
+.archive-date {
+  min-width: 95px;
+
+  @include mobile {
+    min-width: 85px;
+  }
+}
+
+.archive-content {
+  display: flex;
+
+  @include until(500px) {
+    display: block;
+  }
+}
+
 .post-navigation {
   display: flex;
   flex-flow: row wrap;

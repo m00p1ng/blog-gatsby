@@ -13,10 +13,10 @@ const LinkWrapper = styled.li`
   margin-bottom: 1.2rem;
 `
 
-const DateWrapper = styled.div`
-  margin-right: 0.5rem;
-  min-width: 110px;
-`
+// const DateWrapper = styled.div`
+//   margin-right: 0.5rem;
+/* min-width: 110px; */
+// `
 
 const Archive = ({ data }: PageProps) => {
   const { title: siteTitle } = data!.site!.siteMetadata
@@ -28,9 +28,9 @@ const Archive = ({ data }: PageProps) => {
 
   return (
     <Layout>
-      <Helmet title={`Archive | ${siteTitle}`} />
+      <Helmet title={`Archives | ${siteTitle}`} />
       <Banner
-        title={'Archive'}
+        title={'Archives'}
         subtitle={`${total} post${total !== 1 ? 's' : ''}`}
       />
       <div className="container">
@@ -39,13 +39,15 @@ const Archive = ({ data }: PageProps) => {
             <div className="content page-content page-fontsize">
               {Object.keys(groupYear).reverse().map(year => (
                 <>
-                  <h1 className="title">{year}</h1>
+                  <h3>{year}</h3>
                   <ul>
                     {groupYear[year].map(({ node }) => (
                       <LinkWrapper key={node.id} >
-                        <div style={{ display: 'flex' }}>
-                          <DateWrapper>{node.frontmatter!.date}</DateWrapper>
-                          <div style={{ display: 'inline-block' }}>
+                        <div className="archive-content">
+                          <small className="archive-date">
+                            {node.frontmatter!.shortDate}
+                          </small>
+                          <div>
                             <Link to={node.fields!.slug} className="rainbow">
                               {node.frontmatter!.title}
                             </Link>
@@ -68,28 +70,29 @@ export default Archive
 
 export const query = graphql`
   query ArchiveQuery {
-        site {
+    site {
       siteMetadata {
         title
       }
-      }
+    }
       allMarkdownRemark(
       sort: {order: DESC, fields: [frontmatter___date]}
       filter:{frontmatter: {published: {eq: true}}}
     ) {
-        totalCount
+      totalCount
       edges {
         node {
-      id
+          id
           fields {
-        slug
-      }
-      frontmatter {
-        title
+            slug
+          }
+          frontmatter {
+            title
             date(formatString: "YYYY-MM-DD")
+            shortDate: date(formatString: "MMM DD, YY")
+          }
+        }
+      }
     }
   }
-}
-}
-}
 `

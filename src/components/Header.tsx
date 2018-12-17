@@ -46,8 +46,8 @@ const Header = ({ siteTitle }: Props) => (
               <Link to="/" className="navbar-item">
                 Home
               </Link>
-              <Link to="/archive" className="navbar-item">
-                Archive
+              <Link to="/archives" className="navbar-item">
+                Archives
               </Link>
               <Link to="/tags" className="navbar-item">
                 Tags
