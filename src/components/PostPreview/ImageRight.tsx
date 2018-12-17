@@ -73,7 +73,9 @@ const PostPreview = ({ post }: Props) => {
                   <strong>Read More...</strong>
                 </Link>
               </div>
-              <TagList tags={tags!} size="postpreview__tag" />
+              {tags && (
+                <TagList tags={tags} size="postpreview__tag" />
+              )}
             </PostContentWrapper>
           </div>
         </div>

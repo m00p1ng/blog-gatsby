@@ -70,7 +70,9 @@ const PostPreview = ({ post }: Props) => {
             </Link>
           </div>
         </PostContentWrapper>
-        <TagList tags={tags!} size="postpreview__tag" />
+        {tags && (
+          <TagList tags={tags} size="postpreview__tag" />
+        )}
       </div>
     </div>
   )

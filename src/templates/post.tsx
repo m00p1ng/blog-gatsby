@@ -114,11 +114,13 @@ const PostTemplate = ({ data, pageContext }: PageProps) => {
               <div className="content markdown">
                 <div dangerouslySetInnerHTML={{ __html: post!.html! }} />
               </div>
-              <TagList tags={tags!} size="is-medium" />
+              {tags && (
+                <TagList tags={tags} size="is-medium" />
+              )}
               <SocialShareWidget url={`${url}${slug}`} tags={tags!} title={title!} />
               {total && total >= 3 && (
                 <>
-                  <RecommendedWidget recommended={recommended!} />
+                  <RecommendedWidget recommended={recommended!.latest} />
                   <PostNavigation nextPost={nextPost!} prevPost={prevPost!} />
                 </>
               )}

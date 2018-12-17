@@ -23,12 +23,16 @@ const calculateRecommendList = (posts, curEP) => {
   }
 }
 
-const seriesRelated = ({ allPosts, post }) => {
+const seriesRelated = ({ allPosts, post, limit = 100 }) => {
+  if (post.series == null) {
+    return []
+  }
+
   const postByseries = getSeries(allPosts, post)
   const currentEPIndex = postByseries.findIndex(
     x => x.node.frontmatter.episode == post.episode
   )
-  return calculateRecommendList(postByseries, currentEPIndex)
+  return calculateRecommendList(postByseries, currentEPIndex).slice(0, limit)
 }
 
 module.exports = seriesRelated 

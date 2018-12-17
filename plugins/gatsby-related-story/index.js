@@ -2,11 +2,7 @@ const seriesRelated = require('./series-related')
 const tagRelated = require('./tag-related')
 
 const recommendedRelated = ({ allPosts, post, limit }) => {
-  let recommendList = []
-
-  if (post.series !== null) {
-    recommendList = seriesRelated({ allPosts, post })
-  }
+  let recommendList = seriesRelated({ allPosts, post })
 
   if (recommendList.length >= limit) {
     return recommendList.slice(0, limit)
@@ -22,8 +18,8 @@ const recommendedRelated = ({ allPosts, post, limit }) => {
   return recommendList
 }
 
-module.exports = recommendedRelated
-exports = {
+module.exports = {
   seriesRelated,
   tagRelated,
+  recommendedRelated,
 }

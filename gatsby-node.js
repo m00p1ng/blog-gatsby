@@ -5,7 +5,10 @@ const {
   createPaginationPages,
   createLinkedPages,
 } = require("gatsby-pagination")
-const generateRecommendedPost = require('./plugins/gatsby-related-story')
+const {
+  seriesRelated,
+  tagRelated,
+} = require('./plugins/gatsby-related-story')
 
 const createIndexPaage = ({ createPage, posts, siteTitle, limit }) => {
   const blogTemplate = path.resolve('./src/templates/blog.tsx')
@@ -28,6 +31,14 @@ const createPublishedPage = ({ createPage, posts, siteTitle }) => {
   const postTemplate = path.resolve('./src/templates/post.tsx')
   const RECOMMENDED_LIMIT = 5
 
+  const filterField = (posts) => posts
+    .map(({ node }) => ({
+      title: node.frontmatter.title,
+      slug: node.fields.slug,
+      date: node.frontmatter.date,
+    }))
+  const latestPost = filterField(posts.slice(0, RECOMMENDED_LIMIT))
+
   createLinkedPages({
     createPage,
     edges: posts,
@@ -38,34 +49,45 @@ const createPublishedPage = ({ createPage, posts, siteTitle }) => {
         frontmatter,
       } = edge.node;
 
-      let recommendedPosts = generateRecommendedPost({
+      const relatedSeriesList = seriesRelated({
         allPosts: posts,
         post: frontmatter,
         limit: RECOMMENDED_LIMIT,
       })
 
-      let recommendType = 'recommend'
-      if (recommendedPosts.length == 0) {
-        recommendType = 'latest'
-        recommendedPosts = posts.slice(0, RECOMMENDED_LIMIT)
+      const relatedTagList = tagRelated({
+        allPosts: posts,
+        post: frontmatter,
+        limit: RECOMMENDED_LIMIT,
+      })
+
+      let recommended = {
+        latest: {
+          type: 'latest',
+          posts: latestPost,
+        }
       }
 
-      const recommendResult = recommendedPosts
-        .map(({ node }) => ({
-          title: node.frontmatter.title,
-          slug: node.fields.slug,
-          date: node.frontmatter.date,
-        }))
+      if (relatedSeriesList.length != 0) {
+        recommended['series'] = {
+          type: 'series',
+          posts: filterField(relatedSeriesList)
+        }
+      }
+
+      if (relatedTagList.length != 0) {
+        recommended['tags'] = {
+          type: 'tags',
+          posts: filterField(relatedTagList)
+        }
+      }
 
       return {
         path: slug,
         context: {
           slug,
           siteTitle,
-          recommended: {
-            type: recommendType,
-            posts: recommendResult,
-          },
+          recommended,
         },
       }
     },
@@ -76,6 +98,10 @@ const createPublishedPage = ({ createPage, posts, siteTitle }) => {
 const getUniqueTag = (posts) => {
   const tags = [];
   posts.forEach(({ node }) => {
+    if (posts.tags == null) {
+      return
+    }
+
     node.frontmatter.tags.forEach((tag) => {
       tags.push(tag);
     })

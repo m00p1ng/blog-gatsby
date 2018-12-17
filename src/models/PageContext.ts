@@ -1,11 +1,11 @@
 import Node from './Node'
-import RecommendedPost from './RecommendedPost'
+import RecommendedGroup from './RecommendedGroup'
 
 interface PageContext {
   tag?: string
   siteTitle?: string
   postByTags?: PostByTag[]
-  recommended?: RecommendedPost
+  recommended?: RecommendedGroup
   slug?: string
 
   next?: string

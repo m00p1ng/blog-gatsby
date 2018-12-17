@@ -36,11 +36,15 @@ const hasRelatedTags = (includedSeries, post) => ({ node }) => {
   return commonTags.length >= 1
 }
 
-const tagRelated = ({ allPosts, post, includedSeries = false }) => {
+const tagRelated = ({ allPosts, post, includedSeries = false, limit = 100 }) => {
+  if (post.tags === null || post.tags.length === 0) {
+    return []
+  }
+
   const filteredResult = allPosts.filter(hasRelatedTags(includedSeries, post))
   filteredResult.sort(orderByCommonFirstandDate(post))
 
-  return filteredResult
+  return filteredResult.slice(0, limit)
 }
 
 module.exports = tagRelated
