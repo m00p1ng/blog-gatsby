@@ -80,10 +80,11 @@
     }
 
     .gatsby-resp-image-wrapper {
-      border: 1px solid rgba(0, 0, 0, 0.05);
       border-radius: 8px;
       overflow: hidden;
       margin-bottom: 1.5rem;
+      box-shadow: 8px 14px 38px rgba(182, 196, 209, 0.16),
+        1px 3px 8px rgba(39, 44, 49, .13);
     }
 
     .gatsby-resp-iframe-wrapper {

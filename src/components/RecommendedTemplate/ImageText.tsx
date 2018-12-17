@@ -9,7 +9,10 @@ import RecommendedPost from '../../models/RecommendedPost'
 import '../../assets/scss/recommend-image.scss'
 
 const RecommendWrapper = styled.div`
-  margin-top: 3rem;
+  margin-top: 1rem;
+  &:first-child {
+    margin-top: 3rem;
+  }
 `
 const HeaderWrapper = styled.div`
   margin-bottom: 1rem;
@@ -60,34 +63,31 @@ const renderRecommendList = (recommended: RecommendedPost, data: Data) => (
           />
         </Link>
         <TitleWrapper>
-          <p className="title is-5 recommend-title">
+          <h1 className="title recommend-title">
             <Link to={post.slug}>
               {post.title}
             </Link>
-          </p>
+          </h1>
         </TitleWrapper>
       </StoryWrapper>
     ))}
   </>
 )
 
-const RecommendedTemplate = ({ recommended, title }: Props) => {
-  console.log(recommended)
-  return (
-    <RecommendWrapper>
-      <HeaderWrapper>
-        <h1 className="title has-text-centered is-4">
-          {title}
-        </h1>
-      </HeaderWrapper>
-      <div className="columns is-multiline recommend-breakpoint">
-        <StaticQuery
-          query={defaultImageQuery}
-          render={data => renderRecommendList(recommended, data)}
-        />
-      </div>
-    </RecommendWrapper>
-  )
-}
+const RecommendedTemplate = ({ recommended, title }: Props) => (
+  <RecommendWrapper>
+    <HeaderWrapper>
+      <h1 className="title is-4">
+        {title}
+      </h1>
+    </HeaderWrapper>
+    <div className="columns is-multiline recommend-breakpoint">
+      <StaticQuery
+        query={defaultImageQuery}
+        render={data => renderRecommendList(recommended, data)}
+      />
+    </div>
+  </RecommendWrapper>
+)
 
 export default RecommendedTemplate

@@ -4,6 +4,8 @@
 $recommend-breakpoint: 650px;
 
 .title.recommend-title {
+  font-size: 1.2rem;
+
   @include until($recommend-breakpoint) {
     font-size: 1.4rem;
   }
@@ -18,6 +20,10 @@ $recommend-breakpoint: 650px;
       width: 33.33%;
     }
   }
+}
+
+.recommend-section {
+  margin-bottom: 3rem;
 }
 
 .recommend-section .gatsby-image-wrapper {

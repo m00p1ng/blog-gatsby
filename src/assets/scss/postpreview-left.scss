@@ -26,6 +26,11 @@
   }
 
   .gatsby-image-wrapper {
+    @include from($tablet) {
+      box-shadow: 8px 14px 15px rgba(39, 44, 49, .12),
+        1px 3px 8px rgba(39, 44, 49, .15);
+    }
+
     div:first-child {
       @include from($tablet) {
         padding-bottom: 100% !important;
@@ -33,10 +38,6 @@
     }
 
     img {
-      @include from($tablet) {
-        border: 1px solid rgba(0, 0, 0, 0.1);
-      }
-
       &:hover {
         @extend %image-hover
       }

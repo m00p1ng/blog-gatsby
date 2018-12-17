@@ -18,11 +18,11 @@ const Banner = ({ title, subtitle }: Props) => (
           <h1 className="title has-text-warning is-size-3_5-mobile">
             {title}
           </h1>
-          {subtitle &&
-            (<h2 className="subtitle has-text-white">
+          {subtitle && (
+            <h2 className="subtitle has-text-white">
               {subtitle}
-            </h2>)
-          }
+            </h2>
+          )}
         </div>
       </div>
     </div>
