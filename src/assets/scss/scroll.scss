@@ -47,3 +47,19 @@
     }
   }
 }
+
+@keyframes bounce {
+  from {
+    transform: translateY(0);
+  }
+
+  to {
+    transform: translateY(-6px);
+  }
+}
+
+.scroll:hover .bounce {
+  animation: bounce 0.5s cubic-bezier(.5, 0.05, 1, .5);
+  animation-direction: alternate;
+  animation-iteration-count: infinite;
+}

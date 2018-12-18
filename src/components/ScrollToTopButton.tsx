@@ -37,7 +37,7 @@ const handleClick = () => {
 const ScrollToTopButton = () => (
   <button onClick={handleClick} id="scroll-to-top" className="button is-danger scroll">
     <div className="scroll__text">
-      <span className="icon">
+      <span className="icon bounce">
         <FontAwesomeIcon icon="arrow-up" />
       </span>
       <small className="has-text-weight-bold scroll__not-mobile">BACK TO TOP</small>

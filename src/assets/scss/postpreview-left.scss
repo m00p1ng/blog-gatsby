@@ -1,5 +1,4 @@
 @import './postpreview.scss';
-@import 'shared-variable';
 
 .postpreview {
   & &__content {
@@ -34,12 +33,6 @@
     div:first-child {
       @include from($tablet) {
         padding-bottom: 100% !important;
-      }
-    }
-
-    img {
-      &:hover {
-        @extend %image-hover
       }
     }
   }
