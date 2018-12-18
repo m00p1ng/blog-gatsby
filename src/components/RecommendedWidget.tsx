@@ -13,19 +13,19 @@ const RecommendedWidget = ({ recommendedGroup }: Props) => (
     {recommendedGroup.series && (
       <RecommendedTemplate
         recommended={recommendedGroup.series}
-        title="In Series"
+        title="#Series"
       />
     )}
     {recommendedGroup.tags && (
       <RecommendedTemplate
         recommended={recommendedGroup.tags}
-        title="Related Story"
+        title="#Related"
       />
     )}
     {recommendedGroup.latest && (
       <RecommendedTemplate
         recommended={recommendedGroup.latest}
-        title="Latest Story"
+        title="#Latest"
       />
     )}
   </div>
