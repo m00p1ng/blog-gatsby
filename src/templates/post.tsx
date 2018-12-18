@@ -124,7 +124,9 @@ const PostTemplate = ({ data, pageContext }: PageProps) => {
                   <PostNavigation nextPost={nextPost} prevPost={prevPost} />
                 </>
               )}
-              <Disqus id={post!.id!} title={title!} disqus={disqus!} />
+              {disqus && (
+                <Disqus id={post!.id!} title={title!} disqus={disqus} />
+              )}
             </div>
           </div>
         </div>
