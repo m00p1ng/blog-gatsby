@@ -35,7 +35,7 @@ $postpreview-mobile-padding: 1.75rem;
   }
 }
 
-.title.postpreview__header {
+#___gatsby .postpreview__header {
   margin-bottom: 0;
 
   a {
@@ -45,4 +45,8 @@ $postpreview-mobile-padding: 1.75rem;
       color: orange;
     }
   }
+}
+
+.postpreview__container {
+  padding-top: 1rem;
 }

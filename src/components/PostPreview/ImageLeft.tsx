@@ -22,6 +22,12 @@ const PostContentWrapper = styled.div`
   margin: 1rem 0;
 `
 
+const ContentWrapper = styled.div.attrs({
+  className: 'columns'
+})`
+    align-items: center;
+`
+
 const CalendarIcon = styled(FontAwesomeIcon)`
   margin-right: 0.5rem;
 `
@@ -43,7 +49,7 @@ const renderImage = ({ image, data, slug, title }: RenderImageProps) => {
   )
 
   return (
-    <div className={`column is-one-third ${hasImage(image)}`}>
+    <div className={`column is-half-desktop is-5-tablet ${hasImage(image)}`}>
       <div className="postpreview__image">
         <figure className="image">
           <Link to={slug}>
@@ -93,7 +99,7 @@ const PostPreview = ({ post }: Props) => {
   return (
     <div className="card grow postpreview">
       <div className="postpreview__content">
-        <div className="columns">
+        <ContentWrapper>
           <StaticQuery
             query={defaultImageQuery}
             render={(data: Data) => renderImage({ image, data, slug, title })}
@@ -114,10 +120,10 @@ const PostPreview = ({ post }: Props) => {
               <p>{description}</p>
             </PostContentWrapper>
             {tags && (
-              <TagList tags={tags} size="postpreview__tag" />
+              <TagList tags={tags} />
             )}
           </div>
-        </div>
+        </ContentWrapper>
       </div>
     </div>
   )

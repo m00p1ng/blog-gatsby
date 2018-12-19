@@ -1,13 +1,19 @@
 @import './postpreview.scss';
 
 .postpreview {
+  &:not(:first-child) {
+    @include from($tablet) {
+      margin-top: 2rem;
+    }
+  }
+
   & &__content {
     @include mobile {
       padding: $postpreview-mobile-padding;
     }
 
     @include from($tablet) {
-      padding: 2.1rem;
+      padding: 1.5rem;
     }
   }
 
@@ -18,12 +24,6 @@
     }
   }
 
-  & &__not-has-image {
-    @include from($tablet) {
-      padding: 3rem;
-    }
-  }
-
   .gatsby-image-wrapper {
     @include from($tablet) {
       box-shadow: 8px 14px 15px rgba(39, 44, 49, .12),
@@ -31,13 +31,23 @@
     }
 
     div:first-child {
-      @include from($tablet) {
-        padding-bottom: 100% !important;
+      @include tablet-only {
+        padding-bottom: 75% !important;
+      }
+
+      @include from($desktop) {
+        padding-bottom: 60% !important;
       }
     }
   }
 }
 
-.postpreview__container {
-  padding-top: 1rem;
+.blog-container {
+  @include from($desktop) {
+    margin: 0;
+  }
+
+  @include tablet-only {
+    margin: 0 1.5rem;
+  }
 }
