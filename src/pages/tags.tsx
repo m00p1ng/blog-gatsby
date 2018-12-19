@@ -30,7 +30,7 @@ const TagsPage = ({ data }: PageProps) => {
                 to={`/tags/${KebabCase(tag.fieldValue)}`}
               >
                 {tag.fieldValue} ({tag.totalCount})
-            </Link>
+              </Link>
             ))}
           </div>
         </div>

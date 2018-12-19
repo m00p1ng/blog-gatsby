@@ -9,6 +9,7 @@ import Banner from '../components/Banner'
 import Layout from '../components/Layout'
 
 import PageProps from '../models/PageProps'
+import PostByDate from '../models/PostByDate'
 
 const LinkWrapper = styled.li`
   margin-bottom: 1.2rem;
@@ -24,15 +25,6 @@ const monthNames = [
   'January', 'February', 'March', 'April', 'May', 'June',
   'July', 'August', 'September', 'October', 'November', 'December'
 ]
-
-interface PostByDate {
-  ISODate: string
-  shortDate: string
-  date: string
-  title: string
-  slug: string
-  id: string
-}
 
 interface GroupPostByDate {
   [key: string]: PostByDate[]

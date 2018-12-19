@@ -1,9 +1,9 @@
 @import './postpreview.scss';
 
 .postpreview {
-  &:not(:first-child) {
+  &:not(:last-child) {
     @include from($tablet) {
-      margin-top: 2rem;
+      margin-bottom: 3rem;
     }
   }
 

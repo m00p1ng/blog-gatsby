@@ -7,6 +7,7 @@ import styled from 'styled-components'
 import Banner from '../components/Banner'
 import Layout from '../components/Layout'
 
+import Node from '../models/Node'
 import PageProps from '../models/PageProps'
 
 const LinkWrapper = styled.li`
@@ -18,6 +19,39 @@ const HeaderLinkWrapper = styled(Link).attrs({
 })`
   color: #363636;
 `
+
+interface GroupPostByDate {
+  [key: string]: Node[]
+}
+
+const renderByDatePost = (groupYear: GroupPostByDate) => {
+  return Object.keys(groupYear).reverse().map(year => (
+    <>
+      <h3>
+        <HeaderLinkWrapper to={`/${year}`}>
+          {year}
+        </HeaderLinkWrapper>
+      </h3>
+      <ul>
+        {groupYear[year].map(({ node }) => (
+          <LinkWrapper key={node.id} >
+            <div className="archive-content">
+              <span className="archive-date">
+                {node.frontmatter!.shortDate}
+              </span>
+              <Link
+                to={node.fields!.slug}
+                className="rainbow"
+              >
+                {node.frontmatter!.title}
+              </Link>
+            </div>
+          </LinkWrapper>
+        ))}
+      </ul>
+    </>
+  ))
+}
 
 const Archive = ({ data }: PageProps) => {
   const { title: siteTitle } = data!.site!.siteMetadata
@@ -38,32 +72,7 @@ const Archive = ({ data }: PageProps) => {
         <div className="blog-container">
           <div className="card">
             <div className="content page-content page-fontsize">
-              {Object.keys(groupYear).reverse().map(year => (
-                <>
-                  <h3>
-                    <HeaderLinkWrapper to={`/${year}`}>
-                      {year}
-                    </HeaderLinkWrapper>
-                  </h3>
-                  <ul>
-                    {groupYear[year].map(({ node }) => (
-                      <LinkWrapper key={node.id} >
-                        <div className="archive-content">
-                          <span className="archive-date">
-                            {node.frontmatter!.shortDate}
-                          </span>
-                          <Link
-                            to={node.fields!.slug}
-                            className="rainbow"
-                          >
-                            {node.frontmatter!.title}
-                          </Link>
-                        </div>
-                      </LinkWrapper>
-                    ))}
-                  </ul>
-                </>
-              ))}
+              {renderByDatePost(groupYear)}
             </div>
           </div>
         </div>

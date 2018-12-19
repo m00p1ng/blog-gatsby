@@ -47,6 +47,12 @@ interface ImageHeaderProps {
   title: string
 }
 
+interface DisqusProps {
+  id: string
+  title: string
+  disqus: string
+}
+
 const ImageHeader = ({ image, title }: ImageHeaderProps) => (
   <div className="card-image">
     <figure className="image">
@@ -66,13 +72,7 @@ const DateSubHeader = ({ date, html }: { date: string, html: string }) => (
   </DateWrapper>
 )
 
-interface DisqusProps {
-  id: string
-  title: string
-  disqus: string
-}
-
-const Disqus = ({ id, title, disqus: disqusShortname }: DisqusProps) => {
+const DisqusWidget = ({ id, title, disqus: disqusShortname }: DisqusProps) => {
   const disqusConfig = {
     identifier: id,
     title: title,
@@ -130,7 +130,7 @@ const PostTemplate = ({ data, pageContext }: PageProps) => {
             )}
             {disqus && (
               <div className="post-comment">
-                <Disqus id={post!.id!} title={title!} disqus={disqus} />
+                <DisqusWidget id={post!.id!} title={title!} disqus={disqus} />
               </div>
             )}
           </div>
