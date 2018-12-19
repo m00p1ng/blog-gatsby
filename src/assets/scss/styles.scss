@@ -30,34 +30,6 @@
   }
 }
 
-#pagination-blog {
-  .column {
-    @include mobile {
-      padding: 0;
-    }
-  }
-}
-
-.pagination-font {
-  color: white;
-  height: auto;
-  font-size: 1.25rem;
-
-  @include mobile {
-    font-size: 1rem;
-  }
-}
-
-.pagination-link {
-  border: 0;
-  color: lighten(orange, 10%);
-  transition-duration: 0.2s;
-
-  &:hover {
-    color: white;
-  }
-}
-
 .no-touch .pagination-link {
   $hover-transform: 0.5rem;
 
@@ -68,12 +40,6 @@
   &__right:hover {
     transform: translateX($hover-transform);
   }
-}
-
-.pagination-page {
-  display: inline-flex;
-  justify-content: center;
-  align-items: center;
 }
 
 .banner {

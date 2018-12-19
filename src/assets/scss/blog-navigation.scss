@@ -1,0 +1,35 @@
+@import '~bulma/sass/utilities/mixins.sass';
+
+#blog-nav {
+  .column {
+    @include mobile {
+      padding: 0;
+    }
+  }
+
+  .blog-nav-font {
+    color: white;
+    height: auto;
+    font-size: 1.25rem;
+
+    @include mobile {
+      font-size: 1rem;
+    }
+  }
+
+  .pagination-link {
+    border: 0;
+    color: lighten(orange, 10%);
+    transition-duration: 0.2s;
+
+    &:hover {
+      color: white;
+    }
+  }
+
+  .blog-nav-page {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+  }
+}
