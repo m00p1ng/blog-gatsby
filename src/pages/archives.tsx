@@ -13,6 +13,12 @@ const LinkWrapper = styled.li`
   margin-bottom: 1.2rem;
 `
 
+const HeaderLinkWrapper = styled(Link).attrs({
+  className: 'rainbow'
+})`
+  color: #363636;
+`
+
 const Archive = ({ data }: PageProps) => {
   const { title: siteTitle } = data!.site!.siteMetadata
   const { totalCount: total, edges: posts } = data!.allMarkdownRemark!
@@ -34,7 +40,11 @@ const Archive = ({ data }: PageProps) => {
             <div className="content page-content page-fontsize">
               {Object.keys(groupYear).reverse().map(year => (
                 <>
-                  <h3>{year}</h3>
+                  <h3>
+                    <HeaderLinkWrapper to={`/${year}`}>
+                      {year}
+                    </HeaderLinkWrapper>
+                  </h3>
                   <ul>
                     {groupYear[year].map(({ node }) => (
                       <LinkWrapper key={node.id} >

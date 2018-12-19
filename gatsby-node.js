@@ -175,7 +175,11 @@ const createTagPage = ({ createPage, posts, siteTitle, limit }) => {
   })
 }
 
+/////////////////////////
+// TODO: Need Refactor //
+/////////////////////////
 const createDatePage = ({ createPage, posts, siteTitle }) => {
+  const dateTemplate = path.resolve('./src/templates/date.tsx')
   const filterFieldPost = posts.map(({ node }) => ({
     id: node.id,
     slug: node.fields.slug,
@@ -185,7 +189,6 @@ const createDatePage = ({ createPage, posts, siteTitle }) => {
     shortDate: node.frontmatter.shortDate,
   }))
 
-  const dateTemplate = path.resolve('./src/templates/date.tsx')
   const groupYear = _.groupBy(filterFieldPost, (post) => (
     post.ISODate.slice(0, 4)
   ))
@@ -202,25 +205,46 @@ const createDatePage = ({ createPage, posts, siteTitle }) => {
         postByDate: groupYear[year],
       }
     })
-  })
 
-  const groupYearMonth = _.groupBy(filterFieldPost, (post) => (
-    post.ISODate.slice(0, 7)
-  ))
+    // Generate Month Page
+    const groupYearMonth = _.groupBy(groupYear[year], (post) => (
+      post.ISODate.slice(0, 7)
+    ))
+    Object.keys(groupYearMonth).map((date) => {
+      const [year, month] = date.split('-')
 
-  Object.keys(groupYearMonth).map((date) => {
-    const [year, month] = date.split('-')
+      createPage({
+        path: `/${year}/${month}`,
+        component: dateTemplate,
+        context: {
+          siteTitle,
+          dateType: "month",
+          date,
+          total: groupYearMonth[date].length,
+          postByDate: groupYearMonth[date],
+        }
+      })
 
-    createPage({
-      path: `/${year}/${month}`,
-      component: dateTemplate,
-      context: {
-        siteTitle,
-        dateType: "month",
-        date,
-        total: groupYearMonth[date].length,
-        postByDate: groupYearMonth[date],
-      }
+      const groupYearMonthDay = _.groupBy(filterFieldPost, (post) => (
+        post.ISODate.slice(0, 10)
+      ))
+
+      // Generate Day Page
+      Object.keys(groupYearMonthDay).map((date) => {
+        const [year, month, day] = date.split('-')
+
+        createPage({
+          path: `/${year}/${month}/${day}`,
+          component: dateTemplate,
+          context: {
+            siteTitle,
+            dateType: "day",
+            date,
+            total: groupYearMonthDay[date].length,
+            postByDate: groupYearMonthDay[date],
+          }
+        })
+      })
     })
   })
 }
