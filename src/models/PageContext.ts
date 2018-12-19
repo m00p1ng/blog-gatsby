@@ -1,4 +1,6 @@
 import Node from './Node'
+import PostByDate from './PostByDate'
+import PostByTag from './PostByTag'
 import RecommendedGroup from './RecommendedGroup'
 
 interface PageContext {
@@ -14,13 +16,10 @@ interface PageContext {
   page?: number
   pages?: number
   nodes?: Node[]
-}
 
-interface PostByTag {
-  id: string
-  slug: string
-  title: string
-  date: string
+  postByDate?: PostByDate[]
+  dateType?: string
+  date?: string
 }
 
 export default PageContext

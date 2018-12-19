@@ -175,6 +175,56 @@ const createTagPage = ({ createPage, posts, siteTitle, limit }) => {
   })
 }
 
+const createDatePage = ({ createPage, posts, siteTitle }) => {
+  const filterFieldPost = posts.map(({ node }) => ({
+    id: node.id,
+    slug: node.fields.slug,
+    title: node.frontmatter.title,
+    date: node.frontmatter.date,
+    ISODate: node.frontmatter.ISODate,
+    shortDate: node.frontmatter.shortDate,
+  }))
+
+  const dateTemplate = path.resolve('./src/templates/date.tsx')
+  const groupYear = _.groupBy(filterFieldPost, (post) => (
+    post.ISODate.slice(0, 4)
+  ))
+
+  Object.keys(groupYear).map((year) => {
+    createPage({
+      path: `/${year}`,
+      component: dateTemplate,
+      context: {
+        siteTitle,
+        dateType: "year",
+        date: year,
+        total: groupYear[year].length,
+        postByDate: groupYear[year],
+      }
+    })
+  })
+
+  const groupYearMonth = _.groupBy(filterFieldPost, (post) => (
+    post.ISODate.slice(0, 7)
+  ))
+
+  Object.keys(groupYearMonth).map((date) => {
+    const [year, month] = date.split('-')
+
+    createPage({
+      path: `/${year}/${month}`,
+      component: dateTemplate,
+      context: {
+        siteTitle,
+        dateType: "month",
+        date,
+        total: groupYearMonth[date].length,
+        postByDate: groupYearMonth[date],
+      }
+    })
+  })
+}
+
 exports.createPages = ({ graphql, actions }) => {
   const { createPage } = actions
   const ITEM_PER_PAGE = 10;
@@ -198,6 +248,7 @@ exports.createPages = ({ graphql, actions }) => {
                 title
                 date(formatString: "MMMM DD, YYYY")
                 ISODate: date
+                shortDate: date(formatString: "MMM, DD, YY")
                 tags
                 series
                 episode
@@ -257,6 +308,12 @@ exports.createPages = ({ graphql, actions }) => {
           posts,
           siteTitle,
           limit: ITEM_PER_PAGE,
+        })
+
+        createDatePage({
+          createPage,
+          posts,
+          siteTitle,
         })
 
         resolve()
