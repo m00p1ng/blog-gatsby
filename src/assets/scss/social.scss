@@ -13,7 +13,7 @@ $brand-colors: (facebook: #3b5998, twitter: #1da1f2);
     &:hover {
       opacity: 0.9;
 
-      @include from($desktop) {
+      @include from($tablet) {
         animation: bounce 0.25s cubic-bezier(.5, 0.05, 1, .5);
         animation-direction: alternate;
         animation-iteration-count: infinite;

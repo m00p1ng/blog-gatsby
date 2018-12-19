@@ -76,10 +76,15 @@
   }
 
   .gatsby-resp-image-wrapper {
-    border-radius: 8px;
-    overflow: hidden;
-    box-shadow: 8px 14px 38px rgba(182, 196, 209, 0.16),
-      1px 3px 8px rgba(39, 44, 49, .13);
+    overflow: visible !important;
+
+    img {
+      @include from($tablet) {
+        border-radius: 8px;
+        box-shadow: 8px 14px 38px rgba(182, 196, 209, 0.16),
+          1px 3px 8px rgba(39, 44, 49, .13);
+      }
+    }
   }
 
   p+p .gatsby-resp-image-wrapper {

@@ -14,7 +14,7 @@
   }
 
   &:hover .bounce {
-    animation: bounce 0.5s cubic-bezier(.5, 0.05, 1, .5);
+    animation: bounce 0.25s cubic-bezier(.5, 0.05, 1, .5);
     animation-direction: alternate;
     animation-iteration-count: infinite;
   }

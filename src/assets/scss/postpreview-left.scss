@@ -12,7 +12,11 @@
       padding: $postpreview-mobile-padding;
     }
 
-    @include from($tablet) {
+    @include tablet-only {
+      padding: 1.25rem;
+    }
+
+    @include from($desktop) {
       padding: 1.5rem;
     }
   }
@@ -25,9 +29,14 @@
   }
 
   .gatsby-image-wrapper {
-    @include from($tablet) {
-      box-shadow: 8px 14px 15px rgba(39, 44, 49, .12),
-        1px 3px 8px rgba(39, 44, 49, .15);
+    overflow: visible !important;
+
+    img {
+      @include from($tablet) {
+        border-radius: 12px;
+        box-shadow: 8px 14px 15px rgba(39, 44, 49, .12),
+          1px 3px 8px rgba(39, 44, 49, .15);
+      }
     }
 
     div:first-child {
