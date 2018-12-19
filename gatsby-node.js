@@ -272,7 +272,7 @@ exports.createPages = ({ graphql, actions }) => {
                 title
                 date(formatString: "MMMM DD, YYYY")
                 ISODate: date
-                shortDate: date(formatString: "MMM, DD, YY")
+                shortDate: date(formatString: "MMM DD, YY")
                 tags
                 series
                 episode

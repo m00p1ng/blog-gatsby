@@ -1,12 +1,20 @@
 @charset "utf-8";
 @import 'shared-variable';
 
-.markdown {
-  line-height: 1.875;
-
+.no-touch .markdown {
   @include from($tablet) {
     font-size: 18px;
   }
+}
+
+.touch .markdown {
+  @include from($desktop) {
+    font-size: 18px;
+  }
+}
+
+.content.markdown {
+  line-height: 1.875;
 
   .tag,
   .number {
