@@ -1,98 +1,75 @@
-#___gatsby {
-  $footer-size: 3rem;
-
-  .site {
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
+.is-size-3_5-mobile {
+  @include mobile {
+    font-size: 1.75rem;
   }
+}
 
-  .site-content {
-    flex: 1 0 auto;
+.tag.is-purple {
+  color: white;
+  text-decoration: none;
+  background-color: lighten($link, 4.5%);
+  box-shadow: 8px 14px 38px rgba(39, 44, 49, .1),
+    1px 3px 8px rgba(39, 44, 49, .1);
 
-    .container {
-      max-width: 960px;
-      width: 100%;
-    }
+  &:hover {
+    opacity: 0.9;
   }
+}
 
-  .footer {
-    padding: $footer-size 0;
-  }
-
-  .is-size-3_5-mobile {
+#pagination-blog {
+  .column {
     @include mobile {
-      font-size: 1.75rem;
+      padding: 0;
     }
   }
+}
 
-  .tag.is-purple {
+.pagination-font {
+  color: white;
+  height: auto;
+  font-size: 1.25rem;
+
+  @include mobile {
+    font-size: 1rem;
+  }
+}
+
+.pagination-link {
+  border: 0;
+  color: lighten(orange, 10%);
+
+  &:hover {
     color: white;
-    text-decoration: none;
-    background-color: lighten($link, 4.5%);
-    box-shadow: 8px 14px 38px rgba(39, 44, 49, .1),
-      1px 3px 8px rgba(39, 44, 49, .1);
-
-    &:hover {
-      opacity: 0.9;
-    }
   }
+}
 
-  #pagination-blog {
-    .column {
-      @include mobile {
-        padding: 0;
-      }
-    }
+.pagination-page {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.banner {
+  @include until($desktop) {
+    padding: 0 0.5rem;
   }
+}
 
-  .pagination-font {
-    color: white;
-    height: auto;
-    font-size: 1.25rem;
+a.banner-link:hover {
+  text-decoration: underline;
+  color: orange !important;
+}
 
-    @include mobile {
-      font-size: 1rem;
-    }
+.page-fontsize {
+  font-size: 1.1rem;
+
+  @include mobile {
+    font-size: 1rem;
   }
+}
 
-  .pagination-link {
-    border: 0;
-    color: lighten(orange, 10%);
-
-    &:hover {
-      color: white;
-    }
-  }
-
-  .pagination-page {
-    display: inline-flex;
-    justify-content: center;
-    align-items: center;
-  }
-
-  .banner {
-    @include until($desktop) {
-      padding: 0 0.5rem;
-    }
-  }
-
-  a.banner-link:hover {
-    text-decoration: underline;
-    color: orange !important;
-  }
-
-  .page-fontsize {
-    font-size: 1.1rem;
-
-    @include mobile {
-      font-size: 1rem;
-    }
-  }
-
-  .orange-shadow {
-    box-shadow: 8px 14px 38px rgba(255, 165, 0, 0.25), 1px 3px 8px rgba(255, 165, 0, 0.3);
-  }
+.orange-shadow {
+  box-shadow: 8px 14px 38px rgba(255, 165, 0, 0.25), 1px 3px 8px rgba(255, 165, 0, 0.3);
 }
 
 .archive-date {

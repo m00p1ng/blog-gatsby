@@ -1,15 +1,31 @@
 import { graphql, StaticQuery } from 'gatsby'
 import React from 'react'
 import Helmet from 'react-helmet'
+import styled from 'styled-components'
 
 import Footer from './Footer'
-import Header from './Header'
+import Navbar from './Navbar'
 import ScrollToTopButton from './ScrollToTopButton'
 
 import Data from '../models/Data'
 import './fontawesome'
 
 import '../assets/scss/index.scss'
+
+const SiteWrapper = styled.div`
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+`
+
+const ContentWrapper = styled.div`
+  flex: 1 0 auto;
+
+  .container {
+    max-width: 960px;
+    width: 100%;
+  }
+`
 
 interface Props {
   children: React.ReactNode
@@ -32,7 +48,7 @@ const renderLayout = ({ children, data }: LayoutRenderProps) => {
   const iconImage = `${url}/favicon.png`
 
   return (
-    <div className="site">
+    <SiteWrapper>
       <Helmet title={siteTitleName}>
         <html lang="en" />
 
@@ -53,13 +69,13 @@ const renderLayout = ({ children, data }: LayoutRenderProps) => {
         <meta property="og:image:secure_url" content={iconImage} />
 
       </Helmet>
-      <Header siteTitle={`:${title}:`} />
-      <div className="site-content">
+      <Navbar siteTitle={`:${title}:`} />
+      <ContentWrapper>
         {children}
-      </div>
+      </ContentWrapper>
       <Footer />
       <ScrollToTopButton />
-    </div>
+    </SiteWrapper>
   )
 }
 

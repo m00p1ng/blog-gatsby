@@ -9,8 +9,12 @@ const FooterLink = styled.a`
   }
 `
 
+const FooterWrapper = styled.footer`
+  padding: 3rem;
+`
+
 const Footer = () => (
-  <footer className="footer">
+  <FooterWrapper>
     <div className="has-text-centered has-text-white">
       <p>m00p1ng © 2018 all right reserved.</p>
       <small>Made with ♥️ using&nbsp;
@@ -19,7 +23,7 @@ const Footer = () => (
         <FooterLink href="https://bulma.io">Bulma</FooterLink>.
       </small>
     </div>
-  </footer>
+  </FooterWrapper>
 )
 
 export default Footer
