@@ -23,27 +23,25 @@ $recommend-breakpoint: 650px;
 
 .recommend-section {
   margin-bottom: 3rem;
+
+  .gatsby-image-wrapper {
+    transition: box-shadow 0.5s, opacity 0.5s, transform 0.3s;
+    overflow: visible !important;
+
+    img {
+      border-radius: 10px;
+      box-shadow: 8px 14px 15px rgba(39, 44, 49, 0.1),
+        1px 3px 8px rgba(39, 44, 49, .04);
+    }
+  }
 }
 
-.recommend-section .gatsby-image-wrapper {
-  transition: box-shadow 0.5s, opacity 0.5s, transform 0.3s;
-  overflow: visible !important;
-
-  img {
-    border-radius: 10px;
-    box-shadow: 8px 14px 15px rgba(39, 44, 49, 0.1),
-      1px 3px 8px rgba(39, 44, 49, .04);
-
-    &:hover {
-      @include from($tablet) {
-        box-shadow: 0px 5px 30px 0px rgba(136, 0, 255, 0.3);
-      }
-    }
+.no-touch .recommend-section .gatsby-image-wrapper {
+  img:hover {
+    box-shadow: 0px 5px 30px 0px rgba(136, 0, 255, 0.3);
   }
 
   &:hover {
-    @include from($desktop) {
-      transform: translateY(-10px);
-    }
+    transform: translateY(-10px);
   }
 }

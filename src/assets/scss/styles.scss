@@ -1,6 +1,6 @@
 @import 'shared-variable';
 
-.rainbow {
+.no-touch .rainbow {
   @extend %rainbow
 }
 
@@ -10,16 +10,13 @@
   }
 }
 
-.grow {
+.no-touch .grow {
   transition: all .3s ease;
 
   &:hover {
-    @include from($desktop) {
-      transform: scale(1.02);
-    }
+    transform: scale(1.02);
   }
 }
-
 
 .tag.is-purple {
   color: white;
@@ -55,20 +52,21 @@
   border: 0;
   color: lighten(orange, 10%);
   transition-duration: 0.2s;
-  $hover-transform: 0.5rem;
 
   &:hover {
     color: white;
   }
+}
 
-  @include from($desktop) {
-    &__left:hover {
-      transform: translateX(-$hover-transform);
-    }
+.no-touch .pagination-link {
+  $hover-transform: 0.5rem;
 
-    &__right:hover {
-      transform: translateX($hover-transform);
-    }
+  &__left:hover {
+    transform: translateX(-$hover-transform);
+  }
+
+  &__right:hover {
+    transform: translateX($hover-transform);
   }
 }
 

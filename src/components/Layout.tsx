@@ -36,6 +36,12 @@ interface LayoutRenderProps {
   data: Data
 }
 
+if (typeof document !== 'undefined') {
+  document.documentElement.className += (
+    'ontouchstart' in document.documentElement ? ' touch' : ' no-touch'
+  )
+}
+
 const renderLayout = ({ children, data }: LayoutRenderProps) => {
   const {
     title,
