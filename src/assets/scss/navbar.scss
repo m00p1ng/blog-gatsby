@@ -12,4 +12,8 @@
 
 #main-navigation {
   background: linear-gradient(to left, #663399 40%, #77459b 100%);
+
+  .navbar-item {
+    transition-duration: 0.3s;
+  }
 }

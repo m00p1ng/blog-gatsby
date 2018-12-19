@@ -3,10 +3,10 @@
 $recommend-breakpoint: 650px;
 
 .title.recommend-title {
-  font-size: 1.2rem;
+  font-size: 1.1rem;
 
   @include until($recommend-breakpoint) {
-    font-size: 1.4rem;
+    font-size: 1.3rem;
   }
 }
 
@@ -42,7 +42,7 @@ $recommend-breakpoint: 650px;
   }
 
   &:hover {
-    @include from($tablet) {
+    @include from($desktop) {
       transform: translateY(-10px);
     }
   }

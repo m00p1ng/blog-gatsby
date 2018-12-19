@@ -34,6 +34,10 @@
 }
 
 .post-comment {
+  @include mobile {
+    margin: 0 1.5rem;
+  }
+
   @include tablet-only {
     margin: 0 2.5rem;
   }

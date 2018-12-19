@@ -118,7 +118,7 @@ const PostPreview = ({ post }: Props) => {
               {description}
             </PostContentWrapper>
             {tags && (
-              <TagList tags={tags} />
+              <TagList tags={tags} size="postpreview__tag" />
             )}
           </div>
         </ContentWrapper>

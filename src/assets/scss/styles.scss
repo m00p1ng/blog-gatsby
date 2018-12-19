@@ -1,8 +1,25 @@
+@import 'shared-variable';
+
+.rainbow {
+  @extend %rainbow
+}
+
 .is-size-3_5-mobile {
   @include mobile {
     font-size: 1.75rem;
   }
 }
+
+.grow {
+  transition: all .3s ease;
+
+  &:hover {
+    @include from($desktop) {
+      transform: scale(1.02);
+    }
+  }
+}
+
 
 .tag.is-purple {
   color: white;
@@ -37,9 +54,21 @@
 .pagination-link {
   border: 0;
   color: lighten(orange, 10%);
+  transition-duration: 0.2s;
+  $hover-transform: 0.5rem;
 
   &:hover {
     color: white;
+  }
+
+  @include from($desktop) {
+    &__left:hover {
+      transform: translateX(-$hover-transform);
+    }
+
+    &__right:hover {
+      transform: translateX($hover-transform);
+    }
   }
 }
 
