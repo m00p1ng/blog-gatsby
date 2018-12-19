@@ -18,7 +18,7 @@ const NotFoundPage = () => (
             }
           }
         }
-    `}
+      `}
       render={(data: Data) => (
         <Helmet title={`Not Found | ${data.site!.siteMetadata.title}`} />
       )}

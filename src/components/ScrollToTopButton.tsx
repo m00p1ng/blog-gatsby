@@ -4,12 +4,6 @@ import { animateScroll } from 'react-scroll'
 
 import '../assets/scss/scroll.scss'
 
-if (typeof window !== 'undefined') {
-  window.onscroll = function () {
-    scrollFunction()
-  }
-}
-
 const scrollFunction = () => {
   const scrollButton = document.getElementById('scroll-to-top')
   const scrollHeight = 200
@@ -20,11 +14,9 @@ const scrollFunction = () => {
       document.documentElement.scrollTop > scrollHeight
     ) {
       scrollButton.style.opacity = '1'
-      scrollButton.style.cursor = 'pointer'
       scrollButton.style.pointerEvents = 'auto'
     } else {
       scrollButton.style.opacity = '0'
-      scrollButton.style.cursor = 'default'
       scrollButton.style.pointerEvents = 'none'
     }
   }
@@ -32,6 +24,10 @@ const scrollFunction = () => {
 
 const handleClick = () => {
   animateScroll.scrollToTop()
+}
+
+if (typeof window !== 'undefined') {
+  window.onscroll = scrollFunction
 }
 
 const ScrollToTopButton = () => (

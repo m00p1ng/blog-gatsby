@@ -14,11 +14,15 @@ const RecommendWrapper = styled.div`
     margin-top: 3rem;
   }
 `
-const HeaderWrapper = styled.div`
+const HeaderWrapper = styled.h1.attrs({
+  className: 'title is-4'
+})`
   margin-bottom: 1rem;
 `
 
-const TitleWrapper = styled.div`
+const TitleWrapper = styled.h1.attrs({
+  className: 'title recommend-title'
+})`
   margin: 1rem 0.2rem 0;
 `
 
@@ -63,11 +67,7 @@ const renderRecommendList = (recommended: RecommendedPost, data: Data) => (
           />
         </Link>
         <TitleWrapper>
-          <h1 className="title recommend-title">
-            <Link to={post.slug}>
-              {post.title}
-            </Link>
-          </h1>
+          <Link to={post.slug}>{post.title}</Link>
         </TitleWrapper>
       </StoryWrapper>
     ))}
@@ -76,11 +76,7 @@ const renderRecommendList = (recommended: RecommendedPost, data: Data) => (
 
 const RecommendedTemplate = ({ recommended, title }: Props) => (
   <RecommendWrapper>
-    <HeaderWrapper>
-      <h1 className="title is-4">
-        {title}
-      </h1>
-    </HeaderWrapper>
+    <HeaderWrapper>{title}</HeaderWrapper>
     <div className="columns is-multiline recommend-breakpoint">
       <StaticQuery
         query={defaultImageQuery}

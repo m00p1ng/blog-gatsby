@@ -8,9 +8,9 @@ import Navbar from './Navbar'
 import ScrollToTopButton from './ScrollToTopButton'
 
 import Data from '../models/Data'
-import './fontawesome'
 
 import '../assets/scss/index.scss'
+import '../utils/fontawesome'
 
 const SiteWrapper = styled.div`
   min-height: 100vh;
@@ -18,7 +18,7 @@ const SiteWrapper = styled.div`
   flex-direction: column;
 `
 
-const ContentWrapper = styled.div`
+const ContentWrapper = styled.main`
   flex: 1 0 auto;
 
   .container {

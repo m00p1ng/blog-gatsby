@@ -42,11 +42,12 @@ const Archive = ({ data }: PageProps) => {
                           <span className="archive-date">
                             {node.frontmatter!.shortDate}
                           </span>
-                          <div>
-                            <Link to={node.fields!.slug} className="rainbow">
-                              {node.frontmatter!.title}
-                            </Link>
-                          </div>
+                          <Link
+                            to={node.fields!.slug}
+                            className="rainbow"
+                          >
+                            {node.frontmatter!.title}
+                          </Link>
                         </div>
                       </LinkWrapper>
                     ))}
@@ -70,7 +71,7 @@ export const query = graphql`
         title
       }
     }
-      allMarkdownRemark(
+    allMarkdownRemark(
       sort: {order: DESC, fields: [frontmatter___date]}
       filter:{frontmatter: {published: {eq: true}}}
     ) {

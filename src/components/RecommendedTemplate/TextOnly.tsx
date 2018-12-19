@@ -7,7 +7,9 @@ import RecommendedPost from '../../models/RecommendedPost'
 const RecommendWrapper = styled.div`
   margin-top: 3rem;
 `
-const HeaderWrapper = styled.div`
+const HeaderWrapper = styled.h1.attrs({
+  className: 'title is-5'
+})`
   margin-bottom: -0.5rem;
 `
 
@@ -19,9 +21,7 @@ interface Props {
 const RecommendedTemplate = ({ recommended, title }: Props) => (
   <RecommendWrapper>
     <HeaderWrapper>
-      <h1 className="title is-5">
-        {title}
-      </h1>
+      {title}
     </HeaderWrapper>
     <div className="content markdown">
       <ul>

@@ -12,20 +12,18 @@ const About = () => (
     <StaticQuery
       query={graphql`
         query {
-            site {
+          site {
             siteMetadata {
               title
             }
           }
         }
-    `}
+      `}
       render={(data: Data) => (
         <Helmet title={`About | ${data!.site!.siteMetadata.title}`} />
       )}
     />
-    <Banner
-      title="About"
-    />
+    <Banner title="About" />
   </Layout>
 )
 

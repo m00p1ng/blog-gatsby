@@ -17,15 +17,13 @@ interface Props {
 }
 
 const PostContentWrapper = styled.div`
-  display:flex;
-  flex-direction: column;
   margin: 1rem 0;
 `
 
 const ContentWrapper = styled.div.attrs({
   className: 'columns'
 })`
-    align-items: center;
+  align-items: center;
 `
 
 const CalendarIcon = styled(FontAwesomeIcon)`
@@ -117,7 +115,7 @@ const PostPreview = ({ post }: Props) => {
               {date}
             </DateWrapper>
             <PostContentWrapper>
-              <p>{description}</p>
+              {description}
             </PostContentWrapper>
             {tags && (
               <TagList tags={tags} />

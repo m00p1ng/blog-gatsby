@@ -111,9 +111,10 @@ const PostTemplate = ({ data, pageContext }: PageProps) => {
               <h1 className="title is-size-3_5-mobile">{title}</h1>
               <DateSubHeader date={date!} html={post!.html!} />
               <HRLine />
-              <div className="content markdown">
-                <div dangerouslySetInnerHTML={{ __html: post!.html! }} />
-              </div>
+              <div
+                className="content markdown"
+                dangerouslySetInnerHTML={{ __html: post!.html! }}
+              />
               {tags && (
                 <TagList tags={tags} size="is-medium" />
               )}

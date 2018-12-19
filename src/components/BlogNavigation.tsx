@@ -14,41 +14,19 @@ const NavigationWrapper = styled.div`
   margin: 1rem 0;
 `
 
-interface NavLinkProps {
-  link: string
-  rel: string
-  className: string
-  content: JSX.Element
-}
-
-const NavLink = ({ link, rel, className, content }: NavLinkProps) => (
-  <Link to={link} rel={rel}>
-    <h1 className={
-      `title pagination-font pagination-link ${className}`
-    }>
-      {content}
-    </h1>
-  </Link>
-)
-
 const BlogNavigation = ({ next, prev, page, pages }: Props) => (
   <NavigationWrapper id="pagination-blog">
     <nav className="columns is-mobile">
       <div className="column has-text-left">
         {next && (
-          <NavLink
-            link={next}
-            rel={'next'}
-            className="pagination-link__left"
-            content={
-              <>
-                <span className="icon is-medium">
-                  <FontAwesomeIcon icon="angle-double-left" />
-                </span>
-                Older
-              </>
-            }
-          />
+          <Link to={next} rel="next">
+            <h1 className="title pagination-font pagination-link pagination-link__left">
+              <span className="icon is-medium">
+                <FontAwesomeIcon icon="angle-double-left" />
+              </span>
+              Older
+            </h1>
+          </Link>
         )}
       </div>
       <div className="column pagination-page">
@@ -58,19 +36,14 @@ const BlogNavigation = ({ next, prev, page, pages }: Props) => (
       </div>
       <div className="column has-text-right">
         {prev && (
-          <NavLink
-            link={prev}
-            rel={'prev'}
-            className="pagination-link__right"
-            content={
-              <>
-                Newer
-                <span className="icon is-medium">
-                  <FontAwesomeIcon icon="angle-double-right" />
-                </span>
-              </>
-            }
-          />
+          <Link to={prev} rel="prev">
+            <h1 className="title pagination-font pagination-link pagination-link__right">
+              Newer
+              <span className="icon is-medium">
+                <FontAwesomeIcon icon="angle-double-right" />
+              </span>
+            </h1>
+          </Link>
         )}
       </div>
     </nav>
