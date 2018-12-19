@@ -27,7 +27,7 @@ const DateWrapper = styled.div`
 `
 
 const DisqusWrapper = styled(DiscussionEmbed)`
-  margin-top: 3rem;
+  margin-top: 2rem;
 `
 
 const CalendarIcon = styled(FontAwesomeIcon)`
@@ -120,15 +120,19 @@ const PostTemplate = ({ data, pageContext }: PageProps) => {
               )}
               <SocialShareWidget url={`${url}${slug}`} tags={tags} title={title!} />
               {total && total >= 3 && (
-                <>
-                  <RecommendedWidget recommendedGroup={recommended!} />
-                  <PostNavigation nextPost={nextPost} prevPost={prevPost} />
-                </>
-              )}
-              {disqus && (
-                <Disqus id={post!.id!} title={title!} disqus={disqus} />
+                <PostNavigation nextPost={nextPost} prevPost={prevPost} />
               )}
             </div>
+            {total && total >= 3 && (
+              <div className="post-recommend">
+                <RecommendedWidget recommendedGroup={recommended!} />
+              </div>
+            )}
+            {disqus && (
+              <div className="post-comment">
+                <Disqus id={post!.id!} title={title!} disqus={disqus} />
+              </div>
+            )}
           </div>
         </div>
       </div>

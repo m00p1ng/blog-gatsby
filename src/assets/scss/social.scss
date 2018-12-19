@@ -1,3 +1,5 @@
+@import '~bulma/sass/utilities/mixins.sass';
+
 $brand-colors: (facebook: #3b5998, twitter: #1da1f2);
 
 .post-social {
@@ -10,6 +12,22 @@ $brand-colors: (facebook: #3b5998, twitter: #1da1f2);
 
     &:hover {
       opacity: 0.9;
+
+      @include from($desktop) {
+        animation: bounce 0.25s cubic-bezier(.5, 0.05, 1, .5);
+        animation-direction: alternate;
+        animation-iteration-count: infinite;
+      }
+    }
+
+    @keyframes bounce {
+      from {
+        transform: translateY(0px);
+      }
+
+      to {
+        transform: translateY(-3px);
+      }
     }
 
     @each $class,

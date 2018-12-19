@@ -13,9 +13,33 @@
     margin: 2rem 2rem 0 2rem;
   }
 
-  & &__remove-image-radius {
+  &__remove-image-radius {
     border-top-left-radius: 0;
     border-top-right-radius: 0;
+  }
+}
+
+.post-recommend {
+  @include mobile {
+    margin: -3rem 1rem 0;
+  }
+
+  @include tablet-only {
+    margin: -5rem 1.5rem 0;
+  }
+
+  @include from($desktop) {
+    margin: -5rem 2rem 0;
+  }
+}
+
+.post-comment {
+  @include tablet-only {
+    margin: 0 2.5rem;
+  }
+
+  @include from($desktop) {
+    margin: 0 2rem;
   }
 }
 

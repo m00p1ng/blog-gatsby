@@ -22,7 +22,10 @@ const SocialShareWidget = ({ url, title, tags }: Props) => (
   <SocialShareWrapper>
     <p className="title is-6">Share:</p>
     <div className="post-social">
-      <FacebookShareButton url={url} className="button facebook">
+      <FacebookShareButton
+        url={url}
+        className="button facebook bounce"
+      >
         <span className="icon">
           <FontAwesomeIcon icon={['fab', 'facebook-f']} />
         </span>
@@ -32,7 +35,7 @@ const SocialShareWidget = ({ url, title, tags }: Props) => (
         url={url}
         title={title}
         hashtags={tags ? tags.map(tag => tag.replace(' ', '')) : []}
-        className="button twitter"
+        className="button twitter bounce"
       >
         <span className="icon">
           <FontAwesomeIcon icon={['fab', 'twitter']} />
