@@ -29,3 +29,11 @@ declare module "react-headroom" {
 
   export default class Headroom extends React.Component<HeadroomProps> { }
 }
+
+declare module "react-reveal/Flip" {
+  export interface FlipProps {
+    right?: boolean
+  }
+
+  export default class Flip extends React.Component<FlipProps> { }
+}

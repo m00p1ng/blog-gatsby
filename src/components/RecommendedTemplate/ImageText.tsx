@@ -1,6 +1,7 @@
 import { graphql, Link, StaticQuery } from 'gatsby'
 import Img from 'gatsby-image'
 import React from 'react'
+import Flip from 'react-reveal/Flip'
 import styled from 'styled-components'
 
 import Data from '../../models/Data'
@@ -57,15 +58,17 @@ const renderRecommendList = (recommended: RecommendedPost, data: Data) => (
   <>
     {recommended.posts.map(post => (
       <StoryWrapper className="column is-one-third" key={post.slug}>
-        <Link to={post.slug}>
-          <Img
-            fluid={
-              post.image ?
-                post.image.childImageSharp.fluid :
-                data.defaultImage!.childImageSharp.fluid
-            }
-          />
-        </Link>
+        <Flip right>
+          <Link to={post.slug}>
+            <Img
+              fluid={
+                post.image ?
+                  post.image.childImageSharp.fluid :
+                  data.defaultImage!.childImageSharp.fluid
+              }
+            />
+          </Link>
+        </Flip>
         <TitleWrapper>
           <Link to={post.slug}>{post.title}</Link>
         </TitleWrapper>
