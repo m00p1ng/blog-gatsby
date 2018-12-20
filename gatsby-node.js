@@ -4,13 +4,14 @@ const _ = require('lodash')
 const {
   createPaginationPages,
   createLinkedPages,
-} = require("gatsby-pagination")
+} = require('gatsby-pagination')
 const {
   seriesRelated,
   tagRelated,
 } = require('./plugins/gatsby-related-story')
+const createDatePage = require('./plugins/gatsby-datepage')
 
-const createIndexPaage = ({ createPage, posts, siteTitle, limit }) => {
+const createIndexPaage = ({ createPage, posts, context, limit }) => {
   const blogTemplate = path.resolve('./src/templates/blog.tsx')
 
   createPaginationPages({
@@ -21,13 +22,11 @@ const createIndexPaage = ({ createPage, posts, siteTitle, limit }) => {
       pageNumber === 1 ? '/' : `/page/${pageNumber}`
     ),
     component: blogTemplate,
-    context: {
-      siteTitle,
-    }
+    context,
   })
 }
 
-const createPublishedPage = ({ createPage, posts, siteTitle }) => {
+const createPublishedPage = ({ createPage, posts, context }) => {
   const postTemplate = path.resolve('./src/templates/post.tsx')
   const RECOMMENDED_LIMIT = 6
 
@@ -93,8 +92,8 @@ const createPublishedPage = ({ createPage, posts, siteTitle }) => {
       return {
         path: slug,
         context: {
+          ...context,
           slug,
-          siteTitle,
           recommended,
         },
       }
@@ -118,7 +117,7 @@ const getUniqueTag = (posts) => {
   return _.uniq(tags)
 }
 
-const createTagSimplePage = ({ createPage, posts, siteTitle }) => {
+const createTagSimplePage = ({ createPage, posts, context }) => {
   const tagTemplate = path.resolve('./src/templates/tag-simple.tsx')
   const tags = getUniqueTag(posts)
 
@@ -138,16 +137,16 @@ const createTagSimplePage = ({ createPage, posts, siteTitle }) => {
       path: `/tags/${_.kebabCase(tag)}/list`,
       component: tagTemplate,
       context: {
+        ...context,
         tag,
         postByTags,
-        siteTitle,
         total: postByTags.length,
       }
     })
   })
 }
 
-const createTagPage = ({ createPage, posts, siteTitle, limit }) => {
+const createTagPage = ({ createPage, posts, context, limit }) => {
   const tagTemplate = path.resolve('./src/templates/tag.tsx')
   const tags = getUniqueTag(posts)
 
@@ -168,29 +167,15 @@ const createTagPage = ({ createPage, posts, siteTitle, limit }) => {
       },
       component: tagTemplate,
       context: {
-        siteTitle,
+        ...context,
         tag,
       }
     })
   })
 }
 
-const createSubDatePage = ({ createPage, posts, type, date, siteTitle }) => {
+const generateDatePage = ({ createPage, posts, context }) => {
   const dateTemplate = path.resolve('./src/templates/date.tsx')
-  createPage({
-    path: `/${date.replace(/-/g, '/')}`,
-    component: dateTemplate,
-    context: {
-      siteTitle,
-      dateType: type,
-      date,
-      total: posts[date].length,
-      postByDate: posts[date],
-    }
-  })
-}
-
-const createDatePage = ({ createPage, posts, siteTitle }) => {
   const filterFieldPost = posts.map(({ node }) => ({
     id: node.id,
     slug: node.fields.slug,
@@ -200,50 +185,11 @@ const createDatePage = ({ createPage, posts, siteTitle }) => {
     shortDate: node.frontmatter.shortDate,
   }))
 
-  const otherProps = {
+  createDatePage({
     createPage,
-    siteTitle,
-  }
-
-  const groupYear = _.groupBy(filterFieldPost, (post) => (
-    post.ISODate.slice(0, 4)
-  ))
-
-  Object.keys(groupYear).map((date) => {
-    createSubDatePage({
-      ...otherProps,
-      posts: groupYear,
-      type: 'year',
-      date,
-    })
-
-    // Generate Month Page
-    const groupYearMonth = _.groupBy(groupYear[date], (post) => (
-      post.ISODate.slice(0, 7)
-    ))
-
-    Object.keys(groupYearMonth).map((date) => {
-      createSubDatePage({
-        ...otherProps,
-        posts: groupYearMonth,
-        type: 'month',
-        date,
-      })
-
-      // Generate Day Page
-      const groupYearMonthDay = _.groupBy(filterFieldPost, (post) => (
-        post.ISODate.slice(0, 10)
-      ))
-
-      Object.keys(groupYearMonthDay).map((date) => {
-        createSubDatePage({
-          ...otherProps,
-          posts: groupYearMonthDay,
-          type: 'day',
-          date,
-        })
-      })
-    })
+    edges: filterFieldPost,
+    context,
+    template: dateTemplate,
   })
 }
 
@@ -309,33 +255,43 @@ exports.createPages = ({ graphql, actions }) => {
         createIndexPaage({
           createPage,
           posts,
-          siteTitle,
           limit: ITEM_PER_PAGE,
+          context: {
+            siteTitle
+          }
         })
 
         createPublishedPage({
           createPage,
           posts,
-          siteTitle,
+          context: {
+            siteTitle,
+          }
         })
 
         createTagSimplePage({
           createPage,
           posts,
-          siteTitle,
+          context: {
+            siteTitle,
+          }
         })
 
         createTagPage({
           createPage,
           posts,
-          siteTitle,
           limit: ITEM_PER_PAGE,
+          context: {
+            siteTitle,
+          }
         })
 
-        createDatePage({
+        generateDatePage({
           createPage,
           posts,
-          siteTitle,
+          context: {
+            siteTitle,
+          }
         })
 
         resolve()
@@ -354,7 +310,7 @@ exports.onCreateNode = ({ node, getNode, actions }) => {
 
     const parseFolderName = (name) => {
       const [date, postName] = name.split('___');
-      const dateFormat = date.replace(/-/g, "/")
+      const dateFormat = date.replace(/-/g, '/')
       return `${dateFormat}/${_.kebabCase(postName)}`
     }
 
