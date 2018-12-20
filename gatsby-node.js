@@ -198,104 +198,59 @@ exports.createPages = ({ graphql, actions }) => {
   const ITEM_PER_PAGE = 10;
 
   return new Promise((resolve, reject) => {
-    graphql(`
-      {
-        site {
-          siteMetadata {
-            title
-          }
-        }
-        allMarkdownRemark(
-          sort: {order: DESC, fields: [frontmatter___date]},
-          filter: {frontmatter: {published: {eq:true}}}
-        ) {
-          edges {
-            node {
-              id
-              fields {
-                slug
-              }
-              frontmatter {
-                title
-                date(formatString: "MMMM DD, YYYY")
-                ISODate: date
-                shortDate: date(formatString: "MMM DD, YY")
-                tags
-                series
-                episode
-                description
-                image {
-                  childImageSharp {
-                    fluid(maxWidth: 768, maxHeight: 400, quality: 50, cropFocus: CENTER) {
-                      aspectRatio
-                      base64
-                      sizes
-                      src
-                      srcSet
-                      srcWebp
-                      srcSetWebp
-                    }
-                  }
-                }
-              }
-            }
-          }
-        }
+    createPageQuery(graphql).then(result => {
+      if (result.errors) {
+        result.errors.forEach(e => console.error(e.toString()));
+        reject(result.errors);
       }
-    `)
-      .then(result => {
-        if (result.errors) {
-          result.errors.forEach(e => console.error(e.toString()));
-          reject(result.errors);
+
+      const siteTitle = result.data.site.siteMetadata.title
+      const posts = result.data.allMarkdownRemark.edges
+
+      createIndexPaage({
+        createPage,
+        posts,
+        limit: ITEM_PER_PAGE,
+        context: {
+          siteTitle
         }
-
-        const siteTitle = result.data.site.siteMetadata.title
-        const posts = result.data.allMarkdownRemark.edges
-
-        createIndexPaage({
-          createPage,
-          posts,
-          limit: ITEM_PER_PAGE,
-          context: {
-            siteTitle
-          }
-        })
-
-        createPublishedPage({
-          createPage,
-          posts,
-          context: {
-            siteTitle,
-          }
-        })
-
-        createTagSimplePage({
-          createPage,
-          posts,
-          context: {
-            siteTitle,
-          }
-        })
-
-        createTagPage({
-          createPage,
-          posts,
-          limit: ITEM_PER_PAGE,
-          context: {
-            siteTitle,
-          }
-        })
-
-        generateDatePage({
-          createPage,
-          posts,
-          context: {
-            siteTitle,
-          }
-        })
-
-        resolve()
       })
+
+      createPublishedPage({
+        createPage,
+        posts,
+        context: {
+          siteTitle,
+        }
+      })
+
+      createTagSimplePage({
+        createPage,
+        posts,
+        context: {
+          siteTitle,
+        }
+      })
+
+      createTagPage({
+        createPage,
+        posts,
+        limit: ITEM_PER_PAGE,
+        context: {
+          siteTitle,
+        }
+      })
+
+      generateDatePage({
+        createPage,
+        posts,
+        context: {
+          siteTitle,
+        }
+      })
+
+      resolve()
+    })
   })
 }
 
@@ -321,3 +276,49 @@ exports.onCreateNode = ({ node, getNode, actions }) => {
     });
   }
 }
+
+const createPageQuery = (graphql) => graphql(`
+  {
+    site {
+      siteMetadata {
+        title
+      }
+    }
+    allMarkdownRemark(
+      sort: {order: DESC, fields: [frontmatter___date]},
+      filter: {frontmatter: {published: {eq:true}}}
+    ) {
+      edges {
+        node {
+          id
+          fields {
+            slug
+          }
+          frontmatter {
+            title
+            date(formatString: "MMMM DD, YYYY")
+            ISODate: date
+            shortDate: date(formatString: "MMM DD, YY")
+            tags
+            series
+            episode
+            description
+            image {
+              childImageSharp {
+                fluid(maxWidth: 768, maxHeight: 400, quality: 50, cropFocus: CENTER) {
+                  aspectRatio
+                  base64
+                  sizes
+                  src
+                  srcSet
+                  srcWebp
+                  srcSetWebp
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+`)
