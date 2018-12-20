@@ -11,9 +11,6 @@ import '../../assets/scss/recommend-image.scss'
 
 const RecommendWrapper = styled.div`
   margin-top: 1rem;
-  &:first-child {
-    margin-top: 3rem;
-  }
 `
 const HeaderWrapper = styled.h1.attrs({
   className: 'title is-4'

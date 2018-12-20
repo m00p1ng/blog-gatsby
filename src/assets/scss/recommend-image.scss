@@ -33,6 +33,12 @@ $recommend-breakpoint: 650px;
       box-shadow: 8px 14px 15px rgba(39, 44, 49, 0.1),
         1px 3px 8px rgba(39, 44, 49, .04);
     }
+
+    div:first-child {
+      @include from($recommend-breakpoint) {
+        padding-bottom: 58% !important;
+      }
+    }
   }
 }
 

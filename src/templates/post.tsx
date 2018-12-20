@@ -1,5 +1,4 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { DiscussionEmbed } from 'disqus-react'
 import { graphql } from 'gatsby'
 import Img from 'gatsby-image'
 import React from 'react'
@@ -7,6 +6,7 @@ import Helmet from 'react-helmet'
 import readingTime from 'reading-time'
 import styled from 'styled-components'
 
+import DisqusWidget from '../components/DisqusWidget'
 import Layout from '../components/Layout'
 import PostNavigation from '../components/PostNavigation'
 import RecommendedWidget from '../components/RecommendedWidget'
@@ -26,10 +26,6 @@ const DateWrapper = styled.div`
   margin-top: -1.2rem;
 `
 
-const DisqusWrapper = styled(DiscussionEmbed)`
-  margin-top: 2rem;
-`
-
 const CalendarIcon = styled(FontAwesomeIcon)`
   margin-right: 0.5rem;
 `
@@ -45,12 +41,6 @@ const hasImage = (image: Image) => (
 interface ImageHeaderProps {
   image: Image
   title: string
-}
-
-interface DisqusProps {
-  id: string
-  title: string
-  disqus: string
 }
 
 const ImageHeader = ({ image, title }: ImageHeaderProps) => (
@@ -71,19 +61,6 @@ const DateSubHeader = ({ date, html }: { date: string, html: string }) => (
     {date}・{readingTime(html).text}
   </DateWrapper>
 )
-
-const DisqusWidget = ({ id, title, disqus: disqusShortname }: DisqusProps) => {
-  const disqusConfig = {
-    identifier: id,
-    title: title,
-  }
-
-  return (
-    <DisqusWrapper
-      shortname={disqusShortname}
-      config={disqusConfig} />
-  )
-}
 
 const PostTemplate = ({ data, pageContext }: PageProps) => {
   const { post, nextPost, prevPost, site } = data!
@@ -129,9 +106,13 @@ const PostTemplate = ({ data, pageContext }: PageProps) => {
               </div>
             )}
             {disqus && (
-              <div className="post-comment">
-                <DisqusWidget id={post!.id!} title={title!} disqus={disqus} />
-              </div>
+              <DisqusWidget
+                shortname={disqus}
+                config={{
+                  id: post!.id!,
+                  title: title!,
+                }}
+              />
             )}
           </div>
         </div>
