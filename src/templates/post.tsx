@@ -66,7 +66,7 @@ const PostTemplate = ({ data, pageContext }: PageProps) => {
   const { post, nextPost, prevPost, site } = data!
   const { date, tags, image, title } = post!.frontmatter!
   const { siteTitle, recommended, total, slug } = pageContext!
-  const { url, disqus } = site!.siteMetadata
+  const { url } = site!.siteMetadata
   const siteTitleName = `${title} | ${siteTitle}`
 
   return (
@@ -105,15 +105,12 @@ const PostTemplate = ({ data, pageContext }: PageProps) => {
                 <RecommendedWidget recommendedGroup={recommended!} />
               </div>
             )}
-            {disqus && (
-              <DisqusWidget
-                shortname={disqus}
-                config={{
-                  id: post!.id!,
-                  title: title!,
-                }}
-              />
-            )}
+            <DisqusWidget
+              config={{
+                id: post!.id!,
+                title: title!,
+              }}
+            />
           </div>
         </div>
       </div>
@@ -128,7 +125,6 @@ export const query = graphql`
     site {
       siteMetadata {
         url
-        disqus
       }
     }
     post: markdownRemark(fields: {slug: {eq: $slug}}) {
