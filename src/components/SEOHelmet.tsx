@@ -1,19 +1,24 @@
+import { graphql, StaticQuery } from 'gatsby'
 import React from 'react'
 import Helmet from 'react-helmet'
 
+import Data from '../models/Data'
 import Post from '../models/Post'
-import Site from '../models/Site'
+
+interface RenderProps {
+  url: string
+  post: Post
+  siteTitle: string
+  path: string
+}
 
 interface Props {
   post: Post
-  site: Site
   siteTitle: string
-  slug: string
+  path: string
 }
 
-const SEOHelmet = ({ post, site, siteTitle, slug }: Props) => {
-  const { url } = site.siteMetadata
-
+const renderSEOHelmet = ({ post, siteTitle, path, url }: RenderProps) => {
   const {
     description,
     ISODate,
@@ -35,14 +40,39 @@ const SEOHelmet = ({ post, site, siteTitle, slug }: Props) => {
       <meta property="og:title" content={siteTitle} />
       <meta property="og:site_name" content={siteTitle} />
       <meta property="og:description" content={description} />
-      <meta property="og:url" content={`${url}${slug}`} />
+      <meta property="og:url" content={`${url}${path}`} />
       <meta property="og:type" content="article" />
       <meta property="og:updated_time" content={ISODate} />
       <meta property="og:site_name" content={siteTitle} />
       <meta property="og:image" content={thumbnail} />
       <meta property="og:image:secure_url" content={thumbnail} />
-
     </Helmet>
+  )
+}
+
+const SEOHelmet = ({ post, siteTitle, path }: Props) => {
+  return (
+    <StaticQuery
+      query={graphql`
+        query {
+          site {
+            siteMetadata {
+              url
+            }
+          }
+        }
+      `}
+      render={(data: Data) => {
+        const { url } = data.site!.siteMetadata
+
+        return renderSEOHelmet({
+          post,
+          siteTitle,
+          path,
+          url: url!
+        })
+      }}
+    />
   )
 }
 

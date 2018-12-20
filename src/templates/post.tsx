@@ -63,10 +63,9 @@ const DateSubHeader = ({ date, html }: { date: string, html: string }) => (
 )
 
 const PostTemplate = ({ data, pageContext }: PageProps) => {
-  const { post, nextPost, prevPost, site } = data!
+  const { post, nextPost, prevPost } = data!
   const { date, tags, image, title } = post!.frontmatter!
   const { siteTitle, recommended, total, slug } = pageContext!
-  const { url } = site!.siteMetadata
   const siteTitleName = `${title} | ${siteTitle}`
 
   return (
@@ -75,9 +74,8 @@ const PostTemplate = ({ data, pageContext }: PageProps) => {
         <Helmet title={siteTitleName} />
         <SEOHelmet
           post={post!}
-          site={site!}
           siteTitle={siteTitleName}
-          slug={slug!}
+          path={slug!}
         />
         <div className="post">
           <div className={`card orange-shadow ${hasImage(image!)}`}>
@@ -95,7 +93,7 @@ const PostTemplate = ({ data, pageContext }: PageProps) => {
               {tags && (
                 <TagList tags={tags} size="is-medium" />
               )}
-              <SocialShareWidget url={`${url}${slug}`} tags={tags} title={title!} />
+              <SocialShareWidget slug={slug!} tags={tags} title={title!} />
               {total && total >= 3 && (
                 <PostNavigation nextPost={nextPost} prevPost={prevPost} />
               )}
@@ -122,11 +120,6 @@ export default PostTemplate
 
 export const query = graphql`
   query PostsQuery($slug: String!, $prev: String, $next: String) {
-    site {
-      siteMetadata {
-        url
-      }
-    }
     post: markdownRemark(fields: {slug: {eq: $slug}}) {
       html
       frontmatter {
