@@ -6,7 +6,7 @@
   }
 
   @include tablet-only {
-    margin: 2rem 2.5rem 0;
+    margin: 2rem 2rem 0;
   }
 
   @include from($desktop) {
@@ -16,6 +16,10 @@
   &__remove-image-radius {
     border-top-left-radius: 0;
     border-top-right-radius: 0;
+  }
+
+  .page-content {
+    padding-bottom: 0;
   }
 }
 
@@ -45,10 +49,6 @@
   @include from($desktop) {
     margin: 0 3rem 3rem;
   }
-}
-
-.page-content {
-  padding-bottom: 0;
 }
 
 .post-navigation {

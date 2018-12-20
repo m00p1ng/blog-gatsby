@@ -175,11 +175,22 @@ const createTagPage = ({ createPage, posts, siteTitle, limit }) => {
   })
 }
 
-/////////////////////////
-// TODO: Need Refactor //
-/////////////////////////
-const createDatePage = ({ createPage, posts, siteTitle }) => {
+const createSubDatePage = ({ createPage, posts, type, date, siteTitle }) => {
   const dateTemplate = path.resolve('./src/templates/date.tsx')
+  createPage({
+    path: `/${date.replace(/-/g, '/')}`,
+    component: dateTemplate,
+    context: {
+      siteTitle,
+      dateType: type,
+      date,
+      total: posts[date].length,
+      postByDate: posts[date],
+    }
+  })
+}
+
+const createDatePage = ({ createPage, posts, siteTitle }) => {
   const filterFieldPost = posts.map(({ node }) => ({
     id: node.id,
     slug: node.fields.slug,
@@ -189,60 +200,47 @@ const createDatePage = ({ createPage, posts, siteTitle }) => {
     shortDate: node.frontmatter.shortDate,
   }))
 
+  const otherProps = {
+    createPage,
+    siteTitle,
+  }
+
   const groupYear = _.groupBy(filterFieldPost, (post) => (
     post.ISODate.slice(0, 4)
   ))
 
-  Object.keys(groupYear).map((year) => {
-    createPage({
-      path: `/${year}`,
-      component: dateTemplate,
-      context: {
-        siteTitle,
-        dateType: "year",
-        date: year,
-        total: groupYear[year].length,
-        postByDate: groupYear[year],
-      }
+  Object.keys(groupYear).map((date) => {
+    createSubDatePage({
+      ...otherProps,
+      posts: groupYear,
+      type: 'year',
+      date,
     })
 
     // Generate Month Page
-    const groupYearMonth = _.groupBy(groupYear[year], (post) => (
+    const groupYearMonth = _.groupBy(groupYear[date], (post) => (
       post.ISODate.slice(0, 7)
     ))
-    Object.keys(groupYearMonth).map((date) => {
-      const [year, month] = date.split('-')
 
-      createPage({
-        path: `/${year}/${month}`,
-        component: dateTemplate,
-        context: {
-          siteTitle,
-          dateType: "month",
-          date,
-          total: groupYearMonth[date].length,
-          postByDate: groupYearMonth[date],
-        }
+    Object.keys(groupYearMonth).map((date) => {
+      createSubDatePage({
+        ...otherProps,
+        posts: groupYearMonth,
+        type: 'month',
+        date,
       })
 
+      // Generate Day Page
       const groupYearMonthDay = _.groupBy(filterFieldPost, (post) => (
         post.ISODate.slice(0, 10)
       ))
 
-      // Generate Day Page
       Object.keys(groupYearMonthDay).map((date) => {
-        const [year, month, day] = date.split('-')
-
-        createPage({
-          path: `/${year}/${month}/${day}`,
-          component: dateTemplate,
-          context: {
-            siteTitle,
-            dateType: "day",
-            date,
-            total: groupYearMonthDay[date].length,
-            postByDate: groupYearMonthDay[date],
-          }
+        createSubDatePage({
+          ...otherProps,
+          posts: groupYearMonthDay,
+          type: 'day',
+          date,
         })
       })
     })
@@ -268,6 +266,9 @@ exports.createPages = ({ graphql, actions }) => {
           edges {
             node {
               id
+              fields {
+                slug
+              }
               frontmatter {
                 title
                 date(formatString: "MMMM DD, YYYY")
@@ -290,9 +291,6 @@ exports.createPages = ({ graphql, actions }) => {
                     }
                   }
                 }
-              }
-              fields {
-                slug
               }
             }
           }
