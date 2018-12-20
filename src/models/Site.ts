@@ -2,7 +2,7 @@ interface Site {
   siteMetadata: {
     title?: string
     subtitle?: string
-    url?: string
+    siteURL?: string
     description?: string
     author?: string
     disqusShortname?: string

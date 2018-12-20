@@ -57,19 +57,19 @@ const SEOHelmet = ({ post, siteTitle, path }: Props) => {
         query {
           site {
             siteMetadata {
-              url
+              siteURL
             }
           }
         }
       `}
       render={(data: Data) => {
-        const { url } = data.site!.siteMetadata
+        const { siteURL } = data.site!.siteMetadata
 
         return renderSEOHelmet({
           post,
           siteTitle,
           path,
-          url: url!
+          url: siteURL!
         })
       }}
     />

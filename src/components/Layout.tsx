@@ -48,10 +48,10 @@ const renderLayout = ({ children, data }: LayoutRenderProps) => {
     description,
     subtitle,
     author,
-    url,
+    siteURL,
   } = data.site!.siteMetadata
   const siteTitleName = `${title} - ${subtitle}`
-  const iconImage = `${url}/favicon.png`
+  const iconImage = `${siteURL}/favicon.png`
 
   return (
     <SiteWrapper>
@@ -93,7 +93,7 @@ const siteTitleQuery = graphql`
         subtitle
         description
         author
-        url,
+        siteURL,
       }
     }
   }

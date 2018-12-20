@@ -61,16 +61,16 @@ const SocialShareWidget = ({ slug, title, tags }: Props) => (
       query {
         site {
           siteMetadata {
-            url
+            siteURL
           }
         }
       } 
     `}
     render={(data: Data) => {
-      const { url } = data.site!.siteMetadata
+      const { siteURL } = data.site!.siteMetadata
 
       return renderSocialShareWidget({
-        url: url!,
+        url: siteURL!,
         slug,
         title,
         tags,

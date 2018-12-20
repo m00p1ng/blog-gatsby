@@ -1,11 +1,18 @@
+const path = require('path')
+let envPath = process.env.GATSBY_ENV === 'production' ?
+  path.resolve('./.env.production') :
+  path.resolve('./.env.development')
+
+require('dotenv').config({ path: envPath })
+
 module.exports = {
   siteMetadata: {
     title: 'm00p1ng',
     subtitle: 'All about me',
-    url: 'https://m00p1ng.github.io',
+    siteURL: process.env.SITE_URL,
     description: 'Personal Blog of m00p1ng',
     author: 'Mongkonchai Priyachiwa',
-    disqusShortname: 'm00p1ng-github-io',
+    disqusShortname: process.env.DISQUS_SHORTNAME,
   },
   plugins: [
     {
@@ -18,7 +25,7 @@ module.exports = {
     {
       resolve: 'gatsby-plugin-google-analytics',
       options: {
-        // trackingId: 'ADD YOUR TRACKING ID HERE'
+        trackingId: process.env.GOOGLE_ANALYTICS_TRACKER_ID,
       }
     },
     {
