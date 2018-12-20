@@ -2,7 +2,6 @@ import { DiscussionEmbed } from 'disqus-react'
 import { graphql, StaticQuery } from 'gatsby'
 import React from 'react'
 import LazyLoad from 'react-lazyload'
-import styled from 'styled-components'
 
 import Data from '../models/Data'
 
@@ -12,10 +11,6 @@ interface DisqusWidgetProps {
     id: string
   }
 }
-
-const DisqusWrapper = styled(DiscussionEmbed)`
-  margin-top: 2rem;
-`
 
 const DisqusWidget = ({ config }: DisqusWidgetProps) => (
   <StaticQuery
@@ -34,7 +29,7 @@ const DisqusWidget = ({ config }: DisqusWidgetProps) => (
       return disqusShortname ? (
         <LazyLoad>
           <div className="post-comment">
-            <DisqusWrapper
+            <DiscussionEmbed
               shortname={disqusShortname}
               config={config}
             />

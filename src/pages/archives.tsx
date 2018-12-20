@@ -1,6 +1,6 @@
 import { graphql, Link } from 'gatsby'
 import groupBy from 'lodash/groupBy'
-import React from 'react'
+import React, { Fragment } from 'react'
 import Helmet from 'react-helmet'
 import styled from 'styled-components'
 
@@ -26,7 +26,7 @@ interface GroupPostByDate {
 
 const renderByDatePost = (groupYear: GroupPostByDate) => {
   return Object.keys(groupYear).reverse().map(year => (
-    <>
+    <Fragment key={year}>
       <h3>
         <HeaderLinkWrapper to={`/${year}`}>
           {year}
@@ -49,7 +49,7 @@ const renderByDatePost = (groupYear: GroupPostByDate) => {
           </LinkWrapper>
         ))}
       </ul>
-    </>
+    </Fragment>
   ))
 }
 

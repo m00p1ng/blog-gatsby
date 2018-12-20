@@ -1,7 +1,7 @@
 import { Link } from 'gatsby'
 import groupBy from 'lodash/groupBy'
 import sortBy from 'lodash/sortBy'
-import React from 'react'
+import React, { Fragment } from 'react'
 import Helmet from 'react-helmet'
 import styled from 'styled-components'
 
@@ -84,7 +84,7 @@ const toSubDate = (type: string, subDate: string, date: string) => {
 
 const renderByDatePost = ({ groupDate, type, date }: RenderProps) => {
   return Object.keys(groupDate).map(subDate => (
-    <>
+    <Fragment key={subDate}>
       <h3>
         {toSubDate(type, subDate, date)}
       </h3>
@@ -107,7 +107,7 @@ const renderByDatePost = ({ groupDate, type, date }: RenderProps) => {
           </LinkWrapper>
         ))}
       </ul>
-    </>
+    </Fragment>
   ))
 }
 

@@ -31,8 +31,8 @@ module.exports = {
     {
       resolve: 'gatsby-source-filesystem',
       options: {
-        name: 'assets',
-        path: `${__dirname}/src/assets`,
+        name: 'images',
+        path: `${__dirname}/src/assets/images`,
       },
     },
     'gatsby-transformer-sharp',
@@ -73,7 +73,7 @@ module.exports = {
         background_color: '#663399',
         theme_color: '#663399',
         display: 'minimal-ui',
-        icon: 'src/assets/m00p1ng-icon.png',
+        icon: 'src/assets/images/m00p1ng-icon.png',
       },
     },
     'gatsby-plugin-react-helmet',
