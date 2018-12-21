@@ -52,7 +52,7 @@ const createPublishedPage = ({ createPage, posts, context }) => {
       const relatedSeriesList = seriesRelated({
         allPosts: posts,
         post: frontmatter,
-        limit: RECOMMENDED_LIMIT,
+        limit: RECOMMENDED_LIMIT / 2,
       })
 
       const relatedTagList = tagRelated({
@@ -75,9 +75,7 @@ const createPublishedPage = ({ createPage, posts, context }) => {
         }
       }
 
-      if (relatedSeriesList.length > 3) {
-
-      } else if (relatedTagList.length > 3) {
+      if (relatedTagList.length > 3) {
 
       } else if (relatedSeriesList.length == 0 && relatedTagList.length == 0) {
         recommended['latest'] = {

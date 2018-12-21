@@ -36,7 +36,7 @@ const hasRelatedTags = (includedSeries, post) => ({ node }) => {
   return commonTags.length >= 1
 }
 
-const tagRelated = ({ allPosts, post, includedSeries = false, limit = 100 }) => {
+const tagRelated = ({ allPosts, post, includedSeries = false, limit = 10 }) => {
   if (post.tags === null || post.tags.length === 0) {
     return []
   }

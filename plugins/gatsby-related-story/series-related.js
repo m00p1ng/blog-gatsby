@@ -23,7 +23,7 @@ const calculateRecommendList = (posts, curEP) => {
   }
 }
 
-const seriesRelated = ({ allPosts, post, limit = 100 }) => {
+const seriesRelated = ({ allPosts, post, limit = 10 }) => {
   if (post.series == null) {
     return []
   }
