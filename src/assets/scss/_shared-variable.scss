@@ -1,12 +1,5 @@
 @import "~bulma/sass/utilities/mixins.sass";
 
-%can-selection {
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-}
-
 %rainbow {
   @include desktop {
     transition: 200ms cubic-bezier(.17, .67, .83, .67);

@@ -1,7 +1,7 @@
 @import 'shared-variable';
 
 .no-touch .rainbow {
-  @extend %rainbow
+  @extend %rainbow;
 }
 
 .is-size-3_5-mobile {

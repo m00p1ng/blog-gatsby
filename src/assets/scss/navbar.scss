@@ -1,3 +1,5 @@
+@import '~bulma/sass/utilities/mixins.sass';
+
 .navbar-center {
   font-family: 'Roboto Mono', monospace;
   font-weight: 600;
@@ -11,6 +13,7 @@
 }
 
 #main-navigation {
+  @extend %unselectable;
   background: linear-gradient(to left, #663399 40%, #77459b 100%);
 
   .navbar-item {

@@ -28,6 +28,7 @@
   }
 
   .blog-nav-page {
+    @extend %unselectable;
     display: inline-flex;
     justify-content: center;
     align-items: center;
