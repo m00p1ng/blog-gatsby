@@ -30,6 +30,12 @@ const CalendarIcon = styled(FontAwesomeIcon)`
   margin-right: 0.5rem;
 `
 
+const HeaderWrapper = styled.div`
+  @media screen and (max-width: 544px) {
+    text-align: center;
+  }
+`
+
 const HRLine = styled.hr`
   background-color: rgba(0, 0, 0, 0.075);
   height: 3px;
@@ -83,8 +89,10 @@ const PostTemplate = ({ data, pageContext }: PageProps) => {
               <ImageHeader image={image} title={title!} />
             )}
             <div className="page-content is-medium">
-              <h1 className="title is-size-3_5-mobile">{title}</h1>
-              <DateSubHeader date={date!} html={post!.html!} />
+              <HeaderWrapper>
+                <h1 className="title is-size-4-mobile">{title}</h1>
+                <DateSubHeader date={date!} html={post!.html!} />
+              </HeaderWrapper>
               <HRLine />
               <div
                 className="content markdown"
