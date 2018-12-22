@@ -1,4 +1,4 @@
-@import '~bulma/sass/utilities/mixins.sass';
+@import 'shared-variable';
 
 #blog-nav {
   .column {
@@ -32,5 +32,13 @@
     display: inline-flex;
     justify-content: center;
     align-items: center;
+  }
+}
+
+.touch #blog-nav {
+  @extend %margin-lr-auto;
+
+  @media screen and (min-width: $post-breakpoint) and (max-width: $tablet - 1px) {
+    max-width: 576px;
   }
 }

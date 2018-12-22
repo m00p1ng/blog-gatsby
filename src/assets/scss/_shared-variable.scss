@@ -1,4 +1,6 @@
-@import "~bulma/sass/utilities/mixins.sass";
+@import '~bulma/sass/utilities/mixins.sass';
+
+$post-breakpoint: 544px;
 
 %rainbow {
   @include desktop {
@@ -20,4 +22,9 @@
       color: rgba(102, 51, 153, 0);
     }
   }
+}
+
+%margin-lr-auto {
+  margin-left: auto;
+  margin-right: auto;
 }

@@ -1,4 +1,4 @@
-@import '~bulma/sass/utilities/mixins.sass';
+@import 'shared-variable';
 
 .post {
   @include tablet-only {
@@ -22,6 +22,23 @@
     @include mobile {
       border-radius: 0;
     }
+  }
+}
+
+.touch .post .page-content {
+  padding-bottom: 0;
+  @extend %margin-lr-auto;
+
+  @include until($post-breakpoint) {
+    padding: 1rem 1rem 0;
+  }
+
+  @media screen and (min-width: $post-breakpoint) and (max-width: $tablet - 2px) {
+    max-width: 576px;
+  }
+
+  @media screen and (width: $tablet - 1px) {
+    max-width: 720px;
   }
 }
 
