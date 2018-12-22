@@ -21,6 +21,12 @@
   .page-content {
     padding-bottom: 0;
   }
+
+  .card {
+    @include mobile {
+      border-radius: 0;
+    }
+  }
 }
 
 .post-recommend {
