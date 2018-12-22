@@ -105,4 +105,23 @@
   a {
     @extend %rainbow
   }
+
+}
+
+:target {
+  animation-name: blink;
+  animation-direction: normal;
+  animation-duration: .5s;
+  animation-iteration-count: 2;
+  animation-timing-function: ease;
+}
+
+@keyframes blink {
+  0% {
+    color: rgba(0, 0, 0, .9);
+  }
+
+  100% {
+    color: rgba(0, 0, 0, 0);
+  }
 }
