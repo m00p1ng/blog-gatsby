@@ -1,0 +1,43 @@
+import { Link } from 'gatsby'
+import React from 'react'
+import styled from 'styled-components'
+
+const HeaderWrapper = styled.div`
+  text-align: center;
+  margin: 2.5rem 0 2rem;
+`
+
+const Header = styled.h1`
+  font-size: 3rem;
+  font-family: 'Roboto Mono';
+  color: orange;
+`
+
+const LinkWrapper = styled(Link)`
+  color: white;
+  font-family: 'Roboto Mono';
+  margin: 0 1rem;
+
+  &:hover {
+    color: orange;
+    text-decoration: underline;
+  }
+`
+
+const Subtitle = styled.p`
+  color: white;
+`
+
+const BlogHeader = () => (
+  <HeaderWrapper>
+    <Header>:m00p1ng:</Header>
+    <Subtitle>
+      <LinkWrapper to="/">Home</LinkWrapper>|
+      <LinkWrapper to="/archives">Archives</LinkWrapper>|
+      <LinkWrapper to="/tags">Tags</LinkWrapper>|
+      <LinkWrapper to="/about">About</LinkWrapper>
+    </Subtitle>
+  </HeaderWrapper>
+)
+
+export default BlogHeader

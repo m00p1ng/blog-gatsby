@@ -1,6 +1,7 @@
 import React from 'react'
 import Helmet from 'react-helmet'
 
+import BlogHeader from '../components/BlogHeader'
 import BlogNavigation from '../components/BlogNavigation'
 import Layout from '../components/Layout'
 import PostPreview from '../components/PostPreview/ImageLeft'
@@ -22,6 +23,7 @@ const IndexPage = ({ pageContext }: PageProps) => {
       {(page !== 1) && (
         <Helmet title={`Page ${page} | ${siteTitle}`} />
       )}
+      <BlogHeader />
       <div className="container">
         <div className="blog-container">
           <div className="postpreview__container">
