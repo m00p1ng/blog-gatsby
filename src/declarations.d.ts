@@ -37,3 +37,7 @@ declare module "react-reveal/Flip" {
 
   export default class Flip extends React.Component<FlipProps> { }
 }
+
+declare module "react-reveal/Zoom" {
+  export default class Zoom extends React.Component { }
+}

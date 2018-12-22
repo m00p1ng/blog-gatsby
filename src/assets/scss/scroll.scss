@@ -18,6 +18,10 @@
     animation-direction: alternate;
     animation-iteration-count: infinite;
   }
+
+  &:focus:not(:active) {
+    box-shadow: none;
+  }
 }
 
 .scroll {
@@ -28,7 +32,6 @@
   }
 
   &__mobile {
-
     @include until($desktop) {
       display: block;
     }
@@ -39,7 +42,6 @@
   }
 
   &__not-mobile {
-
     @include until($desktop) {
       display: none;
     }
