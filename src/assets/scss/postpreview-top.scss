@@ -2,7 +2,7 @@
 
 .postpreview {
   & &__image {
-    @include from($tablet) {
+    @include tablet {
       margin-bottom: -1rem;
     }
   }
@@ -17,7 +17,7 @@
     margin: 0 2.5rem;
   }
 
-  @include from($tablet) {
+  @include tablet {
     max-width: 700px;
     display: flex;
     flex-direction: column;

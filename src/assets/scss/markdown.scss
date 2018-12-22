@@ -2,13 +2,13 @@
 @import 'shared-variable';
 
 .no-touch .markdown {
-  @include from($tablet) {
+  @include tablet {
     font-size: 18px;
   }
 }
 
 .touch .markdown {
-  @include from($desktop) {
+  @include desktop {
     font-size: 18px;
   }
 }

@@ -12,7 +12,7 @@ $postpreview-mobile-padding: 1.75rem;
       padding: 2.5rem;
     }
 
-    @include from($desktop) {
+    @include desktop {
       padding: 3rem;
     }
   }
@@ -52,7 +52,7 @@ $postpreview-mobile-padding: 1.75rem;
 }
 
 .postpreview__container {
-  @include from($tablet) {
+  @include tablet {
     margin-top: 1rem;
   }
 }

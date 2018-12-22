@@ -33,7 +33,7 @@
       display: block;
     }
 
-    @include from($desktop) {
+    @include desktop {
       display: none;
     }
   }
@@ -44,7 +44,7 @@
       display: none;
     }
 
-    @include from($desktop) {
+    @include desktop {
       display: block;
     }
   }
