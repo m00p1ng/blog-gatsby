@@ -52,5 +52,7 @@ $postpreview-mobile-padding: 1.75rem;
 }
 
 .postpreview__container {
-  padding-top: 1rem;
+  @include from($tablet) {
+    margin-top: 1rem;
+  }
 }
