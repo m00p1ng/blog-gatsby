@@ -75,4 +75,12 @@ a.banner-link:hover {
 
 .archive-content {
   display: flex;
+
+  @include until($post-breakpoint) {
+    display: inline;
+
+    a {
+      display: block;
+    }
+  }
 }

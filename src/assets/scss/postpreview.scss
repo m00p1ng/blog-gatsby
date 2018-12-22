@@ -56,11 +56,3 @@ $postpreview-mobile-padding: 1.75rem;
     margin-top: 1rem;
   }
 }
-
-.touch .postpreview {
-  @extend %margin-lr-auto;
-
-  @media screen and (min-width: $post-breakpoint) and (max-width: $tablet - 1px) {
-    max-width: 576px;
-  }
-}

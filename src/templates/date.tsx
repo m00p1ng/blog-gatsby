@@ -83,7 +83,7 @@ const toSubDate = (type: string, subDate: string, date: string) => {
 }
 
 const renderByDatePost = ({ groupDate, type, date }: RenderProps) => {
-  return Object.keys(groupDate).map(subDate => (
+  return Object.keys(groupDate).sort().map(subDate => (
     <Fragment key={subDate}>
       <h3>
         {toSubDate(type, subDate, date)}

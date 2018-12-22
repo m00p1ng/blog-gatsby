@@ -34,11 +34,3 @@
     align-items: center;
   }
 }
-
-.touch #blog-nav {
-  @extend %margin-lr-auto;
-
-  @media screen and (min-width: $post-breakpoint) and (max-width: $tablet - 1px) {
-    max-width: 576px;
-  }
-}
