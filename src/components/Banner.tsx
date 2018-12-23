@@ -3,11 +3,12 @@ import styled from 'styled-components'
 
 interface Props {
   title: string | JSX.Element
-  subtitle?: string
+  subtitle?: string | JSX.Element
 }
 
 const BannerWrapper = styled.div`
   margin: 1rem 0;
+  text-align: center;
 `
 
 const Banner = ({ title, subtitle }: Props) => (

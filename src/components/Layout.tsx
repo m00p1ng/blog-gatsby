@@ -56,7 +56,7 @@ const renderLayout = ({ children, data }: LayoutRenderProps) => {
   return (
     <SiteWrapper>
       <Helmet title={siteTitleName}>
-        <html lang="en" />
+        <html lang="th" />
 
         <meta name="description" content={description} />
         <meta name="author" content={author} />
