@@ -24,10 +24,15 @@
   background-color: lighten($link, 4.5%);
   box-shadow: 8px 14px 38px rgba(39, 44, 49, .1),
     1px 3px 8px rgba(39, 44, 49, .1);
+}
 
-  &:hover {
-    opacity: 0.9;
-  }
+.tag:hover {
+  opacity: 0.9;
+}
+
+.tag.disable-hover {
+  text-decoration: none !important;
+  cursor: default;
 }
 
 .no-touch .page-link {

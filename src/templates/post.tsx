@@ -76,14 +76,14 @@ const PostTemplate = ({ data, pageContext }: PageProps) => {
 
   return (
     <Layout>
+      <Helmet title={siteTitleName} />
+      <SEOHelmet
+        post={post!}
+        siteTitle={siteTitleName}
+        path={slug!}
+      />
       <div className="container">
-        <Helmet title={siteTitleName} />
-        <SEOHelmet
-          post={post!}
-          siteTitle={siteTitleName}
-          path={slug!}
-        />
-        <div className="post">
+        <article className="post">
           <div className={`card orange-shadow ${hasImage(image!)}`}>
             {image && (
               <ImageHeader image={image} title={title!} />
@@ -118,7 +118,7 @@ const PostTemplate = ({ data, pageContext }: PageProps) => {
               }}
             />
           </div>
-        </div>
+        </article>
       </div>
     </Layout>
   )
@@ -128,38 +128,38 @@ export default PostTemplate
 
 export const query = graphql`
   query PostsQuery($slug: String!, $prev: String, $next: String) {
-    post: markdownRemark(fields: {slug: {eq: $slug}}) {
-      html
+        post: markdownRemark(fields: {slug: {eq: $slug}}) {
+        html
       frontmatter {
         title
         date(formatString: "MMMM DD, YYYY")
-        ISODate: date
-        tags
-        description
+      ISODate: date
+      tags
+      description
         image {
-          childImageSharp {
-            fluid(maxWidth: 960, quality: 80) {
-              ...GatsbyImageSharpFluid_withWebp
-            }
-          }
-        }
+        childImageSharp {
+      fluid(maxWidth: 960, quality: 80) {
+        ...GatsbyImageSharpFluid_withWebp
       }
-    }
-    prevPost: markdownRemark(fields: { slug: { eq: $prev } }) {
-      frontmatter {
-        title
-      }
-      fields {
-        slug
-      }
-    }
-    nextPost: markdownRemark(fields: { slug: { eq: $next } }) {
-      frontmatter {
-        title
-      }
-      fields {
-        slug
       }
     }
   }
-`
+}
+    prevPost: markdownRemark(fields: {slug: {eq: $prev } }) {
+        frontmatter {
+      title
+    }
+      fields {
+        slug
+      }
+      }
+    nextPost: markdownRemark(fields: {slug: {eq: $next } }) {
+        frontmatter {
+      title
+    }
+      fields {
+        slug
+      }
+      }
+    }
+  `
