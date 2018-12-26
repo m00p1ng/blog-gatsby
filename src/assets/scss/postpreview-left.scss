@@ -8,8 +8,12 @@
   }
 
   & &__content {
-    @include mobile {
+    @include until($post-breakpoint) {
       padding: $postpreview-mobile-padding;
+    }
+
+    @media screen and (min-width: $post-breakpoint) and (max-width: $tablet - 1px) {
+      padding: 1.75rem;
     }
 
     @include tablet-only {
@@ -26,6 +30,12 @@
       margin: -$postpreview-mobile-padding;
       margin-bottom: 0;
     }
+
+    @media screen and (min-width: $post-breakpoint) and (max-width: $tablet - 1px) {
+      margin: -1.75rem;
+      margin-bottom: 0;
+    }
+
   }
 
   .gatsby-image-wrapper {

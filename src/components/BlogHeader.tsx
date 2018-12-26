@@ -5,6 +5,10 @@ import styled from 'styled-components'
 const HeaderWrapper = styled.div`
   text-align: center;
   margin: 2.5rem 0 2rem;
+
+  @media screen  and (max-width: 320px){
+    font-size: 14px;
+  }
 `
 
 const Header = styled.h1`
@@ -21,6 +25,11 @@ const LinkWrapper = styled(Link)`
   &:hover {
     color: orange;
     text-decoration: underline;
+  }
+
+  .touch &:focus:not(:active) {
+    color: white;
+    text-decoration: none;
   }
 `
 
