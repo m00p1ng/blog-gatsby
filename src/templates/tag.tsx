@@ -5,8 +5,8 @@ import Helmet from 'react-helmet'
 
 import Banner from '../components/Banner'
 import BlogNavigation from '../components/BlogNavigation'
-import Layout from '../components/Layout'
 import PostPreview from '../components/PostPreview'
+import Layout from '../layouts/Layout'
 
 import PageProps from '../models/PageProps'
 

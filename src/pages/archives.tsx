@@ -5,7 +5,7 @@ import Helmet from 'react-helmet'
 import styled from 'styled-components'
 
 import Banner from '../components/Banner'
-import Layout from '../components/Layout'
+import Layout from '../layouts/Layout'
 
 import Node from '../models/Node'
 import PageProps from '../models/PageProps'

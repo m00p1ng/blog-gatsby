@@ -3,9 +3,9 @@ import React from 'react'
 import Helmet from 'react-helmet'
 import styled from 'styled-components'
 
-import Footer from './Footer'
-import Navbar from './Navbar'
-import ScrollToTopButton from './ScrollToTopButton'
+import Footer from '../components/Footer'
+import Navbar from '../components/Navbar'
+import ScrollToTopButton from '../components/ScrollToTopButton'
 
 import Data from '../models/Data'
 

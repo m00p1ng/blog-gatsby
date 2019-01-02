@@ -7,12 +7,12 @@ import readingTime from 'reading-time'
 import styled from 'styled-components'
 
 import DisqusWidget from '../components/DisqusWidget'
-import Layout from '../components/Layout'
 import PostNavigation from '../components/PostNavigation'
 import RecommendedWidget from '../components/RecommendedWidget'
 import SEOHelmet from '../components/SEOHelmet'
 import SocialShareWidget from '../components/SocialShareWidget'
 import TagList from '../components/TagList'
+import Layout from '../layouts/Layout'
 
 import Image from '../models/Image'
 import PageProps from '../models/PageProps'

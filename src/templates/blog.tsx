@@ -3,8 +3,8 @@ import Helmet from 'react-helmet'
 
 import BlogHeader from '../components/BlogHeader'
 import BlogNavigation from '../components/BlogNavigation'
-import Layout from '../components/Layout'
 import PostPreview from '../components/PostPreview'
+import Layout from '../layouts/Layout'
 
 import PageProps from '../models/PageProps'
 

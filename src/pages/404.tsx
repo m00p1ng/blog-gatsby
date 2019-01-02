@@ -3,7 +3,7 @@ import React from 'react'
 import Helmet from 'react-helmet'
 
 import Banner from '../components/Banner'
-import Layout from '../components/Layout'
+import Layout from '../layouts/Layout'
 
 import Data from '../models/data'
 
