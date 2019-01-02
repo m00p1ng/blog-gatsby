@@ -94,9 +94,3 @@ $postpreview-mobile-padding: 1rem;
     }
   }
 }
-
-.postpreview__container {
-  @include tablet {
-    margin-top: 1rem;
-  }
-}

@@ -5,6 +5,7 @@ import Helmet from 'react-helmet'
 import styled from 'styled-components'
 
 import Banner from '../components/Banner'
+import PageContainer from '../components/PageContainer'
 import Layout from '../layouts/Layout'
 
 import Node from '../models/Node'
@@ -68,15 +69,13 @@ const Archive = ({ data }: PageProps) => {
         title={'Archives'}
         subtitle={`${total} post${total !== 1 ? 's' : ''}`}
       />
-      <div className="container">
-        <div className="blog-container">
-          <div className="card">
-            <div className="content page-content page-fontsize">
-              {renderByDatePost(groupYear)}
-            </div>
+      <PageContainer>
+        <div className="card">
+          <div className="content page-content page-fontsize">
+            {renderByDatePost(groupYear)}
           </div>
         </div>
-      </div>
+      </PageContainer>
     </Layout>
   )
 }

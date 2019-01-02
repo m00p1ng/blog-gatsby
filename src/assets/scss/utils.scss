@@ -18,8 +18,6 @@
 }
 
 .blog-container {
-  padding-top: 1rem;
-
   @include mobile {
     margin: 0 0.8rem;
   }
@@ -52,5 +50,38 @@
     max-width: 576px;
     margin-left: auto;
     margin-right: auto;
+  }
+}
+
+.page-container {
+  @include mobile {
+    margin: 0 0.4rem;
+  }
+
+  @include tablet-only {
+    margin: 0 2.5rem;
+  }
+}
+
+.no-touch .page-container {
+  @include mobile {
+    margin: 0 0.8rem;
+  }
+}
+
+.touch .page-container {
+  @include until(650px) {
+    margin-left: 0.4rem;
+    margin-right: 0.4rem;
+  }
+
+  @media screen and (min-width: 651px) and (max-width: $tablet) {
+    max-width: 650px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  @include tablet-only {
+    margin: 0 1.5rem;
   }
 }

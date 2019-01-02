@@ -4,6 +4,7 @@ import React from 'react'
 import Helmet from 'react-helmet'
 
 import Banner from '../components/Banner'
+import BlogContainer from '../components/BlogContainer'
 import Layout from '../layouts/Layout'
 
 import PageProps from '../models/PageProps'
@@ -20,21 +21,19 @@ const TagsPage = ({ data }: PageProps) => {
         title="All Tags"
         subtitle={`Total ${tags.length} tag${tags.length !== 1 ? 's' : ''}`}
       />
-      <div className="container">
-        <div className="blog-container">
-          <div className="tags">
-            {tags.map((tag) => (
-              <Link
-                key={tag.fieldValue}
-                className="tag is-medium"
-                to={`/tags/${KebabCase(tag.fieldValue)}`}
-              >
-                {tag.fieldValue} ({tag.totalCount})
-              </Link>
-            ))}
-          </div>
+      <BlogContainer>
+        <div className="tags">
+          {tags.map((tag) => (
+            <Link
+              key={tag.fieldValue}
+              className="tag is-medium"
+              to={`/tags/${KebabCase(tag.fieldValue)}`}
+            >
+              {tag.fieldValue} ({tag.totalCount})
+            </Link>
+          ))}
         </div>
-      </div>
+      </BlogContainer>
     </Layout>
   )
 }

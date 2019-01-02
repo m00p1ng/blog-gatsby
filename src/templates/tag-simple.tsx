@@ -5,6 +5,7 @@ import Helmet from 'react-helmet'
 import styled from 'styled-components'
 
 import Banner from '../components/Banner'
+import PageContainer from '../components/PageContainer'
 import Layout from '../layouts/Layout'
 
 import PageProps from '../models/PageProps'
@@ -38,24 +39,22 @@ const TagTemplate = ({ pageContext }: PageProps) => {
         }
         subtitle={`${total} post${total !== 1 ? 's' : ''}`}
       />
-      <div className="container">
-        <div className="blog-container">
-          <div className="card">
-            <div className="content page-content page-fontsize">
-              <ul>
-                {posts!.map((post) => (
-                  <LinkWrapper key={post.id} >
-                    <Link to={post.slug} className="rainbow">
-                      {post.title}
-                    </Link>
-                    <small> - {post.date}</small>
-                  </LinkWrapper>
-                ))}
-              </ul>
-            </div>
+      <PageContainer>
+        <div className="card">
+          <div className="content page-content page-fontsize">
+            <ul>
+              {posts!.map((post) => (
+                <LinkWrapper key={post.id} >
+                  <Link to={post.slug} className="rainbow">
+                    {post.title}
+                  </Link>
+                  <small> - {post.date}</small>
+                </LinkWrapper>
+              ))}
+            </ul>
           </div>
         </div>
-      </div>
+      </PageContainer>
     </Layout>
   )
 }

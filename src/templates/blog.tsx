@@ -1,6 +1,7 @@
 import React from 'react'
 import Helmet from 'react-helmet'
 
+import BlogContainer from '../components/BlogContainer'
 import BlogHeader from '../components/BlogHeader'
 import BlogNavigation from '../components/BlogNavigation'
 import PostPreview from '../components/PostPreview'
@@ -24,23 +25,19 @@ const IndexPage = ({ pageContext }: PageProps) => {
         <Helmet title={`Page ${page} | ${siteTitle}`} />
       )}
       <BlogHeader />
-      <div className="container">
-        <div className="blog-container">
-          <div className="postpreview__container">
-            {nodes!.map(({ node }) => (
-              <PostPreview key={node.id} post={node} />
-            ))}
-          </div>
-          {(next || prev) && (
-            <BlogNavigation
-              next={next}
-              prev={prev}
-              page={page!}
-              pages={pages!}
-            />
-          )}
-        </div>
-      </div>
+      <BlogContainer>
+        {nodes!.map(({ node }) => (
+          <PostPreview key={node.id} post={node} />
+        ))}
+        {(next || prev) && (
+          <BlogNavigation
+            next={next}
+            prev={prev}
+            page={page!}
+            pages={pages!}
+          />
+        )}
+      </BlogContainer>
     </Layout>
   )
 }
