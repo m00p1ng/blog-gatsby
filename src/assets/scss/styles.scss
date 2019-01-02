@@ -48,7 +48,7 @@
 }
 
 .banner {
-  @include until($desktop) {
+  @include touch {
     padding: 0 0.5rem;
   }
 }

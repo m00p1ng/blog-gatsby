@@ -4,7 +4,7 @@
   font-family: 'Roboto Mono', monospace;
   font-weight: 600;
 
-  @include until($desktop) {
+  @include touch {
     flex-grow: 1;
     margin-left: $navbar-height;
     flex-direction: column;

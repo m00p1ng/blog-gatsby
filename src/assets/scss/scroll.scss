@@ -32,7 +32,7 @@
   }
 
   &__mobile {
-    @include until($desktop) {
+    @include touch {
       display: block;
     }
 
@@ -42,7 +42,7 @@
   }
 
   &__not-mobile {
-    @include until($desktop) {
+    @include touch {
       display: none;
     }
 
