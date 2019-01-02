@@ -24,10 +24,6 @@
 .no-touch .post {
   @include tablet-only {
     margin: 1.5rem 1.5rem 0;
-
-    .page-content {
-      padding-top: 1rem;
-    }
   }
 }
 
