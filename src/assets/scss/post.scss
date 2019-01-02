@@ -1,12 +1,8 @@
 @import 'shared-variable';
 
 .post {
-  @include tablet-only {
-    margin: 2rem 2rem 0;
-  }
-
   @include desktop {
-    margin: 2rem 0 0;
+    margin-top: 1.5rem;
   }
 
   &__remove-image-radius {
@@ -25,20 +21,42 @@
   }
 }
 
-.touch .post .page-content {
-  padding-bottom: 0;
-  @extend %margin-lr-auto;
+.no-touch .post {
+  @include tablet-only {
+    margin: 1.5rem 1.5rem 0;
 
-  @include until($post-breakpoint) {
-    padding: 1rem 1rem 0;
+    .page-content {
+      padding-top: 1rem;
+    }
+  }
+}
+
+.touch .post {
+  .card {
+    @include touch {
+      border-radius: 0;
+    }
   }
 
-  @media screen and (min-width: $post-breakpoint) and (max-width: $tablet - 2px) {
-    max-width: 576px;
-  }
+  .page-content {
+    @extend %margin-lr-auto;
 
-  @media screen and (width: $tablet - 1px) {
-    max-width: 720px;
+    @include until($post-breakpoint) {
+      padding: 1rem 1rem 0;
+    }
+
+    @media screen and (min-width: $post-breakpoint) and (max-width: $tablet - 2px) {
+      max-width: 576px;
+    }
+
+    @media screen and (width: $tablet - 1px) {
+      max-width: 720px;
+    }
+
+    @include tablet-only {
+      padding: 2rem 2rem 0;
+      max-width: 960px;
+    }
   }
 }
 

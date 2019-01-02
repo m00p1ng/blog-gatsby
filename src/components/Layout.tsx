@@ -18,13 +18,10 @@ const SiteWrapper = styled.div`
   flex-direction: column;
 `
 
-const ContentWrapper = styled.main`
+const ContentWrapper = styled.main.attrs({
+  className: 'site-content'
+})`
   flex: 1 0 auto;
-
-  .container {
-    max-width: 960px;
-    width: 100%;
-  }
 `
 
 interface Props {
@@ -37,8 +34,8 @@ interface LayoutRenderProps {
 }
 
 if (typeof document !== 'undefined') {
-  document.documentElement.className += (
-    'ontouchstart' in document.documentElement ? ' touch' : ' no-touch'
+  document.documentElement.className = (
+    'ontouchstart' in document.documentElement ? 'touch' : 'no-touch'
   )
 }
 

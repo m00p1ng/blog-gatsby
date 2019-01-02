@@ -1,5 +1,17 @@
 @import 'shared-variable';
 
+.no-touch .site-content .container {
+  max-width: 960px;
+  width: 100%;
+}
+
+.touch .site-content .container {
+  @include desktop {
+    max-width: 960px;
+    width: 100%;
+  }
+}
+
 .no-touch .rainbow {
   @extend %rainbow;
 }
@@ -67,7 +79,8 @@ a.banner-link:hover {
 }
 
 .orange-shadow {
-  box-shadow: 8px 14px 38px rgba(255, 165, 0, 0.25), 1px 3px 8px rgba(255, 165, 0, 0.3);
+  box-shadow: 8px 14px 38px rgba(255, 165, 0, 0.25),
+    1px 3px 8px rgba(255, 165, 0, 0.3);
 }
 
 .archive-date {
