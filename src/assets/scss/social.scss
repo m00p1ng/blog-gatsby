@@ -9,6 +9,8 @@ $brand-colors: (facebook: #3b5998, twitter: #1da1f2);
   .button {
     color: white;
     margin: 0 0.25rem;
+    border-radius: 50%;
+    font-size: 1.125rem;
 
     @each $class,
     $color in $brand-colors {

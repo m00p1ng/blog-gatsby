@@ -39,7 +39,6 @@ const renderSocialShareWidget = ({ url, slug, title, tags }: RenderProps) => (
         <span className="icon">
           <FontAwesomeIcon icon={['fab', 'facebook-f']} />
         </span>
-        <span>Facebook</span>
       </FacebookShareButton>
       <TwitterShareButton
         url={`${url}${slug}`}
@@ -50,7 +49,6 @@ const renderSocialShareWidget = ({ url, slug, title, tags }: RenderProps) => (
         <span className="icon">
           <FontAwesomeIcon icon={['fab', 'twitter']} />
         </span>
-        <span>Twitter</span>
       </TwitterShareButton>
     </div>
   </SocialShareWrapper>
@@ -64,7 +62,7 @@ const SocialShareWidget = ({ slug, title, tags }: Props) => (
             siteURL
           }
         }
-      } 
+      }
     `}
     render={(data: Data) => {
       const { siteURL } = data.site!.siteMetadata
