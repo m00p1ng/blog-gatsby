@@ -23,18 +23,4 @@ $brand-colors: (facebook: #3b5998, twitter: #1da1f2);
 .no-touch .post-social .button:hover {
   color: white;
   opacity: 0.9;
-
-  animation: bounce 0.25s cubic-bezier(.5, 0.05, 1, .5);
-  animation-direction: alternate;
-  animation-iteration-count: infinite;
-
-  @keyframes bounce {
-    from {
-      transform: translateY(0px);
-    }
-
-    to {
-      transform: translateY(-3px);
-    }
-  }
 }
