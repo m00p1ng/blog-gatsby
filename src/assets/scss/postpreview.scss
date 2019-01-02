@@ -3,18 +3,12 @@
 $postpreview-mobile-padding: 1rem;
 
 .postpreview {
-  &:not(:last-child) {
-    @include tablet {
-      margin-bottom: 3rem;
-    }
-  }
-
   &__content {
     @include until($post-breakpoint) {
       padding: $postpreview-mobile-padding;
     }
 
-    @media screen and (min-width: $post-breakpoint) and (max-width: $tablet - 1px) {
+    @media screen and (min-width: $post-breakpoint) and (max-width: $tablet) {
       padding: 1.75rem;
     }
 
@@ -54,7 +48,7 @@ $postpreview-mobile-padding: 1rem;
       margin-bottom: 0;
     }
 
-    @media screen and (min-width: $post-breakpoint) and (max-width: $tablet - 1px) {
+    @media screen and (min-width: $post-breakpoint) and (max-width: $tablet) {
       margin: -1.75rem;
       margin-bottom: 0;
     }
@@ -92,5 +86,27 @@ $postpreview-mobile-padding: 1rem;
     &:hover {
       color: orange;
     }
+  }
+}
+
+.postpreview-container {
+  @include mobile {
+    margin: 0 0.4rem;
+  }
+
+  @include tablet-only {
+    margin: 0 2.5rem;
+  }
+
+  @include desktop {
+    margin: 0 3rem;
+  }
+}
+
+.touch .postpreview-container {
+  @media screen and (min-width: 600px) and (max-width: $tablet - 1px) {
+    max-width: 576px;
+    margin-left: auto;
+    margin-right: auto;
   }
 }

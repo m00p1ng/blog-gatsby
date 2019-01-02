@@ -4,7 +4,7 @@ import styled from 'styled-components'
 
 const HeaderWrapper = styled.div`
   text-align: center;
-  margin: 2.5rem 0 2rem;
+  margin: 2rem 0;
 
   @media screen  and (max-width: 320px){
     font-size: 14px;

@@ -3,31 +3,11 @@
 .card {
   overflow: hidden;
   border-radius: 12px;
+  margin-bottom: 2rem;
 
   @include mobile {
     border-radius: 4px;
-  }
-
-  &:not(:last-child) {
-    margin-bottom: 1.5rem;
-
-    @include mobile {
-      margin-bottom: 1rem;
-    }
-  }
-}
-
-.blog-container {
-  @include mobile {
-    margin: 0 0.8rem;
-  }
-
-  @include tablet-only {
-    margin: 0 2.5rem;
-  }
-
-  @include desktop {
-    margin: 0 3rem;
+    margin-bottom: 1rem;
   }
 }
 
@@ -45,17 +25,9 @@
   }
 }
 
-.touch .blog-container {
-  @media screen and (min-width: $post-breakpoint) and (max-width: $tablet - 1px) {
-    max-width: 576px;
-    margin-left: auto;
-    margin-right: auto;
-  }
-}
-
 .page-container {
   @include mobile {
-    margin: 0 0.4rem;
+    margin: 0 0.8rem;
   }
 
   @include tablet-only {
@@ -71,12 +43,45 @@
 
 .touch .page-container {
   @include until(650px) {
-    margin-left: 0.4rem;
-    margin-right: 0.4rem;
+    margin: 0;
+
+    .card {
+      border-radius: 0;
+    }
   }
 
-  @media screen and (min-width: 651px) and (max-width: $tablet) {
-    max-width: 650px;
+  .page-content {
+    @media screen and (min-width: 651px) and (max-width: $tablet) {
+      padding-top: 2.5rem;
+      max-width: 650px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+  }
+
+  @include tablet-only {
+    margin: 0 1.5rem;
+  }
+}
+
+.tags-container {
+  @include tablet-only {
+    margin: 0 2.5rem;
+  }
+
+  @include desktop {
+    margin: 0 3rem;
+  }
+}
+
+.touch .tags-container {
+  @include until(650px) {
+    margin-left: 0.8rem;
+    margin-right: 0.8rem;
+  }
+
+  @media screen and (min-width: 600px) and (max-width: $tablet) {
+    max-width: 576px;
     margin-left: auto;
     margin-right: auto;
   }

@@ -4,12 +4,12 @@ interface BlogContainerProps {
   children: React.ReactNode
 }
 
-const BlogContainer = ({ children }: BlogContainerProps) => (
+const PostPreviewContainer = ({ children }: BlogContainerProps) => (
   <div className="container">
-    <div className="blog-container">
+    <div className="postpreview-container">
       {children}
     </div>
   </div>
 )
 
-export default BlogContainer
+export default PostPreviewContainer

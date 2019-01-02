@@ -4,9 +4,9 @@ import React from 'react'
 import Helmet from 'react-helmet'
 
 import Banner from '../components/Banner'
-import BlogContainer from '../components/BlogContainer'
 import BlogNavigation from '../components/BlogNavigation'
 import PostPreview from '../components/PostPreview'
+import PostPreviewContainer from '../components/PostPreviewContainer'
 import Layout from '../layouts/Layout'
 
 import PageProps from '../models/PageProps'
@@ -54,7 +54,7 @@ const Tags = ({ pageContext }: PageProps) => {
         }
         subtitle={`${postText(total!)} ${pageText(page!, pages!)}`}
       />
-      <BlogContainer>
+      <PostPreviewContainer>
         {nodes!.map(({ node }) => (
           <PostPreview key={node.id} post={node} />
         ))}
@@ -66,7 +66,7 @@ const Tags = ({ pageContext }: PageProps) => {
             pages={pages!}
           />
         )}
-      </BlogContainer>
+      </PostPreviewContainer>
     </Layout >
   )
 }

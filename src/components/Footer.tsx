@@ -11,7 +11,7 @@ const FooterLink = styled.a`
 `
 
 const FooterWrapper = styled.footer`
-  padding: 3rem;
+  padding: 3rem 0;
 `
 
 const SubtitleWrapper = styled.small`

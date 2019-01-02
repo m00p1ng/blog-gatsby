@@ -13,7 +13,9 @@ interface Props {
 }
 
 const NavigationWrapper = styled.div`
-  margin: 1rem 0;
+  @media screen and (max-width: 600px) {
+    margin: 1rem;
+  }
 `
 
 const BlogNavigation = ({ next, prev, page, pages }: Props) => (
