@@ -4,13 +4,13 @@ import Img from 'gatsby-image'
 import React from 'react'
 import styled from 'styled-components'
 
-import TagList from '../TagList'
+import TagList from './TagList'
 
-import Data from '../../models/Data'
-import Image from '../../models/Image'
-import Post from '../../models/Post'
+import Data from '../models/Data'
+import Image from '../models/Image'
+import Post from '../models/Post'
 
-import '../../assets/scss/postpreview-left.scss'
+import '../assets/scss/postpreview.scss'
 
 interface Props {
   post: Post
@@ -66,24 +66,6 @@ const renderImage = ({ image, data, slug, title }: RenderImageProps) => {
   )
 }
 
-const defaultImageQuery = graphql`
-  query {
-    defaultImage: file(relativePath: { eq: "m00p1ng-icon.png" }) {
-      childImageSharp {
-        fluid(maxWidth: 768, maxHeight: 400, quality: 60, cropFocus: CENTER) {
-          aspectRatio
-          base64
-          sizes
-          src
-          srcSet
-          srcWebp
-          srcSetWebp
-        }
-      }
-    }
-  }
-`
-
 const PostPreview = ({ post }: Props) => {
   const { slug } = post.fields!
   const {
@@ -126,5 +108,23 @@ const PostPreview = ({ post }: Props) => {
     </div>
   )
 }
+
+const defaultImageQuery = graphql`
+  query {
+    defaultImage: file(relativePath: { eq: "m00p1ng-icon.png" }) {
+      childImageSharp {
+        fluid(maxWidth: 768, maxHeight: 400, quality: 60, cropFocus: CENTER) {
+          aspectRatio
+          base64
+          sizes
+          src
+          srcSet
+          srcWebp
+          srcSetWebp
+        }
+      }
+    }
+  }
+`
 
 export default PostPreview
